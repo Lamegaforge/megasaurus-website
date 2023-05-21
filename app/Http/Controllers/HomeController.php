@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         $featuredClip = $this->featuredClip->handle();
 
-        $latestAvailableClips = Cache::remember('latest_available_clips', 1, function () {
+        $latestAvailableClips = Cache::remember('latest_available_clips', TtlFactory::minutes(1), function () {
             return $this->latestAvailableClips->handle();
         });
 
