@@ -18,7 +18,7 @@ class LatestAvailableClips
             ->get();
         
         return $latestAvailableClips->map(function ($clip) {
-            return Clip::from($clip);
+            return Clip::from((array) $clip);
         });
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
+use App\ValueObjects\Clip;
 
 class FeaturedClip
 {
@@ -17,6 +18,8 @@ class FeaturedClip
             ->limit(30)
             ->get();
         
-        return $featuredClips->random();
+        return Clip::from(
+            (array) $featuredClips->random(),
+        );
     }
 }
