@@ -28,12 +28,8 @@ class ShowClipController extends Controller
             game: $clip->game,
         );
 
-        $clipThumbnail = 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-prod/thumbnails/' . $clip->external_id;
-        $gameThumbnail = 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-prod/games/' . $clip->external_id;
-
         dd(
             $clip, 
-            $clipThumbnail,
             $randomGameClips,
         );
     }

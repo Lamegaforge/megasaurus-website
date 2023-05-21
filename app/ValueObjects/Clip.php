@@ -26,7 +26,7 @@ readonly final class Clip
                 'name' => data_get($attributes, 'author_name'),
             ]),
             game: Game::from([
-                'externalId' => data_get($attributes, 'game_external_id'),
+                'external_id' => data_get($attributes, 'game_external_id'),
                 'name' => data_get($attributes, 'game_name'),
             ]),
         );
