@@ -3,32 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\LatestAvailableClips;
 use App\Repositories\FeaturedClip;
-use App\Repositories\LatestCards;
-use Illuminate\Support\Facades\Cache;
-use App\Services\TtlFactory;
+use App\Storages\LatestAvailableClipsStorage;
+use App\Storages\LatestGamesStorage;
+use App\Storages\PopularGamesStorage;
 
 class HomeController extends Controller
 {
     public function __construct(
-        private LatestAvailableClips $latestAvailableClips,
         private FeaturedClip $featuredClip,
-        private LatestCards $LatestCards,
+        private LatestAvailableClipsStorage $latestAvailableClipsStorage,
+        private LatestGamesStorage $latestGamesStorage,
+        private PopularGamesStorage $popularGamesStorage,
     ){}
 
     public function __invoke(Request $request)
     {
         $featuredClip = $this->featuredClip->handle();
 
-        $latestAvailableClips = Cache::remember('latest_available_clips', TtlFactory::minutes(1), function () {
-            return $this->latestAvailableClips->handle();
-        });
+        $latestAvailableClips = $this->latestAvailableClipsStorage->get();
 
-        $latestCards = Cache::remember('latest_cards', TtlFactory::minutes(1), function () {
-            return $this->LatestCards->handle();
-        });
+        $latestGames = $this->latestGamesStorage->get();
 
-        dd($latestAvailableClips, $featuredClip, $latestCards);
+        $popularGames = $this->popularGamesStorage->get();
+
+        dd($latestAvailableClips, $featuredClip, $latestGames, $popularGames);
     }
 }
