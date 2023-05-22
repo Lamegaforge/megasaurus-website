@@ -9,7 +9,7 @@ class PopularGames
 {
     public function handle()
     {
-        $latestGames = DB::table('games')
+        $popularGames = DB::table('games')
             ->select('games.name', 'games.external_id', DB::raw('COUNT(clips.id) as active_clips_count'))
             ->leftJoin('clips', function ($join) {
                 $join->on('games.external_id', '=', 'clips.external_game_id')
@@ -20,7 +20,7 @@ class PopularGames
             ->limit(10)
             ->get();
 
-        return $latestGames->map(function ($game) {
+        return $popularGames->map(function ($game) {
             return Game::from((array) $game);
         });
     }
