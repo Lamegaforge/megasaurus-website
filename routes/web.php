@@ -6,5 +6,10 @@ use App\Http\Controllers\PaginateClipController;
 use App\Http\Controllers\ShowClipController;
 
 Route::get('/', HomeController::class);
-Route::get('clips', PaginateClipController::class);
-Route::get('clips/{external_id}', ShowClipController::class);
+
+Route::prefix('clips')
+    ->as('clips.')
+    ->group(function() {
+        Route::get('/', PaginateClipController::class)->name('index');
+        Route::get('{external_id}', ShowClipController::class)->name('show');
+    });
