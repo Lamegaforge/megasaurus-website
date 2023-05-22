@@ -185,4 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'cdn_url' => env('CDN_URL'),
+
 ];

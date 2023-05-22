@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\GetDisplayableClip;
 use App\Repositories\GetRandomClipsForSpecificGame;
 use App\ValueObjects\ExternalId;
+use App\Services\CdnService;
 
 class ShowClipController extends Controller
 {
@@ -26,6 +27,8 @@ class ShowClipController extends Controller
 
         dd(
             $clip, 
+            app(CdnService::class)->card($clip->game),
+            app(CdnService::class)->thumbnail($clip),
             $randomGameClips,
         );
     }
