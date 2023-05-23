@@ -26,5 +26,7 @@ class HomeController extends Controller
         $latestGames = $this->latestGamesStorage->get();
 
         $popularGames = $this->popularGamesStorage->get();
+
+        return view('welcome');
     }
 }

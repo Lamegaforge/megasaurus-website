@@ -979,7 +979,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:Lamegaforge/megasaurus-domain.git",
+                "url": "https://github.com/Lamegaforge/megasaurus-domain.git",
                 "reference": "79e6fc16e9fb215d6ca2bb298d53c1e449952b52"
             },
             "dist": {
