@@ -24,12 +24,5 @@ class ShowClipController extends Controller
         $randomGameClips = $this->getRandomClipsForSpecificGame->handle(
             game: $clip->game,
         );
-
-        dd(
-            $clip, 
-            app(CdnService::class)->card($clip->game),
-            app(CdnService::class)->thumbnail($clip),
-            $randomGameClips,
-        );
     }
 }

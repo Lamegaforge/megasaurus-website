@@ -13,7 +13,5 @@ class PaginateClipController extends Controller
         $clips = app(PaginateAvailableClips::class)->handle(
             PaginateClips::fromRequest($request),
         );
-
-        dd($clips);
     }
 }
