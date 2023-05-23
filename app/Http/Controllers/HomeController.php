@@ -26,7 +26,5 @@ class HomeController extends Controller
         $latestGames = $this->latestGamesStorage->get();
 
         $popularGames = $this->popularGamesStorage->get();
-
-        dd($latestAvailableClips, $featuredClip, $latestGames, $popularGames);
     }
 }

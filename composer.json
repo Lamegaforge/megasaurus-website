@@ -10,7 +10,8 @@
         "laravel/framework": "^10.8",
         "laravel/octane": "^2.0",
         "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "lamegaforge/megasaurus-domain": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -64,6 +65,12 @@
             "php-http/discovery": true
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:lamegaforge/megasaurus-domain.git"
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true
 }

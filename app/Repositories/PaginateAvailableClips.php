@@ -5,12 +5,13 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\ValueObjects\Clip;
+use App\ValueObjects\PaginateClips;
 
 class PaginateAvailableClips
 {
-    public function handle(): LengthAwarePaginator
+    public function handle(PaginateClips $paginateClips): LengthAwarePaginator
     {
-        $clips = DB::table('clips')
+        $query = DB::table('clips')
             ->select(
                 'clips.*',
                 'games.name as game_name',
@@ -20,8 +21,25 @@ class PaginateAvailableClips
             ->join('games', 'clips.external_game_id', '=', 'games.external_id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
             ->where('state', 'ok')
-            ->paginate(20);
+            ->orderByDesc($paginateClips->sort);
+        
+        $query->when($paginateClips->search, function ($query, $search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        });
 
+        $query->when($paginateClips->externalGameId, function ($query, $externalGameId) {
+            $query->where('external_game_id', $externalGameId);
+        });
+
+        $clips = $query->paginate(20);
+
+        $clips = $this->transform($clips);
+
+        return $clips;
+    }
+
+    private function transform(LengthAwarePaginator $clips): LengthAwarePaginator
+    {
         $clips->through(function ($clip) {
             return Clip::from((array) $clip);
         });

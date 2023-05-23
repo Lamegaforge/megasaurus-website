@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9fd60f17401594244457ebf87c5a857d",
+    "content-hash": "258f8a9c77be6ac1ca135e54b49b6b53",
     "packages": [
         {
             "name": "brick/math",
@@ -973,6 +973,42 @@
                 }
             ],
             "time": "2021-10-07T12:57:01+00:00"
+        },
+        {
+            "name": "lamegaforge/megasaurus-domain",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Lamegaforge/megasaurus-domain.git",
+                "reference": "79e6fc16e9fb215d6ca2bb298d53c1e449952b52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Lamegaforge/megasaurus-domain/zipball/79e6fc16e9fb215d6ca2bb298d53c1e449952b52",
+                "reference": "79e6fc16e9fb215d6ca2bb298d53c1e449952b52",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Domain\\": "src"
+                },
+                "classmap": [
+                    "database"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "source": "https://github.com/Lamegaforge/megasaurus-domain/tree/master",
+                "issues": "https://github.com/Lamegaforge/megasaurus-domain/issues"
+            },
+            "time": "2023-05-23T10:40:43+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -8388,7 +8424,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lamegaforge/megasaurus-domain": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

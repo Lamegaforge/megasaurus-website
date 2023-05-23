@@ -6,8 +6,11 @@ use Illuminate\Support\Facades\DB;
 use App\ValueObjects\ExternalId;
 use App\ValueObjects\Clip;
 
-class GetDisplayableClip
+class FindDisplayableClip
 {
+    /** 
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     public function handle(ExternalId $externalId): Clip
     {
         $clip = DB::table('clips')
@@ -22,6 +25,8 @@ class GetDisplayableClip
             ->where('clips.external_id', $externalId)
             ->where('state', 'ok')
             ->first();
+
+        abort_unless($clip, 404);
 
         return Clip::from((array) $clip);
     }
