@@ -1,0 +1,15 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+
+    level: 5
+
+    noModelMake: false
+
+    ignoreErrors:
+        - '#Call to an undefined method Illuminate\\Contracts\\Pagination\\LengthAwarePaginator::through\(\)\.#'
+        - '#Method App\\Repositories\\PaginateAvailableClips::handle\(\) should return Illuminate\\Pagination\\LengthAwarePaginator but returns Illuminate\\Contracts\\Pagination\\LengthAwarePaginator\.#'
