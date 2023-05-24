@@ -27,6 +27,11 @@ class HomeController extends Controller
 
         $popularGames = $this->popularGamesStorage->get();
 
-        return view('welcome');
+        return view('welcome', [
+            'featuredClip' => $featuredClip,
+            'latestAvailableClips' => $latestAvailableClips,
+            'latestGames' => $latestGames,
+            'popularGames' => $popularGames,
+        ]);
     }
 }
