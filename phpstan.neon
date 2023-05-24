@@ -12,4 +12,3 @@ parameters:
 
     ignoreErrors:
         - '#Call to an undefined method Illuminate\\Contracts\\Pagination\\LengthAwarePaginator::through\(\)\.#'
-        - '#Method App\\Repositories\\PaginateAvailableClips::handle\(\) should return Illuminate\\Pagination\\LengthAwarePaginator but returns Illuminate\\Contracts\\Pagination\\LengthAwarePaginator\.#'
