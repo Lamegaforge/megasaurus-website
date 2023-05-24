@@ -3,9 +3,9 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Pagination\LengthAwarePaginator;
 use App\ValueObjects\Clip;
 use App\ValueObjects\PaginateClips;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class PaginateAvailableClips
 {

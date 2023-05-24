@@ -26,7 +26,7 @@ class FindDisplayableClip
             ->where('state', 'ok')
             ->first();
 
-        abort_unless($clip, 404);
+        abort_if(is_null($clip), 404);
 
         return Clip::from((array) $clip);
     }
