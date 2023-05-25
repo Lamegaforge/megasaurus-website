@@ -7,6 +7,7 @@ use App\Repositories\FeaturedClip;
 use App\Storages\LatestAvailableClipsStorage;
 use App\Storages\LatestGamesStorage;
 use App\Storages\PopularGamesStorage;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
 
         $popularGames = $this->popularGamesStorage->get();
 
-        return view('welcome', [
+        return View::make('welcome', [
             'featuredClip' => $featuredClip,
             'latestAvailableClips' => $latestAvailableClips,
             'latestGames' => $latestGames,
