@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
 use App\ValueObjects\PaginateClips;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Domain\Enums\ClipStateEnum;
 
 class PaginateAvailableClips
 {
@@ -25,7 +26,7 @@ class PaginateAvailableClips
             )
             ->join('games', 'clips.external_game_id', '=', 'games.external_id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('state', 'ok')
+            ->where('state', ClipStateEnum::Ok)
             ->orderByDesc($paginateClips->sort);
         
         $query->when($paginateClips->search, function ($query, $search) {

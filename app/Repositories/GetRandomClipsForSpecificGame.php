@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Game;
 use App\ValueObjects\Clip;
 use Illuminate\Support\Collection;
+use Domain\Enums\ClipStateEnum;
 
 class GetRandomClipsForSpecificGame
 {
@@ -26,7 +27,7 @@ class GetRandomClipsForSpecificGame
             ->join('games', 'clips.external_game_id', '=', 'games.external_id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
             ->where('games.external_id', $game->externalId)
-            ->where('state', 'ok')
+            ->where('state', ClipStateEnum::Ok)
             ->limit(10)
             ->get();
 

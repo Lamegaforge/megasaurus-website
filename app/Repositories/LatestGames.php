@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Game;
+use Domain\Enums\ClipStateEnum;
 
 class LatestGames
 {
@@ -13,7 +14,7 @@ class LatestGames
             ->select('games.name', 'games.external_id')
             ->leftJoin('clips', function ($join) {
                 $join->on('games.external_id', '=', 'clips.external_game_id')
-                    ->where('clips.state', 'ok');
+                    ->where('clips.state', ClipStateEnum::Ok);
             })
             ->groupBy('games.id')
             ->orderBy('games.created_at', 'DESC')

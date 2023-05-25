@@ -5,6 +5,7 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\ExternalId;
 use App\ValueObjects\Clip;
+use Domain\Enums\ClipStateEnum;
 
 class FindDisplayableClip
 {
@@ -23,7 +24,7 @@ class FindDisplayableClip
             ->join('games', 'clips.external_game_id', '=', 'games.external_id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
             ->where('clips.external_id', $externalId)
-            ->where('state', 'ok')
+            ->where('state', ClipStateEnum::Ok)
             ->first();
 
         abort_if(is_null($clip), 404);

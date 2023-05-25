@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
+use Domain\Enums\ClipStateEnum;
 
 class FeaturedClip
 {
@@ -23,7 +24,7 @@ class FeaturedClip
             )
             ->join('games', 'clips.external_game_id', '=', 'games.external_id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('state', 'ok')
+            ->where('state', ClipStateEnum::Ok)
             ->where('views', '>=', 10)
             ->latest('published_at')
             ->limit(30)

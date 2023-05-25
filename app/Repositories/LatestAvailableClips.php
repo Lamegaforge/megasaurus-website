@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
+use Domain\Enums\ClipStateEnum;
 
 class LatestAvailableClips
 {
@@ -23,7 +24,7 @@ class LatestAvailableClips
             )
             ->join('games', 'clips.external_game_id', '=', 'games.external_id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('state', 'ok')
+            ->where('state', ClipStateEnum::Ok)
             ->latest('published_at')
             ->limit(30)
             ->get();
