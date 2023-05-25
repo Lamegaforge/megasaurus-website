@@ -1,10 +1,10 @@
 <?php
 
-namespace App\ValueObjects;
+namespace App\Repositories\Options;
 
 use App\Http\Requests\PaginateClipRequest;
 
-readonly final class PaginateClips
+readonly final class ClipPaginationOptions
 {
     public function __construct(
         public ?string $search,
