@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Repositories\FindDisplayableClip;
 use App\Repositories\GetRandomClipsForSpecificGame;
 use App\ValueObjects\ExternalId;
-use App\Services\CdnService;
 
 class ShowClipController extends Controller
 {
