@@ -13,8 +13,7 @@ readonly final class PaginationOption
         public ?string $externalGameId,
         public ClipStateEnum $clipStateEnum,
         public ?string $sort,
-    ) {
-    }
+    ) {}
 
     public static function from(array $attributes): self
     {
