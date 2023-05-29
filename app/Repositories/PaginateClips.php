@@ -4,13 +4,12 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
-use App\Repositories\Options\ClipPaginationOptions;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Domain\Enums\ClipStateEnum;
+use App\Repositories\Options\PaginationOption;
 
-class PaginateAvailableClips
+class PaginateClips
 {
-    public function handle(ClipPaginationOptions $options): LengthAwarePaginator
+    public function handle(PaginationOption $options): LengthAwarePaginator
     {
         $query = DB::table('clips')
             ->select(
@@ -26,9 +25,12 @@ class PaginateAvailableClips
             )
             ->join('games', 'clips.external_game_id', '=', 'games.external_id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('state', ClipStateEnum::Ok)
-            ->orderByDesc($options->sort);
-        
+            ->where('state', $options->clipStateEnum);
+
+        $query->when($options->sort, function ($query, $sort) {
+            $query->orderByDesc($sort);
+        });
+
         $query->when($options->search, function ($query, $search) {
             $query->where('title', 'like', '%' . $search . '%');
         });

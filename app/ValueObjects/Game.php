@@ -13,8 +13,8 @@ readonly final class Game
     public static function from(array $attributes): self
     {
         return new self(
-            externalId: $attributes['external_id'],
-            name: $attributes['name'],
+            externalId: data_get($attributes, 'external_id'),
+            name: data_get($attributes, 'name'),
             activeClipsCount: data_get($attributes, 'active_clips_count'),
         );
     }

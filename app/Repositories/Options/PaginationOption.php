@@ -2,10 +2,9 @@
 
 namespace App\Repositories\Options;
 
-use App\Http\Requests\PaginateClipRequest;
 use Domain\Enums\ClipStateEnum;
 
-readonly final class ClipPaginationOptions
+readonly final class PaginationOption
 {
     public const defaultSorting = 'clips.published_at';
 
@@ -13,8 +12,9 @@ readonly final class ClipPaginationOptions
         public ?string $search,
         public ?string $externalGameId,
         public ClipStateEnum $clipStateEnum,
-        public string $sort,
-    ) {}
+        public ?string $sort,
+    ) {
+    }
 
     public static function from(array $attributes): self
     {

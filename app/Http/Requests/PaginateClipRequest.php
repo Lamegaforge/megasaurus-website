@@ -21,7 +21,7 @@ class PaginateClipRequest extends FormRequest
             'game' => 'nullable|string|max:255',
             'sort' => [
                 'nullable',
-                Rule::in(['views', 'published_at']),
+                Rule::in(['clips.views', 'clips.published_at']),
             ],
         ];
     }
