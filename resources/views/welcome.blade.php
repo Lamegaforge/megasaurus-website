@@ -39,19 +39,23 @@
             </ul>
         </nav>
         <section
-            class="relative flex flex-col justify-center items-center h-[600px] mb-6"
+            class="relative mb-6"
         >
             <div
                 class="absolute inset-x-0 inset-y-0 bg-no-repeat bg-cover blur-sm"
                 style="background-image: url('{{ $cdnService->thumbnail($featuredClip) }}')"
             ></div>
-            <iframe
-                class="blur-none"
-                src="https://clips.twitch.tv/embed?clip=RelentlessProtectiveAntPunchTrees-lSuVYjOFUBDgjaDm&parent=localhost"
-                height="<height>"
-                width="<width>"
-                allowfullscreen>
-            </iframe>
+
+            <div class="relative py-12 px-8">
+                <div class="relative aspect-video">
+                    <iframe
+                        class="absolute w-full h-full top-0 left-0"
+                        src="https://clips.twitch.tv/embed?clip=RelentlessProtectiveAntPunchTrees-lSuVYjOFUBDgjaDm&parent=localhost"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
         </section>
 
         <section class="mb-6">
