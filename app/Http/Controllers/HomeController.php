@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Repositories\FeaturedClip;
 use App\Storages\LatestAvailableClipsStorage;
 use App\Storages\LatestGamesStorage;
@@ -17,7 +16,7 @@ class HomeController extends Controller
         private PopularGamesStorage $popularGamesStorage,
     ){}
 
-    public function __invoke(Request $request)
+    public function __invoke()
     {
         $featuredClip = $this->featuredClip->handle();
 
