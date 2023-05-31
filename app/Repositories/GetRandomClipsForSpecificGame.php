@@ -24,7 +24,7 @@ class GetRandomClipsForSpecificGame
                 'games.external_id as game_external_id',
                 'authors.name as author_name',
             )
-            ->join('games', 'clips.external_game_id', '=', 'games.external_id')
+            ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
             ->where('games.external_id', $game->externalId)
             ->where('state', ClipStateEnum::Ok)

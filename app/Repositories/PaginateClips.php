@@ -5,7 +5,11 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+<<<<<<< Updated upstream:app/Repositories/PaginateClips.php
 use App\Repositories\Options\PaginationOption;
+=======
+use Domain\Enums\ClipStateEnum;
+>>>>>>> Stashed changes:app/Repositories/PaginateAvailableClips.php
 
 class PaginateClips
 {
@@ -13,18 +17,22 @@ class PaginateClips
     {
         $query = DB::table('clips')
             ->select(
+                'clips.id',
                 'clips.external_id',
-                'clips.title',
                 'clips.url',
+                'clips.title',
                 'clips.views',
                 'clips.duration',
                 'clips.published_at',
                 'games.name as game_name',
-                'games.external_id as game_external_id',
+                'games.id as game_id',
+                'games.external_id as game_external',
+                'authors.id as author_id',
                 'authors.name as author_name',
             )
-            ->join('games', 'clips.external_game_id', '=', 'games.external_id')
+            ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
+<<<<<<< Updated upstream:app/Repositories/PaginateClips.php
             ->where('state', $options->clipStateEnum);
 
         $query->when($options->sort, function ($query, $sort) {
@@ -32,6 +40,12 @@ class PaginateClips
         });
 
         $query->when($options->search, function ($query, $search) {
+=======
+            ->where('state', ClipStateEnum::Ok)
+            ->orderByDesc($paginateClips->sort);
+        
+        $query->when($paginateClips->search, function ($query, $search) {
+>>>>>>> Stashed changes:app/Repositories/PaginateAvailableClips.php
             $query->where('title', 'like', '%' . $search . '%');
         });
 

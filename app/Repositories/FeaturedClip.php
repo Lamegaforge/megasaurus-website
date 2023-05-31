@@ -12,17 +12,20 @@ class FeaturedClip
     {
         $featuredClips = DB::table('clips')
             ->select(
+                'clips.id',
                 'clips.external_id',
-                'clips.title',
                 'clips.url',
+                'clips.title',
                 'clips.views',
                 'clips.duration',
                 'clips.published_at',
                 'games.name as game_name',
-                'games.external_id as game_external_id',
+                'games.id as game_id',
+                'games.external_id as game_external',
+                'authors.id as author_id',
                 'authors.name as author_name',
             )
-            ->join('games', 'clips.external_game_id', '=', 'games.external_id')
+            ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
             ->where('state', ClipStateEnum::Ok)
             ->where('views', '>=', 10)
@@ -30,8 +33,8 @@ class FeaturedClip
             ->limit(30)
             ->get();
 
-        return Clip::from(
-            (array) $featuredClips->random(),
-        );
+            return Clip::from(
+                (array) $featuredClips->random(),
+            );
     }
 }
