@@ -5,11 +5,8 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-<<<<<<< Updated upstream:app/Repositories/PaginateClips.php
 use App\Repositories\Options\PaginationOption;
-=======
 use Domain\Enums\ClipStateEnum;
->>>>>>> Stashed changes:app/Repositories/PaginateAvailableClips.php
 
 class PaginateClips
 {
@@ -32,20 +29,13 @@ class PaginateClips
             )
             ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-<<<<<<< Updated upstream:app/Repositories/PaginateClips.php
             ->where('state', $options->clipStateEnum);
 
         $query->when($options->sort, function ($query, $sort) {
             $query->orderByDesc($sort);
         });
-
-        $query->when($options->search, function ($query, $search) {
-=======
-            ->where('state', ClipStateEnum::Ok)
-            ->orderByDesc($paginateClips->sort);
         
-        $query->when($paginateClips->search, function ($query, $search) {
->>>>>>> Stashed changes:app/Repositories/PaginateAvailableClips.php
+        $query->when($options->search, function ($query, $search) {
             $query->where('title', 'like', '%' . $search . '%');
         });
 
