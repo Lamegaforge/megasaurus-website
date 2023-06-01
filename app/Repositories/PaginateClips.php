@@ -23,7 +23,7 @@ class PaginateClips
                 'clips.published_at',
                 'games.name as game_name',
                 'games.id as game_id',
-                'games.external_id as game_external',
+                'games.external_id as game_external_id',
                 'authors.id as author_id',
                 'authors.name as author_name',
             )
@@ -39,8 +39,8 @@ class PaginateClips
             $query->where('title', 'like', '%' . $search . '%');
         });
 
-        $query->when($options->externalGameId, function ($query, $externalGameId) {
-            $query->where('external_game_id', $externalGameId);
+        $query->when($options->gameId, function ($query, $gameId) {
+            $query->where('games.id', $gameId);
         });
 
         $clips = $query->paginate(20);

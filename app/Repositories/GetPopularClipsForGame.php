@@ -3,18 +3,15 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\ValueObjects\ExternalId;
 use App\ValueObjects\Clip;
+use Illuminate\Support\Collection;
 use Domain\Enums\ClipStateEnum;
 
-class FindDisplayableClip
+class GetPopularClipsForGame
 {
-    /** 
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    public function handle(string $id): Clip
+    public function handle(string $id): Collection
     {
-        $clip = DB::table('clips')
+        $popularClips = DB::table('clips')
             ->select(
                 'clips.id',
                 'clips.external_id',
@@ -23,20 +20,21 @@ class FindDisplayableClip
                 'clips.views',
                 'clips.duration',
                 'clips.published_at',
-                'games.name as game_name',
                 'games.id as game_id',
-                'games.external_id as game_external',
+                'games.name as game_name',
                 'authors.id as author_id',
                 'authors.name as author_name',
             )
             ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('clips.id', $id)
+            ->where('clips.game_id', $id)
             ->where('state', ClipStateEnum::Ok)
-            ->first();
+            ->orderBy('views', 'DESC')
+            ->limit(10)
+            ->get();
 
-        abort_if(is_null($clip), 404);
-
-        return Clip::from((array) $clip);
+        return $popularClips->map(function ($clip) {
+            return Clip::from((array) $clip);
+        });
     }
 }

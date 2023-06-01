@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Repositories\FindDisplayableClip;
-use App\Repositories\GetRandomClipsForSpecificGame;
-use App\ValueObjects\ExternalId;
+use App\Repositories\GetRandomClipsForGame;
 
 class ShowClipController extends Controller
 {
     public function __construct(
         private FindDisplayableClip $findDisplayableClip,
-        private GetRandomClipsForSpecificGame $getRandomClipsForSpecificGame,
+        private GetRandomClipsForGame $getRandomClipsForGame,
     ) {}
 
-    public function __invoke(Request $request)
+    public function __invoke(string $id)
     {
-        $clip = $this->findDisplayableClip->handle(
-            externalId: ExternalId::fromRequest($request),
-        );
+        $clip = $this->findDisplayableClip->handle($id);
 
-        $randomGameClips = $this->getRandomClipsForSpecificGame->handle(
-            game: $clip->game,
-        );
+        $randomGameClips = $this->getRandomClipsForGame->handle($clip->game->id);
+
+        dd($randomGameClips);
     }
 }

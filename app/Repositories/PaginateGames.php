@@ -13,15 +13,21 @@ class PaginateGames
     {
         $query = DB::table('games')
             ->select(
-                'games.*',
+                'games.id',
+                'games.name',
+                'games.external_id',
                 DB::raw('COUNT(clips.id) as active_clips_count'),
             )
             ->leftJoin('clips', function ($join) use($options) {
-                $join->on('games.external_id', '=', 'clips.external_game_id')
+                $join->on('games.id', '=', 'clips.game_id')
                     ->where('clips.state', $options->clipStateEnum);
             })
             ->groupBy('games.external_id')
             ->havingRaw('active_clips_count > 0');
+
+        $query->when($options->gameId, function ($query, $gameId) {
+            $query->where('games.id', $gameId);
+        });
 
         $query->when($options->sort, function ($query, $sort) {
             $query->orderByDesc($sort);

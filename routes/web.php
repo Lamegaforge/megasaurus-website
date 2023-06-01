@@ -20,5 +20,5 @@ Route::prefix('games')
     ->as('games.')
     ->group(function () {
         Route::get('/', PaginateGameController::class)->name('index');
-        Route::get('{external_game_id}', ShowGameController::class)->name('show');
+        Route::get('{external_id}', ShowGameController::class)->name('show');
     });

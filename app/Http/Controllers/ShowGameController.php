@@ -2,29 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\GetPopularClipsForSpecificGame;
-use App\ValueObjects\Game;
+use App\Repositories\GetPopularClipsForGame;
 use App\Repositories\PaginateClips;
 use App\Repositories\Options\PaginationOption;
 
 class ShowGameController extends Controller
 {
     public function __construct(
-        private GetPopularClipsForSpecificGame $getPopularClipsForSpecificGame,
+        private GetPopularClipsForGame $getPopularClipsForGame,
         private PaginateClips $paginateClips,
     ) {}
 
-    public function __invoke(string $externalGameId)
+    public function __invoke(string $id)
     {
-        $popularClips = $this->getPopularClipsForSpecificGame->handle(
-            Game::from([
-                'external_id' => $externalGameId,
-            ]),
-        );
+        $popularClips = $this->getPopularClipsForGame->handle($id);
 
         $clips = $this->paginateClips->handle(
             PaginationOption::from([
-                'external_game_id' => $externalGameId,
+                'game_id' => $id,
                 'sort' => 'clips.published_at',
             ]),
         );
