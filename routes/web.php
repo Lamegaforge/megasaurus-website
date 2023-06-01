@@ -13,12 +13,12 @@ Route::prefix('clips')
     ->as('clips.')
     ->group(function() {
         Route::get('/', PaginateClipController::class)->name('index');
-        Route::get('{external_id}', ShowClipController::class)->name('show');
+        Route::get('{id}', ShowClipController::class)->name('show');
     });
 
 Route::prefix('games')
     ->as('games.')
     ->group(function () {
         Route::get('/', PaginateGameController::class)->name('index');
-        Route::get('{external_id}', ShowGameController::class)->name('show');
+        Route::get('{id}', ShowGameController::class)->name('show');
     });
