@@ -3,17 +3,17 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\ValueObjects\Game;
 use App\ValueObjects\Clip;
 use Illuminate\Support\Collection;
+use Domain\Enums\ClipStateEnum;
 
-class GetRandomClipsForSpecificGame
+class GetRandomClipsForGame
 {
-    public function handle(Game $game): Collection
+    public function handle(string $id): Collection
     {
         $clips = DB::table('clips')
             ->select(
-                'clips.external_id',
+                'clips.id',
                 'clips.title',
                 'clips.url',
                 'clips.views',
@@ -23,12 +23,14 @@ class GetRandomClipsForSpecificGame
                 'games.external_id as game_external_id',
                 'authors.name as author_name',
             )
-            ->join('games', 'clips.external_game_id', '=', 'games.external_id')
+            ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('games.external_id', $game->externalId)
-            ->where('state', 'ok')
+            ->where('games.id', $id)
+            ->where('state', ClipStateEnum::Ok)
             ->limit(10)
             ->get();
+
+        #todo : add random
 
         return $clips->map(function ($clip) {
             return Clip::from((array) $clip);

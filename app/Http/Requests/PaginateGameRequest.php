@@ -5,9 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class PaginateClipRequest extends FormRequest
+class PaginateGameRequest extends FormRequest
 {
-    protected $redirectRoute = 'clips.index';
+    protected $redirectRoute = 'games.index';
 
     /**
      * Get the validation rules that apply to the request.
@@ -18,10 +18,9 @@ class PaginateClipRequest extends FormRequest
     {
         return [
             'search' => 'nullable|string|max:255',
-            'game_id' => 'nullable|string|max:255',
             'sort' => [
                 'nullable',
-                Rule::in(['clips.views', 'clips.published_at']),
+                Rule::in(['active_clips_count', 'games.created_at']),
             ],
         ];
     }

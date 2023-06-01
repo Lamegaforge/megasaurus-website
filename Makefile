@@ -7,6 +7,7 @@ ready:
 
 fresh:
 	$(PHP) artisan migrate:fresh
+	$(PHP) artisan db:seed
 
 phpstan:
 	$(PHP) vendor/bin/phpstan analyse

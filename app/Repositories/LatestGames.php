@@ -4,16 +4,21 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Game;
+use Domain\Enums\ClipStateEnum;
 
 class LatestGames
 {
     public function handle()
     {
         $latestGames = DB::table('games')
-            ->select('games.name', 'games.external_id')
+            ->select(
+                'games.id',
+                'games.external_id',
+                'games.name', 
+            )
             ->leftJoin('clips', function ($join) {
-                $join->on('games.external_id', '=', 'clips.external_game_id')
-                    ->where('clips.state', 'ok');
+                $join->on('games.id', '=', 'clips.game_id')
+                    ->where('clips.state', ClipStateEnum::Ok);
             })
             ->groupBy('games.id')
             ->orderBy('games.created_at', 'DESC')
