@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.splide__track {
+    @apply !pl-4;
+    @apply lg:!px-0;
+}
+
+.arrow {
+    display: none;
+
+    @apply lg:block;
+    @apply lg:absolute lg:top-1/2 lg:p-2;
+    @apply lg:border lg:border-black lg:bg-white;
+    @apply lg:rounded-full;
+    @apply lg:z-10;
+    @apply lg:-translate-y-1/2;
+}
+
+.arrow[disabled] {
+    @apply lg:bg-slate-200/90;
+    @apply lg:border-slate-300;
+    @apply lg:fill-slate-400;
+    @apply lg:cursor-not-allowed;
+}
+
+@media screen and (min-width: 1024px) {
+    .arrow--prev {
+        left: -30px;
+        transform: translateY(-50%) scale(-1, 1);
+    }
+    
+    .arrow--next {
+        right: -30px;
+    }
+}

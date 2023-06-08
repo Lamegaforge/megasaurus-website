@@ -58,8 +58,23 @@
             
         </section>
 
-        <section class="mb-6">
+        <section class="container mx-auto mb-6">
             <h2 class="text-2xl">Clips récents</h2>
+
+            <div>
+                <section class="splide js-latest-clips-slider" aria-label="Splide Basic HTML Example">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                        @foreach($latestAvailableClips as $clip)
+                            <li class="splide__slide !mr-4">
+                                <img src="https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/thumbnails/AliveDistinctGooseBCouch" alt="">
+                            </li>
+                        @endforeach
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            
         </section>
         <section class="mb-6">
             <h2 class="text-2xl">Nouveaux jeux</h2>
