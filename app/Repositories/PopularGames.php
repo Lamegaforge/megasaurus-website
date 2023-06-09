@@ -13,8 +13,6 @@ class PopularGames
         $popularGames = DB::table('games')
             ->select(
                 'games.id',
-                'games.uuid',
-                'games.external_id', 
                 'games.name', 
                 DB::raw('COUNT(clips.id) as active_clips_count'),
             )

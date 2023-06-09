@@ -14,7 +14,6 @@ class LatestGames
             ->select(
                 'games.id',
                 'games.uuid',
-                'games.external_id',
                 'games.name', 
             )
             ->leftJoin('clips', function ($join) {
