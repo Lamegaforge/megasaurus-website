@@ -9,7 +9,7 @@ use Domain\Enums\ClipStateEnum;
 
 class GetRandomClipsForGame
 {
-    public function handle(string $id): Collection
+    public function handle(string $uuid): Collection
     {
         $clips = DB::table('clips')
             ->select(
@@ -21,12 +21,13 @@ class GetRandomClipsForGame
                 'clips.duration',
                 'clips.published_at',
                 'games.name as game_name',
-                'games.external_id as game_external_id',
+                'games.uuid as game_uuid',
                 'authors.name as author_name',
+                'authors.uuid as author_uuid',
             )
             ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('games.id', $id)
+            ->where('games.uuid', $uuid)
             ->where('state', ClipStateEnum::Ok)
             ->inRandomOrder()
             ->limit(10)

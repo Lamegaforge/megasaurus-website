@@ -14,7 +14,6 @@ class FeaturedClip
             ->select(
                 'clips.id',
                 'clips.uuid',
-                'clips.external_id',
                 'clips.url',
                 'clips.title',
                 'clips.views',
@@ -23,7 +22,6 @@ class FeaturedClip
                 'games.name as game_name',
                 'games.id as game_id',
                 'games.uuid as game_uuid',
-                'games.external_id as game_external',
                 'authors.id as author_id',
                 'authors.uuid as author_uuid',
                 'authors.name as author_name',

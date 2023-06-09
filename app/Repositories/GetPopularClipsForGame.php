@@ -15,7 +15,6 @@ class GetPopularClipsForGame
             ->select(
                 'clips.id',
                 'clips.uuid',
-                'clips.external_id',
                 'clips.url',
                 'clips.title',
                 'clips.views',
