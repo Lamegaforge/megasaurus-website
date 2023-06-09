@@ -4,9 +4,9 @@ namespace App\Services;
 
 class TtlFactory
 {
-    public static function minutes(int $minutes): int
+    public static function minutes(int $seconds): int
     {
-        return $minutes * 60;
+        return $seconds * 60;
     }
 
     public static function hours(int $hours): int

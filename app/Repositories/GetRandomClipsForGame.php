@@ -27,10 +27,9 @@ class GetRandomClipsForGame
             ->join('authors', 'clips.author_id', '=', 'authors.id')
             ->where('games.id', $id)
             ->where('state', ClipStateEnum::Ok)
+            ->inRandomOrder()
             ->limit(10)
             ->get();
-
-        #todo : add random
 
         return $clips->map(function ($clip) {
             return Clip::from((array) $clip);

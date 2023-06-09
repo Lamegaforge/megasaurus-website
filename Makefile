@@ -2,7 +2,7 @@ PHP = /usr/local/opt/php@8.2/bin/php
 COMPOSER = /usr/local/opt/composer/bin/composer
 
 ready:
-	make test
+	make test --display-warnings
 	make phpstan
 
 fresh:
@@ -19,7 +19,7 @@ install:
 	$(COMPOSER) install
 
 test:
-	$(PHP) vendor/bin/phpunit $(arg)
+	$(PHP) vendor/bin/phpunit $(arg) --display-warnings
 
 octane-start:
 	$(PHP) artisan octane:start --watch

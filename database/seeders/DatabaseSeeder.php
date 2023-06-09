@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use \Domain\Models\Game;
-use \Domain\Models\Clip;
+use Domain\Models\Game;
+use Domain\Models\Clip;
 
 class DatabaseSeeder extends Seeder
 {

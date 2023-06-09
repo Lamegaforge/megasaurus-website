@@ -6,8 +6,6 @@ use Domain\Enums\ClipStateEnum;
 
 readonly final class PaginationOption
 {
-    public const defaultSorting = 'clips.published_at';
-
     public function __construct(
         public ?string $search,
         public ?string $gameId,
