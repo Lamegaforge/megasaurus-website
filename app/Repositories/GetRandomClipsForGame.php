@@ -14,6 +14,7 @@ class GetRandomClipsForGame
         $clips = DB::table('clips')
             ->select(
                 'clips.id',
+                'clips.uuid',
                 'clips.title',
                 'clips.url',
                 'clips.views',
