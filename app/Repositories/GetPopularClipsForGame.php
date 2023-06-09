@@ -14,6 +14,7 @@ class GetPopularClipsForGame
         $popularClips = DB::table('clips')
             ->select(
                 'clips.id',
+                'clips.uuid',
                 'clips.external_id',
                 'clips.url',
                 'clips.title',
@@ -21,8 +22,10 @@ class GetPopularClipsForGame
                 'clips.duration',
                 'clips.published_at',
                 'games.id as game_id',
+                'games.uuid as game_uuid',
                 'games.name as game_name',
                 'authors.id as author_id',
+                'authors.uuid as author_uuid',
                 'authors.name as author_name',
             )
             ->join('games', 'clips.game_id', '=', 'games.id')

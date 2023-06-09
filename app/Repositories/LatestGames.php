@@ -13,6 +13,7 @@ class LatestGames
         $latestGames = DB::table('games')
             ->select(
                 'games.id',
+                'games.uuid',
                 'games.external_id',
                 'games.name', 
             )

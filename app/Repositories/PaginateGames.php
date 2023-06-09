@@ -14,6 +14,7 @@ class PaginateGames
         $query = DB::table('games')
             ->select(
                 'games.id',
+                'games.uuid',
                 'games.name',
                 'games.external_id',
                 DB::raw('COUNT(clips.id) as active_clips_count'),
@@ -25,8 +26,8 @@ class PaginateGames
             ->groupBy('games.external_id')
             ->havingRaw('active_clips_count > 0');
 
-        $query->when($options->gameId, function ($query, $gameId) {
-            $query->where('games.id', $gameId);
+        $query->when($options->gameUuid, function ($query, $gameUuid) {
+            $query->where('games.uuid', $gameUuid);
         });
 
         $query->when($options->sort, function ($query, $sort) {

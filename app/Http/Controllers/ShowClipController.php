@@ -12,11 +12,11 @@ class ShowClipController extends Controller
         private GetRandomClipsForGame $getRandomClipsForGame,
     ) {}
 
-    public function __invoke(string $id)
+    public function __invoke(string $uuid)
     {
-        $clip = $this->findDisplayableClip->handle($id);
+        $clip = $this->findDisplayableClip->handle($uuid);
 
-        $randomGameClips = $this->getRandomClipsForGame->handle($clip->game->id);
+        $randomGameClips = $this->getRandomClipsForGame->handle($clip->game->uuid);
 
         dd($randomGameClips);
     }

@@ -13,13 +13,13 @@ class ShowGameController extends Controller
         private PaginateClips $paginateClips,
     ) {}
 
-    public function __invoke(string $id)
+    public function __invoke(string $uuid)
     {
-        $popularClips = $this->getPopularClipsForGame->handle($id);
+        $popularClips = $this->getPopularClipsForGame->handle($uuid);
 
         $clips = $this->paginateClips->handle(
             PaginationOption::from([
-                'game_id' => $id,
+                'game_uuid' => $uuid,
                 'sort' => 'clips.published_at',
             ]),
         );
