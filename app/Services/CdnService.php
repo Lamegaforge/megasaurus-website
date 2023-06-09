@@ -13,11 +13,11 @@ class CdnService
 
     public function thumbnail(Clip $clip): string
     {
-        return $this->baseCdn . '/thumbnails/' . $clip->externalId;
+        return $this->baseCdn . '/thumbnails/' . $clip->uuid;
     }
 
     public function card(Game $game): string
     {
-        return $this->baseCdn . '/cards/' . $game->externalId;
+        return $this->baseCdn . '/cards/' . $game->uuid;
     }
 }
