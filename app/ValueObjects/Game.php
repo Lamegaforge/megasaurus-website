@@ -5,7 +5,7 @@ namespace App\ValueObjects;
 readonly final class Game
 {
     public function __construct(
-        public string $uuid,
+        public ?string $uuid,
         public ?string $name,
         public ?int $activeClipsCount,
     ) {}
