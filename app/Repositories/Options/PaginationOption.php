@@ -12,8 +12,18 @@ readonly final class PaginationOption
         public ?string $clipUuid,
         public ClipStateEnum $clipStateEnum,
         public ?string $sort,
+        public bool $random,
     ) {}
 
+    /**
+     * @param array{
+     *    search?: string,
+     *    game_uuid?: string,
+     *    clip_uuid?: string,
+     *    sort?: string,
+     *    random?: boolean,
+     * } $attributes
+     */
     public static function from(array $attributes): self
     {
         return new self(
@@ -22,6 +32,7 @@ readonly final class PaginationOption
             clipUuid: data_get($attributes, 'clip_uuid'),
             clipStateEnum: ClipStateEnum::Ok,
             sort: data_get($attributes, 'sort'),
+            random: (bool) data_get($attributes, 'random', false),
         );
     }
 }
