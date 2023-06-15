@@ -9,13 +9,17 @@ use App\Repositories\Options\PaginationOption;
 class ShowGameController extends Controller
 {
     public function __construct(
-        private GetPopularClipsForGame $getPopularClipsForGame,
         private PaginateClips $paginateClips,
     ) {}
 
     public function __invoke(string $uuid)
     {
-        $popularClips = $this->getPopularClipsForGame->handle($uuid);
+        $popularClips = $this->paginateClips->handle(
+            PaginationOption::from([
+                'game_uuid' => $uuid,
+                'sort' => 'clips.views',
+            ]),
+        );
 
         $clips = $this->paginateClips->handle(
             PaginationOption::from([
@@ -24,6 +28,6 @@ class ShowGameController extends Controller
             ]),
         );
 
-        dd($popularClips, $clips);
+        dd($popularClips->items(), $clips);
     }
 }

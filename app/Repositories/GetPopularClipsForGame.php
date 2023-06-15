@@ -9,7 +9,7 @@ use Domain\Enums\ClipStateEnum;
 
 class GetPopularClipsForGame
 {
-    public function handle(string $id): Collection
+    public function handle(string $uuid): Collection
     {
         $popularClips = DB::table('clips')
             ->select(
@@ -29,7 +29,7 @@ class GetPopularClipsForGame
             )
             ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('clips.game_id', $id)
+            ->where('clips.game_uuid', $uuid)
             ->where('state', ClipStateEnum::Ok)
             ->orderBy('views', 'DESC')
             ->limit(10)
