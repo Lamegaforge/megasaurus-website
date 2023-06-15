@@ -23,11 +23,11 @@ readonly final class Clip
             views: data_get($attributes, 'views'),
             duration: data_get($attributes, 'duration'),
             author: Author::from([
-                'uuid' => $attributes['author_uuid'],
+                'uuid' => data_get($attributes, 'author_uuid'),
                 'name' => data_get($attributes, 'author_name'),
             ]),
             game: Game::from([
-                'uuid' => $attributes['game_uuid'],
+                'uuid' => data_get($attributes, 'game_uuid'),
                 'name' => data_get($attributes, 'game_name'),
             ]),
         );

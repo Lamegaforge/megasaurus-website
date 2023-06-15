@@ -5,7 +5,7 @@ namespace App\ValueObjects;
 readonly final class Author
 {
     public function __construct(
-        public string $uuid,
+        public ?string $uuid,
         public ?string $name,
     ) {}
 

@@ -15,7 +15,7 @@ class CdnServiceTest extends TestCase
     public function it_able_to_make_thumbnail(): void
     {
         $clip = Clip::from([
-            'id' => '123456',
+            'uuid' => '123456',
             'external_id' => '789456',
             'title' => 'clip title',
         ]);
@@ -24,7 +24,7 @@ class CdnServiceTest extends TestCase
 
         $thumbnail = $cdnService->thumbnail($clip);
 
-        $this->assertSame('cdn_path_base/thumbnails/789456', $thumbnail);
+        $this->assertSame('cdn_path_base/thumbnails/123456', $thumbnail);
     }
 
     /**
@@ -33,7 +33,7 @@ class CdnServiceTest extends TestCase
     public function it_able_to_make_card(): void
     {
         $game = Game::from([
-            'id' => '123456',
+            'uuid' => '123456',
             'external_id' => '789456',
             'name' => 'game name',
         ]);
@@ -42,6 +42,6 @@ class CdnServiceTest extends TestCase
 
         $card = $cdnService->card($game);
 
-        $this->assertEquals('cdn_path_base/cards/789456', $card);
+        $this->assertEquals('cdn_path_base/cards/123456', $card);
     }
 }

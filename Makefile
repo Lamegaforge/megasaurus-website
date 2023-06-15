@@ -2,8 +2,8 @@ PHP = /usr/local/opt/php@8.2/bin/php
 COMPOSER = /usr/local/opt/composer/bin/composer
 
 ready:
-	make test --display-warnings
-	make phpstan
+	$(PHP) vendor/bin/phpunit --display-warnings
+	$(PHP) vendor/bin/phpstan analyse
 
 fresh:
 	$(PHP) artisan migrate:fresh
