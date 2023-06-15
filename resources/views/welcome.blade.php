@@ -59,28 +59,32 @@
         </section>
 
         <section class="container mx-auto mb-6">
-            <h2 class="text-2xl">Clips récents</h2>
+            <x-slider
+                title="Clips récents"
+                sliderSelector="js-latest-clips-slider"
+                :games="$latestAvailableClips"
+            >
+            </x-slider>
+        </section>
 
-            <div>
-                <section class="splide js-latest-clips-slider" aria-label="Splide Basic HTML Example">
-                    <div class="splide__track">
-                        <ul class="splide__list">
-                        @foreach($latestAvailableClips as $clip)
-                            <li class="splide__slide !mr-4">
-                                <img src="https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/thumbnails/AliveDistinctGooseBCouch" alt="">
-                            </li>
-                        @endforeach
-                        </ul>
-                    </div>
-                </section>
-            </div>
-            
+        <section class="container mx-auto mb-6">
+            <x-slider
+                title="Nouveaux jeux"
+                sliderSelector="js-latest-games-slider"
+                :isGame="true"
+                :games="$latestGames"
+            >
+            </x-slider>
         </section>
-        <section class="mb-6">
-            <h2 class="text-2xl">Nouveaux jeux</h2>
-        </section>
-        <section class="mb-6">
-            <h2 class="text-2xl">Jeux populaires</h2>
+
+        <section class="container mx-auto mb-6">
+            <x-slider
+                title="Jeux populaires"
+                sliderSelector="js-popular-games-slider"
+                :isGame="true"
+                :games="$popularGames"
+            >
+            </x-slider>
         </section>
     </body>
 </html>
