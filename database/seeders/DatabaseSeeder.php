@@ -14,8 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $clips = Clip::factory()
+            ->count(30)
+            ->state(function () {
+                return [
+                    'external_id' => 'SavageMoldyKoalaKappaClaus',
+                ];
+            });
+
         Game::factory(20)
-            ->has(Clip::factory()->count(30))
+            ->has($clips)
             ->create();
     }
 }

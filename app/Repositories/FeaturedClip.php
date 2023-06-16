@@ -14,6 +14,7 @@ class FeaturedClip
             ->select(
                 'clips.id',
                 'clips.uuid',
+                'clips.external_id',
                 'clips.url',
                 'clips.title',
                 'clips.views',
@@ -34,8 +35,8 @@ class FeaturedClip
             ->limit(30)
             ->get();
 
-            return Clip::from(
-                (array) $featuredClips->random(),
-            );
+        return Clip::from(
+            (array) $featuredClips->random(),
+        );
     }
 }

@@ -2,16 +2,13 @@
 
 namespace App\Services;
 
-use App\ValueObjects\Game;
-use App\ValueObjects\Clip;
-
 class CdnService
 {
     public function __construct(
         private string $baseCdn,
     ) {}
 
-    public function thumbnail(Clip $clip): string
+    public function thumbnail(string $uuid): string
     {
         $parts = [
             '0195285d-c460-4c5f-9a46-7444a1e9611e',
@@ -28,10 +25,10 @@ class CdnService
 
         return 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/thumbnails/' . $parts[0];
         
-        //return $this->baseCdn . '/thumbnails/' . $clip->uuid;
+        //return $this->baseCdn . '/thumbnails/' . $uuid;
     }
 
-    public function card(Game $game): string
+    public function card(string $uuid): string
     {
         $parts = [
             '1029754927',
@@ -48,6 +45,6 @@ class CdnService
         shuffle($parts);
 
         return 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/cards/' . $parts[0];
-        //return $this->baseCdn . '/cards/' . $game->uuid;
+        //return $this->baseCdn . '/cards/' . $uuid;
     }
 }
