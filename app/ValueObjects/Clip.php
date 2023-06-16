@@ -2,6 +2,8 @@
 
 namespace App\ValueObjects;
 
+use App\Services\CdnService;
+
 readonly final class Clip
 {
     public function __construct(
@@ -32,6 +34,13 @@ readonly final class Clip
                 'uuid' => data_get($attributes, 'game_uuid'),
                 'name' => data_get($attributes, 'game_name'),
             ]),
+        );
+    }
+
+    public function thumbnail(): string
+    {
+        return app(CdnService::class)->thumbnail(
+            uuid: $this->uuid,
         );
     }
 }

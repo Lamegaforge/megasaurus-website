@@ -46,17 +46,17 @@
     </section>
 
     <section class="container mx-auto mb-6">
-        <x-slider title="Clips récents" sliderSelector="js-latest-clips-slider" :games="$latestAvailableClips">
+        <x-slider title="Clips récents" sliderSelector="js-latest-clips-slider" :items="$latestAvailableClips">
         </x-slider>
     </section>
 
     <section class="container mx-auto mb-6">
-        <x-slider title="Nouveaux jeux" sliderSelector="js-latest-games-slider" :isGame="true" :games="$latestGames">
+        <x-slider title="Nouveaux jeux" sliderSelector="js-latest-games-slider" :isGame="true" :items="$latestGames">
         </x-slider>
     </section>
 
     <section class="container mx-auto mb-6">
-        <x-slider title="Jeux populaires" sliderSelector="js-popular-games-slider" :isGame="true" :games="$popularGames">
+        <x-slider title="Jeux populaires" sliderSelector="js-popular-games-slider" :isGame="true" :items="$popularGames">
         </x-slider>
     </section>
 </body>

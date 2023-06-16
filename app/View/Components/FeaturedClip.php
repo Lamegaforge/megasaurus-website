@@ -4,7 +4,6 @@ namespace App\View\Components;
 
 use Closure;
 use App\ValueObjects\Clip;
-use App\Services\CdnService;
 use App\Services\IframeService;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
@@ -17,11 +16,6 @@ class FeaturedClip extends Component
     public function __construct(
         public Clip $featuredClip,
     ) {}
-
-    public function thumbnail(): string
-    {
-        return app(CdnService::class)->thumbnail($this->featuredClip);
-    }
 
     public function iframeSrc(): string
     {
