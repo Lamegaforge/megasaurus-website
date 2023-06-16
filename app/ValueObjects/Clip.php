@@ -6,6 +6,7 @@ readonly final class Clip
 {
     public function __construct(
         public string $uuid,
+        public ?string $externalId,
         public string $title,
         public ?string $url,
         public ?string $views,
@@ -18,6 +19,7 @@ readonly final class Clip
     {
         return new self(
             uuid: $attributes['uuid'],
+            externalId: data_get($attributes, 'external_id'),
             title: $attributes['title'],
             url: data_get($attributes, 'url'),
             views: data_get($attributes, 'views'),
