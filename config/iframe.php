@@ -6,5 +6,6 @@ return [
         'localhost',
         'megasaurus.test',
         'megasaurus.fr',
+        'website.megasaurus.fr',
     ],
 ];
