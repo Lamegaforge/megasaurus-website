@@ -26,6 +26,15 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .logo-text {
+        transition: text-shadow 0.2s ease-out;
+    }
+
+    .logo-text:hover,
+    .logo-text:focus {
+        text-shadow: 1px 1px 2px theme("colors.slate[200]");
+    }
+
     .arrow--prev {
         left: -30px;
         transform: translateY(-50%) scale(-1, 1);

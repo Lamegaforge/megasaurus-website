@@ -18,28 +18,8 @@
 </head>
 
 <body class="h-full antialiased">
-    <nav class="p-4 lg:flex">
-        <div class="flex justify-between lg:block lg:justify-start lg:mr-4">
-            <h1>
-                <a href="#" class="uppercase text-slate-950 text-3xl">megasaurus</a>
-            </h1>
-            <button type="button" class="js-mobile-btn w-10 h-10 lg:hidden">
-                <span class="js-mobile-burger flex flex-col w-full h-full justify-between">
-                    <span class="block h-0.5 bg-slate-950"></span>
-                    <span class="block h-0.5 bg-slate-950"></span>
-                    <span class="block h-0.5 bg-slate-950"></span>
-                </span>
-                <span class="js-mobile-cross text-xl hidden">
-                    &times;
-                </span>
-            </button>
-        </div>
-        <ul class="js-menu hidden flex flex-col lg:flex lg:flex-row lg:items-center">
-            <li class="lg:mr-3"><a href="#">Clips</a></li>
-            <li class="lg:mr-3"><a href="#">Jeux</a></li>
-            <li><a href="#">Aléatoire</a></li>
-        </ul>
-    </nav>
+    <x-nav />
+
     <section class="relative flex items-center h-[600px] mb-6">
         <x-featured-clip :featuredClip="$featuredClip">
         </x-featured-clip>
