@@ -35,8 +35,8 @@ class FeaturedClip
             ->limit(30)
             ->get();
 
-            return Clip::from(
-                (array) $featuredClips->random(),
-            );
+        return Clip::from(
+            (array) $featuredClips->random(),
+        );
     }
 }
