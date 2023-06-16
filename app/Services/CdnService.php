@@ -33,7 +33,21 @@ class CdnService
 
     public function card(Game $game): string
     {
-        return 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/cards/1244970157';
-        return $this->baseCdn . '/cards/' . $game->uuid;
+        $parts = [
+            '1029754927',
+            '10775',
+            '1244970157',
+            '1320893784',
+            '1362590789',
+            '16082',
+            '2050572298',
+            '271304',
+            '27284',
+        ];
+
+        shuffle($parts);
+
+        return 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/cards/' . $parts[0];
+        //return $this->baseCdn . '/cards/' . $game->uuid;
     }
 }
