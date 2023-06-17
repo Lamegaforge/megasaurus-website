@@ -42,7 +42,11 @@ class PaginateClips
             $query->where('name', 'like', '%' . $search . '%');
         });
 
-        $clips = $query->paginate(20);
+        $query->when($options->random, function ($query) {
+            $query->inRandomOrder();
+        });
+
+        $clips = $query->paginate($options->perPage);
 
         $clips = $this->transform($clips);
 
