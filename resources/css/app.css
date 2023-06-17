@@ -3,34 +3,34 @@
 @tailwind utilities;
 
 .bar {
-    position: absolute;
+    @apply absolute;
     width: inherit;
-    height: 4px;
+    @apply h-1;
     @apply bg-neutral-50;
-    border-radius: 4px;
+    @apply rounded-4;
     transition-property: transform, background-color;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
 }
 
 .bar--1 {
-    top: 0;
-    left: 0;
+    @apply top-0;
+    @apply left-0;
 }
 
 .bar--2 {
     top: 13px;
-    left: 0;
+    @apply left-0;
 }
 
 .bar--3 {
     top: 13px;
-    left: 0;
+    @apply left-0;
 }
 
 .bar--4 {
-    bottom: 0;
-    left: 0;
+    @apply bottom-0;
+    @apply left-0;
 }
 
 .burger.is-open .bar--1 {
@@ -48,17 +48,43 @@
 
 .burger.is-open .bar--4 {
     transform: translateX(-40px);
-    background-color: transparent;
+    @apply bg-transparent
 }
 
 .submenu {
-    display: grid;
+    @apply grid;
     grid-template-rows: 1fr;
     transition: grid-template-rows 0.4s ease-out;
 }
 
 .submenu:not(.is-open) {
     grid-template-rows: 0fr;
+}
+
+.menu-link:focus {
+    outline: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .submenu:not(.is-open) {
+        grid-template-rows: 1fr;
+    }
+
+    .menu-link::after {
+        content: "";
+        @apply block;
+        @apply mt-1;
+        @apply h-0.5;
+        @apply bg-orange-500;
+        @apply rounded-[4px];
+        @apply scale-x-0;
+        transition: transform 0.2s ease-in;
+    }
+
+    .menu-link:hover::after,
+    .menu-link:focus::after {
+        @apply scale-x-100;
+    }
 }
 
 .splide__track {

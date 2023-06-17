@@ -5,7 +5,11 @@ export default {
     "./resources/views/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderRadius: {
+        4: "0.25rem",
+      },
+    },
   },
   plugins: [],
 }
