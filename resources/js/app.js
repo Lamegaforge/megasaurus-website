@@ -1,3 +1,5 @@
-import './bootstrap';
-import './menu';
-import './slider'
+"use strict";
+
+import "./bootstrap";
+import "./menu";
+import "./slider";

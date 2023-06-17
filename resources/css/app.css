@@ -2,6 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+.bar {
+    position: absolute;
+    width: inherit;
+    height: 4px;
+    @apply bg-neutral-50;
+    border-radius: 4px;
+    transition-property: transform, background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.bar--1 {
+    top: 0;
+    left: 0;
+}
+
+.bar--2 {
+    top: 13px;
+    left: 0;
+}
+
+.bar--3 {
+    top: 13px;
+    left: 0;
+}
+
+.bar--4 {
+    bottom: 0;
+    left: 0;
+}
+
+.burger.is-open .bar--1 {
+    transform: translateX(40px);
+    @apply bg-transparent;
+}
+
+.burger.is-open .bar--2 {
+    transform: rotate(45deg);
+}
+
+.burger.is-open .bar--3 {
+    transform: rotate(-45deg);
+}
+
+.burger.is-open .bar--4 {
+    transform: translateX(-40px);
+    background-color: transparent;
+}
+
+.submenu {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.4s ease-out;
+}
+
+.submenu:not(.is-open) {
+    grid-template-rows: 0fr;
+}
+
 .splide__track {
     @apply !pl-4;
     @apply lg:!px-0;
