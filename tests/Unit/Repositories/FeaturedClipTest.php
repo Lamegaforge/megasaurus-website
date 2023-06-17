@@ -32,7 +32,7 @@ class FeaturedClipTest extends TestCase
     {
         Clip::factory()
             ->create([
-                'views' => 9,
+                'views' => 29,
             ]);
 
         $this->expectException(NotFoundHttpException::class);
