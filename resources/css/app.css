@@ -97,10 +97,32 @@
 
     @apply lg:block;
     @apply lg:absolute lg:top-1/2 lg:p-2;
-    @apply lg:border lg:border-black lg:bg-white;
+    @apply lg:border-2 lg:border-black lg:bg-white;
     @apply lg:rounded-full;
     @apply lg:z-10;
     @apply lg:-translate-y-1/2;
+}
+
+.arrow:not([disabled]) {
+    @apply lg:bg-white/80;
+    transition-property: border-color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in;
+}
+
+.arrow:not([disabled]):hover,
+.arrow:not([disabled]):focus {
+    @apply border-amber-600;
+    @apply bg-white;
+}
+
+.arrow:not([disabled]):hover svg,
+.arrow:not([disabled]):focus svg {
+    @apply fill-amber-600
+}
+
+.arrow:not([disabled]) svg {
+    transition: fill 0.1s ease-in;
 }
 
 .arrow[disabled] {
