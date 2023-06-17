@@ -8,6 +8,9 @@ use Domain\Enums\ClipStateEnum;
 
 class FeaturedClip
 {
+    /** 
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     public function handle()
     {
         $featuredClips = DB::table('clips')
@@ -34,6 +37,8 @@ class FeaturedClip
             ->latest('published_at')
             ->limit(30)
             ->get();
+
+        abort_if($featuredClips->isEmpty(), 404);
 
         return Clip::from(
             (array) $featuredClips->random(),
