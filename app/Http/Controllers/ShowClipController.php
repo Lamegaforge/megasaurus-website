@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\FindDisplayableClip;
+use App\Dtos\Hook;
 use App\Repositories\PaginateClips;
+use App\Repositories\FindDisplayableClip;
 use App\Repositories\Options\PaginationOption;
 
 class ShowClipController extends Controller
@@ -13,17 +14,23 @@ class ShowClipController extends Controller
         private PaginateClips $paginateClips,
     ) {}
 
-    public function __invoke(string $uuid)
+    public function __invoke(string $hook)
     {
-        $clip = $this->findDisplayableClip->handle($uuid);
+        $clip = $this->findDisplayableClip->handle(
+            new Hook($hook),
+        );
 
         $randomGameClips = $this->paginateClips->handle(
             PaginationOption::from([
-                'gameUuid' => $clip->game->uuid,
+                'game_uuid' => $clip->game->uuid,
+                'per_page' => 10,
                 'random' => true,
             ]),
         );
 
-        dd($randomGameClips->items());
+        dd(
+            $clip,
+            $randomGameClips->items(),
+        );
     }
 }
