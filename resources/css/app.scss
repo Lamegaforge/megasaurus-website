@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bar {
+    @apply absolute;
+    width: inherit;
+    @apply h-1;
+    @apply bg-neutral-50;
+    @apply rounded-4;
+    transition-property: transform, background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+
+    &--1 {
+        @apply top-0;
+        @apply left-0;
+    }
+    
+    &--2 {
+        top: 13px;
+        @apply left-0;
+    }
+    
+    &--3 {
+        top: 13px;
+        @apply left-0;
+    }
+    
+    &--4 {
+        @apply bottom-0;
+        @apply left-0;
+    }
+}
+
+.burger.is-open {
+    .bar {
+        &--1 {
+            transform: translateX(40px);
+            @apply bg-transparent;
+        }
+
+        &--2 {
+            transform: rotate(45deg);
+        }
+        
+        &--3 {
+            transform: rotate(-45deg);
+        }
+        
+        &--4 {
+            transform: translateX(-40px);
+            @apply bg-transparent
+        }
+    }
+}
+
+.submenu {
+    @apply grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.4s ease-out;
+    
+    &:not(.is-open) {
+        grid-template-rows: 0fr;
+
+        @screen lg {
+            grid-template-rows: 1fr;
+        }
+    }
+}
+
+.menu-link:focus {
+    outline: none;
+}
+
+@screen lg {
+    .menu-link {
+        &::after {
+            content: "";
+            @apply block;
+            @apply mt-1;
+            @apply h-0.5;
+            @apply bg-orange-500;
+            @apply rounded-4;
+            @apply scale-x-0;
+            transition: transform 0.2s ease-in;
+        }
+
+        &:hover::after,
+        &:focus::after {
+            @apply scale-x-100;
+        }
+    }
+}
+
+.splide__track {
+    padding-left: 16px !important;
+
+    @screen lg {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+}
+
+.arrow {
+    @apply hidden;
+    @apply lg:block;
+    @apply lg:absolute lg:top-1/2 lg:p-2;
+    @apply lg:border-2 lg:border-black lg:bg-white;
+    @apply lg:rounded-full;
+    @apply lg:z-10;
+    @apply lg:-translate-y-1/2;
+
+    &:not([disabled]) {
+        @apply lg:bg-white/80;
+        transition-property: border-color, background-color;
+        transition-duration: 0.1s;
+        transition-timing-function: ease-in;
+
+        &:hover,
+        &:focus {
+            @apply border-amber-600;
+            @apply bg-white;
+        }
+
+        &:hover svg,
+        &:focus svg {
+            @apply fill-amber-600
+        }
+
+        & svg {
+            transition: fill 0.1s ease-in;
+        }
+    }
+
+    &[disabled] {
+        @apply lg:bg-slate-200/90;
+        @apply lg:border-slate-300;
+        @apply lg:fill-slate-400;
+        @apply lg:cursor-not-allowed;
+    }
+}
+
+@screen lg {
+    .logo-text {
+        transition: text-shadow 0.2s ease-out;
+
+        &:hover,
+        &:focus {
+            text-shadow: 1px 1px 2px theme("colors.slate[200]");
+        }
+    }
+
+    .arrow {
+        &--prev {
+            left: -30px;
+            transform: translateY(-50%) scale(-1, 1);
+        }
+
+        &--next {
+            right: -30px;
+        }
+    }
+}
