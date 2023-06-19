@@ -39,6 +39,8 @@
         <x-game-slider title="Jeux populaires" sliderSelector="js-popular-games-slider" :items="$popularGames">
         </x-game-slider>
     </section>
+
+    <x-footer></x-footer>
 </body>
 
 </html>
