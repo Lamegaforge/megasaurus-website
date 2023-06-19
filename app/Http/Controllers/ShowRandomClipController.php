@@ -11,6 +11,7 @@ class ShowRandomClipController extends Controller
     {
         $clip = DB::table('clips')
             ->where('state', ClipStateEnum::Ok)
+            ->inRandomOrder()
             ->first();
 
         return to_route('clips.show', $clip->uuid);
