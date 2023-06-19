@@ -23,9 +23,9 @@ class CdnService
 
         shuffle($parts);
 
-        return 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/thumbnails/' . $parts[0];
+        //return 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/thumbnails/' . $parts[0];
         
-        //return $this->baseCdn . '/thumbnails/' . $uuid;
+        return $this->baseCdn . '/thumbnails/' . $uuid;
     }
 
     public function card(string $uuid): string
@@ -44,7 +44,7 @@ class CdnService
 
         shuffle($parts);
 
-        return 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/cards/' . $parts[0];
-        //return $this->baseCdn . '/cards/' . $uuid;
+        //return 'https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/cards/' . $parts[0];
+        return $this->baseCdn . '/cards/' . $uuid;
     }
 }
