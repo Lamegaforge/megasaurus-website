@@ -10,7 +10,7 @@
     @vite('resources/css/app.scss')
     @vite('resources/js/app.js')
 
-    <title>Laravel</title>
+    <title>Megasaurus</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -26,18 +26,18 @@
     </section>
 
     <section class="container mx-auto mb-6">
-        <x-slider title="Clips récents" sliderSelector="js-latest-clips-slider" :items="$latestAvailableClips">
-        </x-slider>
+        <x-clip-slider title="Clips récents" sliderSelector="js-latest-clips-slider" :items="$latestAvailableClips">
+        </x-clip-slider>
     </section>
 
     <section class="container mx-auto mb-6">
-        <x-slider title="Nouveaux jeux" sliderSelector="js-latest-games-slider" :isGame="true" :items="$latestGames">
-        </x-slider>
+        <x-game-slider title="Nouveaux jeux" sliderSelector="js-latest-games-slider" :items="$latestGames">
+        </x-game-slider>
     </section>
 
     <section class="container mx-auto mb-6">
-        <x-slider title="Jeux populaires" sliderSelector="js-popular-games-slider" :isGame="true" :items="$popularGames">
-        </x-slider>
+        <x-game-slider title="Jeux populaires" sliderSelector="js-popular-games-slider" :items="$popularGames">
+        </x-game-slider>
     </section>
 </body>
 

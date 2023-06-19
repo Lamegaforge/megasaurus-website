@@ -4,7 +4,9 @@
         <ul class="splide__list">
             @foreach($items as $item)
             <li class="splide__slide !mr-4">
-                <img src="{{ isset($isGame) ? $item->card() : $item->thumbnail() }}" alt="">
+                <a href="{{ route('games.show', $item->uuid) }}">
+                    <img src="{{ $item->card() }}" alt="">
+                </a>
             </li>
             @endforeach
         </ul>
