@@ -16,7 +16,7 @@ class LatestGames
                 'games.uuid',
                 'games.name', 
             )
-            ->leftJoin('clips', function ($join) {
+            ->join('clips', function ($join) {
                 $join->on('games.id', '=', 'clips.game_id')
                     ->where('clips.state', ClipStateEnum::Ok);
             })
