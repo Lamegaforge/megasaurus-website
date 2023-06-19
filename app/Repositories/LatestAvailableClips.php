@@ -26,7 +26,7 @@ class LatestAvailableClips
                 'authors.uuid as author_uuid',
                 'authors.name as author_name',
             )
-            ->join('games', 'clips.id', '=', 'games.id')
+            ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
             ->where('state', ClipStateEnum::Ok)
             ->latest('published_at')
