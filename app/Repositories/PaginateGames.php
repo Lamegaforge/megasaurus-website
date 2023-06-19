@@ -37,7 +37,11 @@ class PaginateGames
             $query->where('name', 'like', '%' . $search . '%');
         });
 
-        $games = $query->paginate(20);
+        $query->when($options->random, function ($query) {
+            $query->inRandomOrder();
+        });
+
+        $games = $query->paginate($options->perPage);
 
         $games = $this->transform($games);
 

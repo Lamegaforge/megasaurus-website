@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Dtos\Hook;
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
 use Domain\Enums\ClipStateEnum;
@@ -11,12 +12,13 @@ class FindDisplayableClip
     /** 
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function handle(string $uuid): Clip
+    public function handle(hook $hook): Clip
     {
         $clip = DB::table('clips')
             ->select(
                 'clips.id',
                 'clips.uuid',
+                'clips.external_id',
                 'clips.url',
                 'clips.title',
                 'clips.views',
@@ -31,8 +33,9 @@ class FindDisplayableClip
             )
             ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
-            ->where('clips.uuid', $uuid)
             ->where('state', ClipStateEnum::Ok)
+            ->where('clips.uuid', $hook)
+            ->orWhere('clips.external_id', $hook)
             ->first();
 
         abort_if(is_null($clip), 404);

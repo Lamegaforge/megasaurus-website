@@ -2,32 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\GetPopularClipsForGame;
+use App\Dtos\Hook;
 use App\Repositories\PaginateClips;
+use App\Repositories\FindDisplayableGame;
 use App\Repositories\Options\PaginationOption;
 
 class ShowGameController extends Controller
 {
     public function __construct(
+        private FindDisplayableGame $findDisplayableGame,
         private PaginateClips $paginateClips,
     ) {}
 
     public function __invoke(string $uuid)
     {
-        $popularClips = $this->paginateClips->handle(
+        $game = $this->findDisplayableGame->handle(
+            new Hook($uuid),
+        );
+
+        $popularGameClips = $this->paginateClips->handle(
             PaginationOption::from([
-                'game_uuid' => $uuid,
+                'game_uuid' => $game->uuid,
                 'sort' => 'clips.views',
             ]),
         );
 
-        $clips = $this->paginateClips->handle(
+        $gameClips = $this->paginateClips->handle(
             PaginationOption::from([
-                'game_uuid' => $uuid,
+                'game_uuid' => $game->uuid,
                 'sort' => 'clips.published_at',
             ]),
         );
 
-        dd($popularClips->items(), $clips);
+        dd(
+            $game,
+            $popularGameClips,
+            $gameClips,
+        );
     }
 }

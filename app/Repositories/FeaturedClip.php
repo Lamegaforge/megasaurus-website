@@ -8,12 +8,18 @@ use Domain\Enums\ClipStateEnum;
 
 class FeaturedClip
 {
+    public const MinimumViewsToBeFeatured = 30;
+
+    /** 
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     public function handle()
     {
         $featuredClips = DB::table('clips')
             ->select(
                 'clips.id',
                 'clips.uuid',
+                'clips.external_id',
                 'clips.url',
                 'clips.title',
                 'clips.views',
@@ -29,13 +35,15 @@ class FeaturedClip
             ->join('games', 'clips.game_id', '=', 'games.id')
             ->join('authors', 'clips.author_id', '=', 'authors.id')
             ->where('state', ClipStateEnum::Ok)
-            ->where('views', '>=', 10)
+            ->where('views', '>=', self::MinimumViewsToBeFeatured)
             ->latest('published_at')
             ->limit(30)
             ->get();
 
-            return Clip::from(
-                (array) $featuredClips->random(),
-            );
+        abort_if($featuredClips->isEmpty(), 404);
+
+        return Clip::from(
+            (array) $featuredClips->random(),
+        );
     }
 }
