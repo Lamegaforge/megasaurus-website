@@ -28,7 +28,7 @@ class FeaturedClipTest extends TestCase
     /**
      * @test
      */
-    public function it_throws_an_exception_below_a_view_limit(): void
+    public function it_throws_an_exception_if_no_clip_above_a_view_limit(): void
     {
         Clip::factory()
             ->create([
