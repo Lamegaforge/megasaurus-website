@@ -1,6 +1,6 @@
 <footer class="p-4 bg-slate-800">
     <div class="container mx-auto flex flex-col items-center lg:flex-row">
-      <p class="mt-2 text-neutral-50 lg:mt-0">&copy; 2023 LaMegaforge. All rights reserved. Made with 💕.</p>
+      <p class="mt-2 text-neutral-50 lg:mt-0">&copy; {{ date('Y') }} LaMegaforge. All rights reserved. Made with 💕.</p>
       <ul class="flex space-x-4 order-first lg:order-1 lg:ml-auto">
           <li>
               <a class="footer-link text-white" target="_blank" rel="noopener noreferrer" href="https://www.twitch.tv/lamegaforgelive/">
