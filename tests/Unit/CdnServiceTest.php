@@ -22,7 +22,7 @@ class CdnServiceTest extends TestCase
 
         $cdnService = new CdnService('cdn_path_base');
 
-        $thumbnail = $cdnService->thumbnail($clip);
+        $thumbnail = $cdnService->thumbnail($clip->uuid);
 
         $this->assertSame('cdn_path_base/thumbnails/123456', $thumbnail);
     }
@@ -40,7 +40,7 @@ class CdnServiceTest extends TestCase
 
         $cdnService = new CdnService('cdn_path_base');
 
-        $card = $cdnService->card($game);
+        $card = $cdnService->card($game->uuid);
 
         $this->assertEquals('cdn_path_base/cards/123456', $card);
     }

@@ -14,7 +14,7 @@ class ToggleAutoplayController extends Controller
 
         $autoplay = (bool) $request->cookie($identifier->value);
 
-        $cookie = Cookie::forever($identifier->value, ! $autoplay);
+        $cookie = Cookie::forever($identifier->value, (string) ! $autoplay);
 
         return redirect()
             ->back()

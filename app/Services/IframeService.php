@@ -16,11 +16,11 @@ class IframeService
     {
         return $this->baseUrl
             . 'embed?clip=' . $clip->externalId
-            . $this->addParentsAttribute()
+            . $this->transformParentsList()
             . $this->addAutoplayAttribute();
     }
 
-    private function addParentsAttribute(): string
+    private function transformParentsList(): string
     {
         $parents = '';
 

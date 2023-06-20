@@ -31,7 +31,7 @@ class FindDisplayableGame
             ->havingRaw('active_clips_count > 0')
             ->first();
 
-        abort_unless($game, 404);
+        abort_if(is_null($game), 404);
 
         return Game::from((array) $game);
     }
