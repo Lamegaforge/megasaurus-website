@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\ValueObjects\Clip;
+use App\Storages\AutoplayStorage;
 
 class IframeService
 {
@@ -15,7 +16,8 @@ class IframeService
     {
         return $this->baseUrl
             . 'embed?clip=' . $clip->externalId
-            . $this->transformParentsList();
+            . $this->transformParentsList()
+            . $this->addAutoplayAttribute();
     }
 
     private function transformParentsList(): string
@@ -27,5 +29,14 @@ class IframeService
         }
 
         return $parents;
+    }
+
+    private function addAutoplayAttribute(): string
+    {
+        $autoplay = app(AutoplayStorage::class)->get();
+
+        $value = $autoplay ? 'true' : 'false';
+
+        return '&autoplay=' . $value;
     }
 }
