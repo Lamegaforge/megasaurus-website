@@ -171,9 +171,39 @@ body {
             transition: color 0.2s ease-in;
         }
 
+        &:hover .tooltip,
+        &:focus .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-60px);
+        }
+
         &:hover svg,
         &:focus svg {
             @apply text-orange-500;
         }
+    }
+}
+
+.tooltip {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%); 
+    transition: opacity transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-top: 6px solid theme('colors.orange[500]');
+        border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
+        transform: translateX(-50%);
     }
 }
