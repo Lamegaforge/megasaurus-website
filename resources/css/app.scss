@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #0e1015;
+}
+
 .bar {
     @apply absolute;
     width: inherit;

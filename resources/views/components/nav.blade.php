@@ -1,4 +1,4 @@
-<nav class="overflow-hidden bg-slate-800">
+<nav class="js-nav overflow-hidden fixed top-0 right-0 left-0 h-[84px] z-30 bg-slate-800 lg:h-[68px]">
     <div class="container mx-auto lg:flex">
         <div class="flex justify-between items-center p-4 lg:block lg:justify-start lg:mr-4">
             <h1>
