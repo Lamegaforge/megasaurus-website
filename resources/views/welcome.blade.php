@@ -26,17 +26,17 @@
             </x-featured-clip>
         </section>
 
-        <section class="container mx-auto mt-8">
+        <section class="container mx-auto mt-8 lg:px-10">
             <x-clip-slider title="Clips récents" sliderSelector="js-latest-clips-slider" :items="$latestAvailableClips">
             </x-clip-slider>
         </section>
 
-        <section class="container mx-auto mt-8">
+        <section class="container mx-auto mt-8 lg:px-10">
             <x-game-slider title="Nouveaux jeux" sliderSelector="js-latest-games-slider" :items="$latestGames">
             </x-game-slider>
         </section>
 
-        <section class="container mx-auto mt-8">
+        <section class="container mx-auto mt-8 lg:px-10">
             <x-game-slider title="Jeux populaires" sliderSelector="js-popular-games-slider" :items="$popularGames">
             </x-game-slider>
         </section>
