@@ -7,11 +7,7 @@ body {
 }
 
 .bar {
-    @apply absolute;
     width: inherit;
-    @apply h-1;
-    @apply bg-neutral-50;
-    @apply rounded-4;
     transition-property: transform, background-color;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -22,12 +18,12 @@ body {
     }
     
     &--2 {
-        top: 13px;
+        @apply top-3.25;
         @apply left-0;
     }
     
     &--3 {
-        top: 13px;
+        @apply top-3.25;
         @apply left-0;
     }
     
@@ -74,7 +70,7 @@ body {
 }
 
 .menu-link:focus {
-    outline: none;
+    @apply outline-none;
 }
 
 @screen lg {
@@ -82,10 +78,9 @@ body {
         &::after {
             content: "";
             @apply block;
-            @apply mt-1;
             @apply h-0.5;
-            @apply bg-orange-500;
-            @apply rounded-4;
+            @apply mt-1;
+            @apply bg-orange-500 rounded-4;
             @apply scale-x-0;
             transition: transform 0.2s ease-in;
         }
@@ -181,7 +176,7 @@ body {
 
         &:hover .tooltip,
         &:focus .tooltip {
-            opacity: 1;
+            @apply opacity-100;
             transform: translateX(-50%) translateY(-60px);
         }
 
@@ -194,24 +189,19 @@ body {
 
 .tooltip {
     position: absolute !important;
-    top: 50%;
-    left: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%); 
+    @apply top-1/2 left-1/2;
+    @apply opacity-0;
+    @apply -translate-x-1/2 -translate-y-1/2;
     transition: opacity transform;
     transition-duration: 0.3s;
     transition-timing-function: ease-in;
 
     &::after {
         content: '';
-        position: absolute;
+        @apply absolute left-1/2;
         bottom: -6px;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-top: 6px solid theme('colors.orange[500]');
-        border-right: 6px solid transparent;
-        border-left: 6px solid transparent;
-        transform: translateX(-50%);
+        @apply w-0 h-0;
+        @apply border-t-6 border-t-orange-500 border-r-6 border-r-transparent border-l-6 border-l-transparent;
+        @apply -translate-x-1/2;
     }
 }

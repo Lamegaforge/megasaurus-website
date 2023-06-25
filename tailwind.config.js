@@ -6,6 +6,12 @@ export default {
   ],
   theme: {
     extend: {
+      spacing: {
+        "3.25": "0.813rem",
+      },
+      borderWidth: {
+        "6": "6px",
+      },
       borderRadius: {
         4: "0.25rem",
       },
@@ -13,4 +19,3 @@ export default {
   },
   plugins: [],
 }
-
