@@ -2,7 +2,7 @@
     <div class="container mx-auto lg:flex">
         <div class="flex justify-between items-center p-4 lg:block lg:justify-start lg:mr-4">
             <h1>
-                <a href="#" class="logo-text uppercase text-neutral-50 text-3xl">megasaurus</a>
+                <a href="{{ route('home') }}" class="logo-text uppercase text-neutral-50 text-3xl">megasaurus</a>
             </h1>
             <button type="button" class="js-mobile-btn relative burger w-[30px] h-[30px] mr-3 appearance-none lg:hidden">
                 @for ($i = 1; $i <= 4; $i++)
