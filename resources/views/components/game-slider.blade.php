@@ -3,7 +3,7 @@
     <div class="splide__track">
         <ul class="splide__list">
             @foreach($items as $item)
-            <li class="splide__slide !mr-4">
+            <li class="splide__slide">
                 <a href="{{ route('games.show', $item->uuid) }}">
                     <img src="{{ $item->card() }}" alt="">
                 </a>

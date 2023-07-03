@@ -92,15 +92,6 @@ body {
     }
 }
 
-.splide__track {
-    padding-left: 16px !important;
-
-    @screen lg {
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-    }
-}
-
 .arrow {
     @apply hidden lg:block;
     @apply lg:absolute lg:top-1/2 lg:p-2 lg:-translate-y-1/2;
