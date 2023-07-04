@@ -16,10 +16,6 @@ class IframeServiceTest extends TestCase
      */
     public function it_able_to_generate_iframe_src(): void
     {
-        $this->mockAutoplayStorage(function (MockInterface $mock) {
-            $mock->shouldReceive('get')->andReturn(true);
-        });
-
         $iframeService = $this->instantiateIframeService();
 
         $clip = Clip::from([
@@ -36,22 +32,24 @@ class IframeServiceTest extends TestCase
         );
     }
 
-    private function mockAutoplayStorage(\closure $closure)
-    {
-        $this->instance(
-            AutoplayStorage::class,
-            Mockery::mock(AutoplayStorage::class, $closure)
-        );
-    }
-
     private function instantiateIframeService(): IframeService
     {
+        $autoplayStorage = $this->mockAutoplayStorage(function (MockInterface $mock) {
+            $mock->shouldReceive('get')->andReturn(true);
+        });
+
         return new IframeService(
             'https://base-url.fr/',
             [
                 'parent_1',
                 'parent_2',
             ],
+            $autoplayStorage,
         );
+    }
+
+    private function mockAutoplayStorage(\closure $closure): AutoplayStorage
+    {
+        return Mockery::mock(AutoplayStorage::class, $closure);
     }
 }

@@ -10,7 +10,7 @@ use App\Http\Controllers\PaginateGameController;
 use App\Http\Controllers\ShowRandomClipController;
 use App\Http\Controllers\ToggleAutoplayController;
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('check-autoplay', function () {
     dd(
