@@ -8,7 +8,7 @@ use Domain\Enums\ClipStateEnum;
 
 class FeaturedClip
 {
-    public const MinimumViewsToBeFeatured = 30;
+    public const MinimumViewsToBeFeatured = 40;
 
     /** 
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
