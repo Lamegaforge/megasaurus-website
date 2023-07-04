@@ -22,7 +22,7 @@ class LatestGames
             })
             ->groupBy('games.id')
             ->orderBy('games.created_at', 'DESC')
-            ->limit(10)
+            ->limit(20)
             ->get();
 
         return $latestGames->map(function ($game) {

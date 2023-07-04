@@ -23,7 +23,7 @@ class PopularGames
             })
             ->groupBy('games.id')
             ->orderBy('active_clips_count', 'DESC')
-            ->limit(10)
+            ->limit(20)
             ->get();
 
         return $popularGames->map(function ($game) {
