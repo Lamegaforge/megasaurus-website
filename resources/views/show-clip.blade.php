@@ -22,12 +22,9 @@
     <section class="relative flex items-center h-[600px] mb-6">
         <x-featured-clip
             :featuredClip="$clip"
+            :infos="true"
         ></x-featured-clip>
     </section>
-
-    <pre>
-        {{ print_r($clip) }}
-    </pre>
 
     <x-footer></x-footer>
 </body>

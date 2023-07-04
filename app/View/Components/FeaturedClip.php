@@ -15,6 +15,7 @@ class FeaturedClip extends Component
      */
     public function __construct(
         public Clip $featuredClip,
+        public string $infos = "",
     ) {}
 
     public function iframeSrc(): string

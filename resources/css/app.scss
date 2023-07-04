@@ -196,3 +196,11 @@ body {
         @apply -translate-x-1/2;
     }
 }
+
+.wrapper-has-infos {
+    @screen lg {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 40px;
+    }
+}
