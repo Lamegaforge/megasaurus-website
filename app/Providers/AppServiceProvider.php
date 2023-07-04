@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Services\CdnService;
 use App\Services\IframeService;
-use Illuminate\Support\Facades\Blade;
+use App\Storages\AutoplayStorage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
             return new IframeService(
                 config('iframe.base_url'),
                 config('iframe.parents'),
+                $app[AutoplayStorage::class],
             );
         });
     }

@@ -10,6 +10,7 @@ class IframeService
     public function __construct(
         private string $baseUrl,
         private array $parents,
+        private AutoplayStorage $autoplayStorage,
     ) {}
 
     public function getSrc(Clip $clip): string
@@ -33,7 +34,7 @@ class IframeService
 
     private function addAutoplayAttribute(): string
     {
-        $autoplay = app(AutoplayStorage::class)->get();
+        $autoplay = $this->autoplayStorage->get();
 
         $value = $autoplay ? 'true' : 'false';
 
