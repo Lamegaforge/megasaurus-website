@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #0e1015;
+}
+
 .bar {
-    @apply absolute;
     width: inherit;
-    @apply h-1;
-    @apply bg-neutral-50;
-    @apply rounded-4;
     transition-property: transform, background-color;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
@@ -18,12 +18,12 @@
     }
     
     &--2 {
-        top: 13px;
+        @apply top-3.25;
         @apply left-0;
     }
     
     &--3 {
-        top: 13px;
+        @apply top-3.25;
         @apply left-0;
     }
     
@@ -70,7 +70,7 @@
 }
 
 .menu-link:focus {
-    outline: none;
+    @apply outline-none;
 }
 
 @screen lg {
@@ -78,10 +78,9 @@
         &::after {
             content: "";
             @apply block;
-            @apply mt-1;
             @apply h-0.5;
-            @apply bg-orange-500;
-            @apply rounded-4;
+            @apply mt-1;
+            @apply bg-orange-500 rounded-4;
             @apply scale-x-0;
             transition: transform 0.2s ease-in;
         }
@@ -93,49 +92,48 @@
     }
 }
 
-.splide__track {
-    padding-left: 16px !important;
-
-    @screen lg {
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-    }
-}
-
 .arrow {
-    @apply hidden;
-    @apply lg:block;
-    @apply lg:absolute lg:top-1/2 lg:p-2;
-    @apply lg:border-2 lg:border-black lg:bg-white;
-    @apply lg:rounded-full;
+    @apply hidden lg:block;
+    @apply lg:absolute lg:top-1/2 lg:p-2 lg:-translate-y-1/2;
+    @apply lg:border-2 lg:border-black lg:bg-white lg:rounded-full;
     @apply lg:z-10;
-    @apply lg:-translate-y-1/2;
+
+    svg {
+        @apply w-5 h-5;
+    }
 
     &:not([disabled]) {
         @apply lg:bg-white/80;
-        transition-property: border-color, background-color;
-        transition-duration: 0.1s;
-        transition-timing-function: ease-in;
+        transition-property: transform, border-color, background-color;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-out;
 
         &:hover,
         &:focus {
-            @apply border-amber-600;
-            @apply bg-white;
+            transform: translateY(-50%) scale(1.4);
+            @apply border-amber-600 bg-white;
         }
 
         &:hover svg,
         &:focus svg {
-            @apply fill-amber-600
+            @apply fill-amber-600;
+
         }
 
         & svg {
-            transition: fill 0.1s ease-in;
+            transition-property: fill;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in;
         }
+    }
+ 
+    &--prev:not([disabled]):hover,
+    &--prev:not([disabled]):focus {
+        transform: translateY(-50%) rotate(-180deg) scale(1.4);
     }
 
     &[disabled] {
-        @apply lg:bg-slate-200/90;
-        @apply lg:border-slate-300;
+        @apply lg:bg-slate-200/90 lg:border-slate-300;
         @apply lg:fill-slate-400;
         @apply lg:cursor-not-allowed;
     }
@@ -153,12 +151,12 @@
 
     .arrow {
         &--prev {
-            left: -30px;
-            transform: translateY(-50%) scale(-1, 1);
+            @apply -left-5;
+            transform: translateY(-50%) rotate(-180deg);
         }
 
         &--next {
-            right: -30px;
+            @apply -right-5;
         }
     }
 
@@ -167,9 +165,34 @@
             transition: color 0.2s ease-in;
         }
 
+        &:hover .tooltip,
+        &:focus .tooltip {
+            @apply opacity-100;
+            transform: translateX(-50%) translateY(-60px);
+        }
+
         &:hover svg,
         &:focus svg {
             @apply text-orange-500;
         }
+    }
+}
+
+.tooltip {
+    position: absolute !important;
+    @apply top-1/2 left-1/2;
+    @apply opacity-0;
+    @apply -translate-x-1/2 -translate-y-1/2;
+    transition: opacity transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+
+    &::after {
+        content: '';
+        @apply absolute left-1/2;
+        bottom: -6px;
+        @apply w-0 h-0;
+        @apply border-t-6 border-t-orange-500 border-r-6 border-r-transparent border-l-6 border-l-transparent;
+        @apply -translate-x-1/2;
     }
 }

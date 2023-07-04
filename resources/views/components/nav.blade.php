@@ -1,14 +1,13 @@
-<nav class="overflow-hidden bg-slate-800">
+<nav class="overflow-hidden fixed top-0 right-0 left-0 z-30 bg-slate-800">
     <div class="container mx-auto lg:flex">
         <div class="flex justify-between items-center p-4 lg:block lg:justify-start lg:mr-4">
             <h1>
-                <a href="#" class="logo-text uppercase text-neutral-50 text-3xl">megasaurus</a>
+                <a href="{{ route('home') }}" class="logo-text uppercase text-neutral-50 text-3xl">megasaurus</a>
             </h1>
             <button type="button" class="js-mobile-btn relative burger w-[30px] h-[30px] mr-3 appearance-none lg:hidden">
-                <span class="bar bar--1"></span>
-                <span class="bar bar--2"></span>
-                <span class="bar bar--3"></span>
-                <span class="bar bar--4"></span>
+                @for ($i = 1; $i <= 4; $i++)
+                    <span class="absolute h-1 bg-neutral-50 rounded-4 bar bar--{{ $i }}"></span>
+                @endfor
             </button>
         </div>
         <div class="js-menu submenu pb-4 lg:pb-0">
