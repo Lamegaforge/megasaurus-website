@@ -2,10 +2,11 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Domain\Enums\ClipStateEnum;
+use Illuminate\Support\Facades\DB;
 use App\Repositories\Options\PaginationOption;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class PaginateClips
 {
