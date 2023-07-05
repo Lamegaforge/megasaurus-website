@@ -1,5 +1,3 @@
-@inject('cdnService', 'App\Services\CdnService')
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 
