@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 body {
+    display: flex;
+    flex-direction: column;
     background-color: #0e1015;
+}
+
+main {
+    flex-grow: 1;
+    flex-shrink: 0;
 }
 
 .bar {
