@@ -28,7 +28,8 @@ class PaginateClips
                 'authors.name as author_name',
             )
             ->join('games', 'clips.game_id', '=', 'games.id')
-            ->join('authors', 'clips.author_id', '=', 'authors.id');
+            ->join('authors', 'clips.author_id', '=', 'authors.id')
+            ->where('state', ClipStateEnum::Ok);
 
         $query->when($options->gameUuid, function ($query, $gameUuid) {
             $query->where('games.uuid', $gameUuid);
