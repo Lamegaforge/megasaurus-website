@@ -31,7 +31,7 @@ class ShowClipController extends Controller
 
         return View::make('show-clip', [
             'clip' => $clip,
-            'randomGameClips' => $randomGameClips,
+            'randomGameClips' => $randomGameClips->items(),
         ]);
     }
 }
