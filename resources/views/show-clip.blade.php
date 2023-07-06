@@ -19,11 +19,17 @@
     <x-nav />
     <main class="mt-[84px] lg:mt-[68px] mb-10">
         <section class="relative flex items-center h-[600px] mb-6">
-            <x-featured-clip :featuredClip="$clip" :infos="true"></x-featured-clip>
+            <x-featured-clip 
+                :featuredClip="$clip" 
+                :infos="true">
+            </x-featured-clip>
         </section>
 
         <section class="container mx-auto mt-8 lg:px-10">
-            <x-clip-slider title="Autre clips" sliderSelector="js-latest-clips-slider" :items="$randomGameClips">
+            <x-clip-slider 
+                title="Autre clips" 
+                sliderSelector="js-latest-clips-slider" 
+                :items="$randomGameClips">
             </x-clip-slider>
         </section>
     </main>
