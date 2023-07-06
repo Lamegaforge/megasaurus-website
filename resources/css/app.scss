@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 body {
+    display: flex;
+    flex-direction: column;
     background-color: #0e1015;
+}
+
+main {
+    flex-grow: 1;
+    flex-shrink: 0;
 }
 
 .bar {
@@ -203,4 +210,8 @@ body {
         grid-template-columns: 1fr auto;
         gap: 40px;
     }
+}
+
+.text-light-shadow {
+    text-shadow: 1px 1px 3px theme("colors.black");
 }
