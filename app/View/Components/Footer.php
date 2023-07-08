@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 
 class Footer extends Component
 {
-    public function autoplay(): string
+    public function autoplay(): bool
     {
         return app(AutoplayStorage::class)->get();
     }
