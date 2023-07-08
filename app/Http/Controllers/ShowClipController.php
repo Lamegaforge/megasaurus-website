@@ -15,10 +15,10 @@ class ShowClipController extends Controller
         private PaginateClips $paginateClips,
     ) {}
 
-    public function __invoke(string $hook)
+    public function __invoke(string $uuid)
     {
         $clip = $this->findDisplayableClip->handle(
-            new Hook($hook),
+            Hook::fromString($uuid),
         );
 
         $randomGameClips = $this->paginateClips->handle(
