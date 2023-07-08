@@ -2,6 +2,7 @@
 
 namespace App\ValueObjects;
 
+use Carbon\Carbon;
 use App\Services\CdnService;
 
 readonly final class Clip
@@ -13,6 +14,7 @@ readonly final class Clip
         public ?string $url,
         public ?string $views,
         public ?string $duration,
+        public ?string $publishedAt,
         public Author $author,
         public Game $game,
     ) {}
@@ -26,6 +28,7 @@ readonly final class Clip
             url: data_get($attributes, 'url'),
             views: data_get($attributes, 'views'),
             duration: data_get($attributes, 'duration'),
+            publishedAt: data_get($attributes, 'published_at'),
             author: Author::from([
                 'uuid' => data_get($attributes, 'author_uuid'),
                 'name' => data_get($attributes, 'author_name'),
@@ -42,5 +45,10 @@ readonly final class Clip
         return app(CdnService::class)->thumbnail(
             uuid: $this->uuid,
         );
+    }
+
+    public function publishedAgo(): string
+    {
+        return Carbon::parse($this->publishedAt)->diffForHumans();
     }
 }

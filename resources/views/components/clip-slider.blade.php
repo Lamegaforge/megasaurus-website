@@ -5,7 +5,8 @@
             @foreach($items as $item)
             <li class="splide__slide !mr-4">
                 <a href="{{ route('clips.show', $item->uuid) }}">
-                    <img src="{{ $item->thumbnail() }}" alt="">
+                    {{-- <img src="{{ $item->thumbnail() }}" alt=""> --}}
+                    <img src="https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/thumbnails/AliveDistinctGooseBCouch" alt="">
                 </a>
             </li>
             @endforeach

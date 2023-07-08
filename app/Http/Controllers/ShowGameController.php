@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dtos\Hook;
 use App\Repositories\PaginateClips;
+use Illuminate\Support\Facades\View;
 use App\Repositories\FindDisplayableGame;
 use App\Repositories\Options\PaginationOption;
 
@@ -17,7 +18,7 @@ class ShowGameController extends Controller
     public function __invoke(string $uuid)
     {
         $game = $this->findDisplayableGame->handle(
-            new Hook($uuid),
+            Hook::fromString($uuid),
         );
 
         $popularGameClips = $this->paginateClips->handle(
@@ -34,10 +35,10 @@ class ShowGameController extends Controller
             ]),
         );
 
-        dd(
-            $game,
-            $popularGameClips,
-            $gameClips,
-        );
+        return View::make('show-game', [
+            'game' => $game,
+            'popularGameClips' => $popularGameClips->items(),
+            'gameClips' => $gameClips,
+        ]);
     }
 }

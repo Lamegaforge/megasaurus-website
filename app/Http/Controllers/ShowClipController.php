@@ -6,6 +6,7 @@ use App\Dtos\Hook;
 use App\Repositories\PaginateClips;
 use App\Repositories\FindDisplayableClip;
 use App\Repositories\Options\PaginationOption;
+use Illuminate\Support\Facades\View;
 
 class ShowClipController extends Controller
 {
@@ -14,10 +15,10 @@ class ShowClipController extends Controller
         private PaginateClips $paginateClips,
     ) {}
 
-    public function __invoke(string $hook)
+    public function __invoke(string $uuid)
     {
         $clip = $this->findDisplayableClip->handle(
-            new Hook($hook),
+            Hook::fromString($uuid),
         );
 
         $randomGameClips = $this->paginateClips->handle(
@@ -28,9 +29,9 @@ class ShowClipController extends Controller
             ]),
         );
 
-        dd(
-            $clip,
-            $randomGameClips->items(),
-        );
+        return View::make('show-clip', [
+            'clip' => $clip,
+            'randomGameClips' => $randomGameClips->items(),
+        ]);
     }
 }
