@@ -20,9 +20,17 @@
     <main class="mt-[84px] lg:mt-[68px] mb-10">
         <section class="container mx-auto mt-8 lg:px-10">
             <p class="text-white">Liste des clips</p>
-            <pre class="text-white">
-                {{ print_r($clips) }}
-            </pre>
+            @foreach ($clips as $clip)
+                <div class="relative text-white">
+                    <img src="{{ $clip->thumbnail() }}" alt="">
+                    <div>
+                        <p>Par {{ $clip->author->name }}</p>
+                        <p>{{ $clip->game->name }}</p>
+                    </div>
+                    <p class="absolute top-1 left-1 z-10 text-white">{{ $clip->duration }}</p>
+                    <p class="absolute top-1 right-1 z-10 text-white">{{ $clip->views }} vues</p>
+                </div>
+            @endforeach
         </section>
     </main>
     <x-footer></x-footer>
