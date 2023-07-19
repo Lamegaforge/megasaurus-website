@@ -6,6 +6,8 @@ use App\Repositories\PaginateClips;
 use App\Repositories\Options\PaginationOption;
 use App\Http\Requests\PaginateClipRequest;
 
+use Illuminate\Support\Facades\View;
+
 class PaginateClipController extends Controller
 {
     public function __construct(
@@ -20,6 +22,8 @@ class PaginateClipController extends Controller
             ),
         );
 
-        return $clips;
+        return View::make('clips', [
+            'clips' => $clips,
+        ]);
     }
 }
