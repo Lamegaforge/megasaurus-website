@@ -6,12 +6,15 @@
     @if($infos)
     <div class="relative mt-8 lg:self-center lg:mt-0">
         <h2 class="text-light-shadow mb-4 text-2xl text-white lg:mb-5 lg:text-3xl">{{ $featuredClip->title }}<h2>
-        <p class="text-light-shadow text-white text-lg lg:text-xl">par {{ $featuredClip->author->name }}</p>
+
         <p class="text-light-shadow text-white text-lg lg:text-xl">
-            <a href="{{ route('games.show', $featuredClip->game->uuid) }}">{{ $featuredClip->game->name }}</a>
+            par {{ $featuredClip->author->name }}
         </p>
-        <p class="text-light-shadow text-white text-lg lg:text-xl">{{ $featuredClip->publishedAgo() }}</p>
-        <p class="text-light-shadow text-white text-lg lg:text-xl">{{ $featuredClip->views }} vues</p>
+        <p class="mt-1 text-light-shadow text-white text-lg lg:text-xl">
+            Publié il y a {{ $featuredClip->publishedAgo() }}
+        </p>
+        <p class="mt-1 text-light-shadow text-white text-lg lg:text-xl">{{ $featuredClip->views }} vues</p>
+        <a class="inline-block mt-3 text-light-shadow text-white hover:text-orange-500 focus:text-orange-500 text-lg lg:text-xl" href="{{ route('games.show', $featuredClip->game->uuid) }}">{{ $featuredClip->game->name }}</a>
     </div>
     @endif
 </div>
