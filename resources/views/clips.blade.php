@@ -19,22 +19,30 @@
     <x-nav />
     <main class="mt-[84px] lg:mt-[68px] mb-10">
         <section class="container mx-auto mt-8 lg:px-10">
-            <p class="text-white">Liste des clips</p>
-            @foreach ($clips as $clip)
-            <div class="relative text-white">
-                <img src="{{ $clip->thumbnail() }}" alt="">
-                <div>
-                    <p>Par {{ $clip->author->name }}</p>
-                    <p>{{ $clip->game->name }}</p>
-                </div>
-                <p class="absolute top-1 left-1 z-10 text-white">{{ $clip->duration }}</p>
-                <p class="absolute top-1 right-1 z-10 text-white">{{ $clip->views }} vues</p>
+            <h2 class="mb-4 pl-4 text-2xl text-white lg:mb-5 lg:pl-0 lg:text-3xl">Tous les clips</h2>
+            
+            <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
+                @foreach ($clips as $clip)
+                    <div class="relative">
+                        <img class="w-full rounded transition-transform duration-300 hover:scale-105" src="{{ $clip->thumbnail() }}" alt="">
+                        <div class="mt-3">
+                            <p class="text-white">Par {{ $clip->author->name }}</p>
+                            <p class="text-white">{{ $clip->game->name }}</p>
+                        </div>
+                        <p class="absolute top-2 left-2 z-10 text-white">
+                            <span class="block bg-slate-300/50 px-2 py-1 rounded-sm">{{ $clip->duration }}</span>
+                        </p>
+                        <p class="absolute top-2 right-2 z-10 text-white">
+                            <span class="block bg-slate-300/50 px-2 py-1 rounded-sm">{{ $clip->views }} vues</span>
+                        </p>
+                    </div>
+                @endforeach
             </div>
-            @endforeach
+            
             {{ $clips->links('pagination::tailwind') }}
         </section>
     </main>
-    <x-footer></x-footer>
+    <x-footer />
 </body>
 
 </html>
