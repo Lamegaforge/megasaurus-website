@@ -6,7 +6,7 @@
     @if($infos)
     <div class="relative mt-8 lg:self-center lg:mt-0">
         <h1 class="text-4xl font-extrabold leading-10 text-white">{{ $featuredClip->title }}<h1>
-        <a class="mt-1font-semibold text-white hover:text-indigo-400" href="{{ route('games.show', $featuredClip->game->uuid) }}">{{ $featuredClip->game->name }}</a>
+        <a class="mt-1 font-semibold text-white hover:text-indigo-400" href="{{ route('games.show', $featuredClip->game->uuid) }}">{{ $featuredClip->game->name }}</a>
         <p class="mt-5 text-sm text-gray-300">Par {{ $featuredClip->author->name }}</p>
         <p class="mt-1 text-sm text-gray-300">Publié il y a {{ $featuredClip->publishedAgo() }}</p>
         <p class="mt-1 text-sm text-gray-300">{{ $featuredClip->views }} vues</p>

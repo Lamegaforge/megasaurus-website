@@ -3,8 +3,13 @@
     <p class="mt-2 text-neutral-50 lg:mt-0">&copy; {{ date('Y') }} LaMegaforge. All rights reserved. Made with 💕.</p>
     <ul class="flex space-x-6 order-first lg:order-1 lg:ml-auto">
       <li>
-        <a class="footer-link text-white lg:relative lg:block" target="_blank" rel="noopener noreferrer" href="{{ route('toggle-autoplay') }}">
-          <span class="text-white">@if($autoplay()) désactiver @else activer @endif autoplay</span>
+        <a 
+          class="mt-1 font-semibold text-white hover:text-indigo-400" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          href="{{ route('toggle-autoplay') }}"
+          >
+          @if($autoplay()) désactiver @else activer @endif autoplay
         </a>
       </li>
       <li>
