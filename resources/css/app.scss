@@ -13,6 +13,11 @@ main {
     flex-shrink: 0;
 }
 
+.blur {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
 .bar {
     width: inherit;
     transition-property: transform, background-color;
