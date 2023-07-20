@@ -21,16 +21,17 @@
         <section class="container mx-auto mt-8 lg:px-10">
             <p class="text-white">Liste des clips</p>
             @foreach ($clips as $clip)
-                <div class="relative text-white">
-                    <img src="{{ $clip->thumbnail() }}" alt="">
-                    <div>
-                        <p>Par {{ $clip->author->name }}</p>
-                        <p>{{ $clip->game->name }}</p>
-                    </div>
-                    <p class="absolute top-1 left-1 z-10 text-white">{{ $clip->duration }}</p>
-                    <p class="absolute top-1 right-1 z-10 text-white">{{ $clip->views }} vues</p>
+            <div class="relative text-white">
+                <img src="{{ $clip->thumbnail() }}" alt="">
+                <div>
+                    <p>Par {{ $clip->author->name }}</p>
+                    <p>{{ $clip->game->name }}</p>
                 </div>
+                <p class="absolute top-1 left-1 z-10 text-white">{{ $clip->duration }}</p>
+                <p class="absolute top-1 right-1 z-10 text-white">{{ $clip->views }} vues</p>
+            </div>
             @endforeach
+            {{ $clips->links('pagination::tailwind') }}
         </section>
     </main>
     <x-footer></x-footer>
