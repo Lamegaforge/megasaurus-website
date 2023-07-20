@@ -15,7 +15,7 @@
         </p>
         <p class="mt-1 text-light-shadow text-white text-lg lg:text-xl">{{ $featuredClip->views }} vues</p>
         <p class="mt-1 text-light-shadow text-white text-lg lg:text-xl">
-            Jeu : <a class="inline-block mt-3 text-light-shadow text-white hover:text-orange-500 focus:text-orange-500 text-lg lg:text-xl" href="{{ route('games.show', $featuredClip->game->uuid) }}">{{ $featuredClip->game->name }}</a>
+            <a class="inline-block mt-3 text-light-shadow text-white hover:text-orange-500 focus:text-orange-500 text-lg lg:text-xl" href="{{ route('games.show', $featuredClip->game->uuid) }}">{{ $featuredClip->game->name }}</a>
         </p>
     </div>
     @endif
