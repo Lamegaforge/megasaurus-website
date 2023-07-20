@@ -5,18 +5,11 @@
     </div>
     @if($infos)
     <div class="relative mt-8 lg:self-center lg:mt-0">
-        <h2 class="text-light-shadow mb-4 text-2xl text-white lg:mb-5 lg:text-3xl">{{ $featuredClip->title }}<h2>
-
-        <p class="text-light-shadow text-white text-lg lg:text-xl">
-            par {{ $featuredClip->author->name }}
-        </p>
-        <p class="mt-1 text-light-shadow text-white text-lg lg:text-xl">
-            Publié il y a {{ $featuredClip->publishedAgo() }}
-        </p>
-        <p class="mt-1 text-light-shadow text-white text-lg lg:text-xl">{{ $featuredClip->views }} vues</p>
-        <p class="mt-1 text-light-shadow text-white text-lg lg:text-xl">
-            <a class="inline-block mt-3 text-light-shadow text-white hover:text-orange-500 focus:text-orange-500 text-lg lg:text-xl" href="{{ route('games.show', $featuredClip->game->uuid) }}">{{ $featuredClip->game->name }}</a>
-        </p>
+        <h1 class="text-4xl font-extrabold leading-10 text-white">{{ $featuredClip->title }}<h1>
+        <p class="mt-5 text-sm text-gray-300">par {{ $featuredClip->author->name }}</p>
+        <p class="mt-1 text-sm text-gray-300">Publié il y a {{ $featuredClip->publishedAgo() }}</p>
+        <p class="mt-1 text-sm text-gray-300">{{ $featuredClip->views }} vues</p>
+        <a class="mt-1font-semibold text-white hover:text-indigo-400" href="{{ route('games.show', $featuredClip->game->uuid) }}">{{ $featuredClip->game->name }}</a>
     </div>
     @endif
 </div>
