@@ -34,7 +34,7 @@ readonly final class PaginationOption
             clipStateEnum: ClipStateEnum::Ok,
             sort: data_get($attributes, 'sort'),
             random: (bool) data_get($attributes, 'random', false),
-            perPage: data_get($attributes, 'per_page', 10),
+            perPage: data_get($attributes, 'per_page', 12),
         );
     }
 }
