@@ -38,7 +38,7 @@
                     </div>
                 @endforeach
             </div>
-            
+
             {{ $clips->links('pagination::tailwind') }}
         </section>
     </main>
