@@ -2,13 +2,13 @@
     <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center justify-between mt-6 px-4 md:justify-center">
         <div class="flex justify-between items-center flex-grow md:hidden">
             @if ($paginator->onFirstPage())
-                <span class="block p-2 text-slate-200/90 cursor-not-allowed">
+                <span class="pagination-disabled-cursor">
                     {!! __('pagination.previous') !!}
                 </span>
             @else
                 <a
                     href="{{ $paginator->previousPageUrl() }}"
-                    class="block p-2 text-white transition-colors ease-in-out duration-200 hover:text-orange-500 focus:text-orange-500">
+                    class="pagination-links">
                     {!! __('pagination.previous') !!}
                 </a>
             @endif
@@ -28,11 +28,11 @@
             @if ($paginator->hasMorePages())
                 <a
                     href="{{ $paginator->nextPageUrl() }}"
-                    class="block p-2 text-white transition ease-in-out duration-200 hover:text-orange-500 focus:text-orange-500">
+                    class="pagination-links">
                     {!! __('pagination.next') !!}
                 </a>
             @else
-                <span class="block p-2 text-slate-200/90 cursor-not-allowed">
+                <span class="pagination-disabled-cursor">
                     {!! __('pagination.next') !!}
                 </span>
             @endif
@@ -58,7 +58,7 @@
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
                         <span aria-disabled="true" aria-label="{{ __('pagination.previous') }}">
-                            <span class="p-2  text-slate-200/90 cursor-not-allowed" aria-hidden="true">
+                            <span class="pagination-disabled-cursor" aria-hidden="true">
                                 <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
                                 </svg>
@@ -68,7 +68,7 @@
                         <a
                             href="{{ $paginator->previousPageUrl() }}"
                             rel="prev"
-                            class="p-2 text-white hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200"
+                            class="pagination-links"
                             aria-label="{{ __('pagination.previous') }}"
                         >
                             <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
@@ -111,7 +111,7 @@
                         <a
                             href="{{ $paginator->nextPageUrl() }}"
                             rel="next"
-                            class="p-2 text-white hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200"
+                            class="pagination-links"
                             aria-label="{{ __('pagination.next') }}"
                         >
                             <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
@@ -120,7 +120,7 @@
                         </a>
                     @else
                         <span aria-disabled="true" aria-label="{{ __('pagination.next') }}">
-                            <span class="p-2 font-medium text-slate-200/90 cursor-not-allowed" aria-hidden="true">
+                            <span class="pagination-disabled-cursor" aria-hidden="true">
                                 <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                                 </svg>
