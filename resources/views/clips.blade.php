@@ -24,16 +24,18 @@
             <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($clips as $clip)
                     <div class="relative">
-                        <img class="w-full rounded transition-transform duration-300 hover:scale-105" src="{{ $clip->thumbnail() }}" alt="">
-                        <div class="mt-3">
-                            <p class="text-white">Par {{ $clip->author->name }}</p>
-                            <p class="text-white">{{ $clip->game->name }}</p>
-                        </div>
+                        <a href="">
+                            <img class="w-full rounded transition-transform duration-300 hover:scale-105" src="{{ $clip->thumbnail() }}" alt="">
+                            <div class="mt-3">
+                                <p class="text-slate-300">Par {{ $clip->author->name }}</p>
+                                <p class="text-white">{{ $clip->game->name }}</p>
+                            </div>
+                        </a>
                         <p class="absolute top-2 left-2 z-10 text-white">
-                            <span class="block bg-slate-300/50 px-2 py-1 rounded-sm">{{ $clip->duration }}</span>
+                            <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->duration }} secondes</span>
                         </p>
                         <p class="absolute top-2 right-2 z-10 text-white">
-                            <span class="block bg-slate-300/50 px-2 py-1 rounded-sm">{{ $clip->views }} vues</span>
+                            <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->views }} vues</span>
                         </p>
                     </div>
                 @endforeach
