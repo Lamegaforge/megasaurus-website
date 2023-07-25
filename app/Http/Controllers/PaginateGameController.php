@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\PaginateGames;
 use App\Http\Requests\PaginateGameRequest;
 use App\Repositories\Options\PaginationOption;
+use Illuminate\Support\Facades\View;
 
 class PaginateGameController extends Controller
 {
@@ -20,6 +21,10 @@ class PaginateGameController extends Controller
             ),
         );
 
-        return $games;
+        // dd($games);
+
+        return View::make('show-game', [
+            'games' => $games,
+        ]);
     }
 }
