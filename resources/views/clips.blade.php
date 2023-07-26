@@ -42,6 +42,36 @@
                         maxlength="255"
                     />
                 </div>
+                <div>
+                    <button class="js-filters-btn flex items-center text-white" type="button">
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4">
+                            </path>
+                        </svg>
+                        <span class="text-white">Trier par</span>
+                    </button>
+                    <ul class="js-filters-list hidden">
+                        <li>
+                            <button data-filter="views" type="button" class="js-selected flex items-center text-white">
+                                <span>Nombre de vues</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button data-filter="dates" type="button" class="js-dates flex items-center text-white">
+                                <span>Dates</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($clips as $clip)
