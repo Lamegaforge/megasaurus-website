@@ -21,6 +21,28 @@
         <section class="container mx-auto mt-8 lg:px-10">
             <h2 class="mb-4 pl-4 text-2xl text-white lg:mb-5 lg:pl-0 lg:text-3xl">Tous les clips</h2>
             
+            <div class="text-center">
+                <div class="relative inline-flex items-center mb-4 text-white">
+                    <svg
+                        class="absolute top-1/2 left-3 w-5 h-5 -translate-y-1/2"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd">
+                        </path>
+                    </svg>
+                    <input
+                        class="py-2 pr-2 pl-[42px] bg-white/30 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-orange-500"
+                        type="search"
+                        value=""
+                        placeholder="Rechercher un jeu"
+                        maxlength="255"
+                    />
+                </div>
+            </div>
             <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($clips as $clip)
                     <div class="relative">
