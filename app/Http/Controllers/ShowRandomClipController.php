@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Domain\Enums\ClipStateEnum;
+use App\Enums\ClipStateEnum;
 use Illuminate\Support\Facades\DB;
 
 class ShowRandomClipController extends Controller

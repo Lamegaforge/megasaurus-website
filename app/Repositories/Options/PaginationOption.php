@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Options;
 
-use Domain\Enums\ClipStateEnum;
+use App\Enums\ClipStateEnum;
 
 readonly final class PaginationOption
 {

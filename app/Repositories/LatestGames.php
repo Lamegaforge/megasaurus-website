@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Game;
-use Domain\Enums\ClipStateEnum;
+use App\Enums\ClipStateEnum;
 
 class LatestGames
 {

@@ -5,7 +5,7 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Clip;
 use Illuminate\Support\Collection;
-use Domain\Enums\ClipStateEnum;
+use App\Enums\ClipStateEnum;
 
 class GetPopularClipsForGame
 {
