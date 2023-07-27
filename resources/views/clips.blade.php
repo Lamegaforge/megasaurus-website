@@ -21,8 +21,8 @@
         <section class="container mx-auto mt-8 lg:px-10">
             <h2 class="mb-4 pl-4 text-2xl text-white lg:mb-5 lg:pl-0 lg:text-3xl">Tous les clips</h2>
             
-            <div class="text-center">
-                <div class="relative inline-flex items-center mb-4 text-white">
+            <div class="flex flex-col items-center mb-6 lg:flex-row lg:justify-end lg:mb-4">
+                <div class="relative inline-flex items-center mb-4 text-white lg:mb-0 lg:mr-4">
                     <svg
                         class="absolute top-1/2 left-3 w-5 h-5 -translate-y-1/2"
                         fill="currentColor"
@@ -35,15 +35,15 @@
                         </path>
                     </svg>
                     <input
-                        class="py-2 pr-2 pl-[42px] bg-white/30 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-orange-500"
+                        class="py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-orange-500"
                         type="search"
                         value=""
                         placeholder="Rechercher un jeu"
                         maxlength="255"
                     />
                 </div>
-                <div>
-                    <button class="js-filters-btn flex items-center text-white" type="button">
+                <div class="relative">
+                    <button class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-orange-500" type="button">
                         <svg
                             class="w-5 h-5"
                             fill="none"
@@ -59,18 +59,30 @@
                         </svg>
                         <span class="text-white">Trier par</span>
                     </button>
-                    <ul class="js-filters-list hidden">
-                        <li>
-                            <button data-filter="views" type="button" class="js-selected flex items-center text-white">
-                                <span>Nombre de vues</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button data-filter="dates" type="button" class="js-dates flex items-center text-white">
-                                <span>Dates</span>
-                            </button>
-                        </li>
-                    </ul>
+                    <div class="js-filters-list filters-list absolute left-1/2 w-max -translate-x-1/2 z-20">
+                        <div class="overflow-hidden">
+                            <ul class="mt-1 p-2 bg-zinc-700 rounded-lg lg:mt-2">
+                                <li class="mb-3">
+                                    <button
+                                        data-filter="views"
+                                        type="button"
+                                        class="js-selected flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
+                                    ">
+                                        <span>Nombre de vues</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        data-filter="dates"
+                                        type="button"
+                                        class="js-dates flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
+                                    ">
+                                        <span>Dates</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">

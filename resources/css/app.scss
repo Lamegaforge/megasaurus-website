@@ -212,7 +212,7 @@ main {
 .wrapper-has-infos {
     @screen lg {
         display: grid;
-        grid-template-columns: 1fr 300px    ;
+        grid-template-columns: 1fr 300px;
         gap: 40px;
     }
 }
@@ -234,5 +234,15 @@ main {
     &:hover,
     &:focus {
         @apply text-orange-500
+    }
+}
+
+.filters-list {
+    @apply grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.4s ease-out;
+
+    &:not(.is-open) {
+        grid-template-rows: 0fr;
     }
 }

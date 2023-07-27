@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createSelectedSvg("views");
 
     filtersBtn.addEventListener("click", () => {
-        filtersList.classList.toggle("hidden");
+        filtersList.classList.toggle("is-open");
     });
 
     filtersList.addEventListener("click", ({ target }) => {
