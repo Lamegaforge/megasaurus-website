@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\ValueObjects\Clip;
-use Domain\Enums\ClipStateEnum;
+use App\Enums\ClipStateEnum;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\Options\PaginationOption;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;

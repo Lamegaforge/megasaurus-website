@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Dtos\Hook;
 use Illuminate\Support\Facades\DB;
 use App\ValueObjects\Game;
-use Domain\Enums\ClipStateEnum;
+use App\Enums\ClipStateEnum;
 
 class FindDisplayableGame
 {
