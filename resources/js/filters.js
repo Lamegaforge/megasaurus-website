@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         document.addEventListener("click", ({ target }) => {
-            if (!filtersList.contains(target) && !filtersBtn.contains(target) && filtersList.classList.contains("is-open")) {;
+            if (!filtersList.contains(target) && !filtersBtn.contains(target) && filtersList.classList.contains("is-open")) {
                 filtersList.classList.remove("is-open");
             }
         });
