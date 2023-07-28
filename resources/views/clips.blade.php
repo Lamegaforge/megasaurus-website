@@ -1,3 +1,4 @@
+@inject('cdnService', \App\Services\CdnService::class)
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 
@@ -34,14 +35,18 @@
                             clip-rule="evenodd">
                         </path>
                     </svg>
-                    <input
-                        class="py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-orange-500"
-                        type="search"
-                        value=""
-                        placeholder="Rechercher un jeu"
-                        maxlength="255"
-                    />
+                    <form method="GET" action="/clips">
+                        <input 
+                            class="py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-orange-500" 
+                            type="search" 
+                            name="query"
+                            value="{{ request()->get('query') }}" 
+                            placeholder="Rechercher un jeu" 
+                            maxlength="255" 
+                        />
+                    </form>
                 </div>
+                @unless(request()->filled('query'))
                 <div class="relative">
                     <button class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-orange-500" type="button">
                         <svg
@@ -84,24 +89,25 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($clips as $clip)
-                    <div class="relative">
-                        <a href="">
-                            <img class="w-full rounded transition-transform duration-300 hover:scale-105" src="{{ $clip->thumbnail() }}" alt="">
-                            <div class="mt-3">
-                                <p class="text-slate-300">Par {{ $clip->author->name }}</p>
-                                <p class="text-white">{{ $clip->game->name }}</p>
-                            </div>
-                        </a>
-                        <p class="absolute top-2 left-2 z-10 text-white">
-                            <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->duration }} secondes</span>
-                        </p>
-                        <p class="absolute top-2 right-2 z-10 text-white">
-                            <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->views }} vues</span>
-                        </p>
-                    </div>
+                <div class="relative">
+                    <a href="">
+                        <img class="w-full rounded transition-transform duration-300 hover:scale-105" src="{{ $cdnService->thumbnail($clip->uuid) }}" alt="">
+                        <div class="mt-3">
+                            <p class="text-slate-300">{{ $clip->title }}</p>
+                            <p class="text-white">{{ $clip->game->name }}</p>
+                        </div>
+                    </a>
+                    <p class="absolute top-2 left-2 z-10 text-white">
+                        <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->duration }} secondes</span>
+                    </p>
+                    <p class="absolute top-2 right-2 z-10 text-white">
+                        <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->views }} vues</span>
+                    </p>
+                </div>
                 @endforeach
             </div>
 

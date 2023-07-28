@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Repositories\Options\PaginationOption;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-class PaginateClips
+class PaginateClipsRepository
 {
     public function handle(PaginationOption $options): LengthAwarePaginator
     {
@@ -38,10 +38,6 @@ class PaginateClips
 
         $query->when($options->sort, function ($query, $sort) {
             $query->orderByDesc($sort);
-        });
-
-        $query->when($options->search, function ($query, $search) {
-            $query->where('name', 'like', '%' . $search . '%');
         });
 
         $query->when($options->random, function ($query) {

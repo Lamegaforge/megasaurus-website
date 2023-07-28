@@ -7,7 +7,6 @@ use App\Enums\ClipStateEnum;
 readonly final class PaginationOption
 {
     public function __construct(
-        public ?string $search,
         public ?string $gameUuid,
         public ?string $clipUuid,
         public ClipStateEnum $clipStateEnum,
@@ -28,7 +27,6 @@ readonly final class PaginationOption
     public static function from(array $attributes): self
     {
         return new self(
-            search: data_get($attributes, 'search'),
             gameUuid: data_get($attributes, 'game_uuid'),
             clipUuid: data_get($attributes, 'clip_uuid'),
             clipStateEnum: ClipStateEnum::Ok,
