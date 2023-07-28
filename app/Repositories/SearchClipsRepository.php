@@ -13,7 +13,7 @@ class SearchClipsRepository
         $clips = Clip::search($search)
             ->query(function ($builder) {
                 $builder
-                    ->where('state', ClipStateEnum::Ok)
+                    ->displayable()
                     ->with('game');
             })
             ->paginate(16);

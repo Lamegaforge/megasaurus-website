@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Services\Space\CardService;
 
 class Game extends Model
 {
@@ -23,5 +24,10 @@ class Game extends Model
     public function clips()
     {
         return $this->hasMany(Clip::class);
+    }
+
+    public function card(): string
+    {
+        return app(CardService::class)->get($this);
     }
 }

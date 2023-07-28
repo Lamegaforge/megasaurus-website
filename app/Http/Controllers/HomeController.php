@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\FeaturedClip;
+use App\Repositories\FeaturedClipRepository;
 use App\Storages\LatestAvailableClipsStorage;
 use App\Storages\LatestGamesStorage;
 use App\Storages\PopularGamesStorage;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\View;
 class HomeController extends Controller
 {
     public function __construct(
-        private FeaturedClip $featuredClip,
+        private FeaturedClipRepository $featuredClipRepository,
         private LatestAvailableClipsStorage $latestAvailableClipsStorage,
         private LatestGamesStorage $latestGamesStorage,
         private PopularGamesStorage $popularGamesStorage,
@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function __invoke()
     {
-        $featuredClip = $this->featuredClip->handle();
+        $featuredClip = $this->featuredClipRepository->handle();
 
         $latestAvailableClips = $this->latestAvailableClipsStorage->get();
 

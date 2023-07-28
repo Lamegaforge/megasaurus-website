@@ -3,10 +3,9 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\ValueObjects\Game;
 use App\Enums\ClipStateEnum;
 
-class LatestGames
+class LatestGamesRepository
 {
     public function handle()
     {
@@ -25,8 +24,6 @@ class LatestGames
             ->limit(20)
             ->get();
 
-        return $latestGames->map(function ($game) {
-            return Game::from((array) $game);
-        });
+        return $latestGames;
     }
 }

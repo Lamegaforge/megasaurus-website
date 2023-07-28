@@ -7,9 +7,8 @@ use App\Enums\ClipStateEnum;
 readonly final class PaginationOption
 {
     public function __construct(
-        public ?string $gameUuid,
+        public ?string $gameId,
         public ?string $clipUuid,
-        public ClipStateEnum $clipStateEnum,
         public ?string $sort,
         public bool $random,
         public int $perPage,
@@ -27,9 +26,8 @@ readonly final class PaginationOption
     public static function from(array $attributes): self
     {
         return new self(
-            gameUuid: data_get($attributes, 'game_uuid'),
+            gameId: data_get($attributes, 'game_id'),
             clipUuid: data_get($attributes, 'clip_uuid'),
-            clipStateEnum: ClipStateEnum::Ok,
             sort: data_get($attributes, 'sort'),
             random: (bool) data_get($attributes, 'random', false),
             perPage: data_get($attributes, 'per_page', 12),

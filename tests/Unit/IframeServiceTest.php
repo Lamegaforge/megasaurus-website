@@ -3,14 +3,17 @@
 namespace Tests\Unit;
 
 use Mockery;
-use App\ValueObjects\Clip;
+use App\Models\Clip;
 use Mockery\MockInterface;
 use App\Services\IframeService;
 use Tests\TestCase;
 use App\Storages\AutoplayStorage;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class IframeServiceTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * @test
      */
@@ -18,16 +21,12 @@ class IframeServiceTest extends TestCase
     {
         $iframeService = $this->instantiateIframeService();
 
-        $clip = Clip::from([
-            'uuid' => '83728917',
-            'external_id' => '196a9739b178',
-            'title' => '',
-        ]);
+        $clip = Clip::factory()->create();
 
         $src = $iframeService->getSrc($clip);
 
         $this->assertEquals(
-            'https://base-url.fr/embed?clip=196a9739b178&parent=parent_1&parent=parent_2&autoplay=true',
+            'https://base-url.fr/embed?clip=' . $clip->external_id . '&parent=parent_1&parent=parent_2&autoplay=true',
             $src,
         );
     }

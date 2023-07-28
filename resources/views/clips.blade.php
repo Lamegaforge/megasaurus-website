@@ -1,4 +1,3 @@
-@inject('cdnService', \App\Services\CdnService::class)
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 
@@ -94,15 +93,15 @@
             <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($clips as $clip)
                 <div class="relative">
-                    <a href="">
-                        <img class="w-full rounded transition-transform duration-300 hover:scale-105" src="{{ $cdnService->thumbnail($clip->uuid) }}" alt="">
+                    <a href="{{ route('clips.show', $clip->uuid) }}">
+                        <img class="w-full rounded transition-transform duration-300 hover:scale-105" src="{{ $clip->thumbnail() }}" alt="">
                         <div class="mt-3">
                             <p class="text-slate-300">{{ $clip->title }}</p>
                             <p class="text-white">{{ $clip->game->name }}</p>
                         </div>
                     </a>
                     <p class="absolute top-2 left-2 z-10 text-white">
-                        <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->duration }} secondes</span>
+                        <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->duration }} s</span>
                     </p>
                     <p class="absolute top-2 right-2 z-10 text-white">
                         <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $clip->views }} vues</span>

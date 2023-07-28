@@ -16,12 +16,18 @@ class HomeControllerTest extends TestCase
      */
     public function it_can_display_homepage(): void
     {
-        Game::factory(3)
+        $game = Game::factory()
             ->has(Clip::factory()->count(5))
             ->create();
 
         $response = $this->get('/');
 
-        $response->assertStatus(200);
+        $clips = $game->clips;
+
+        $response
+            ->assertOk()
+            ->assertSee($clips->first()->title)
+            ->assertSee($clips->last()->title)
+            ->assertSee($game->uuid);
     }
 }
