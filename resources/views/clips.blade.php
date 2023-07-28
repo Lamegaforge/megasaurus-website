@@ -70,7 +70,7 @@
                                     <button
                                         data-filter="views"
                                         type="button"
-                                        class="js-selected flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
+                                        class="flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
                                     ">
                                         <span>Nombre de vues</span>
                                     </button>

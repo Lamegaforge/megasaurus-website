@@ -9,7 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
      * only in /clips view.
      */
     if (filtersBtn && filtersList) {
-        createSelectedSvg("views");
+        if (window.localStorage.getItem("selected-filter") === null) {
+            createSelectedSvg("views");
+        } else {
+            createSelectedSvg(window.localStorage.getItem("selected-filter"));
+        }
+
+        document.addEventListener("click", ({ target }) => {
+            if (!filtersList.contains(target) && !filtersBtn.contains(target) && filtersList.classList.contains("is-open")) {;
+                filtersList.classList.remove("is-open");
+            }
+        });
 
         filtersBtn.addEventListener("click", () => {
             filtersList.classList.toggle("is-open");
@@ -17,18 +27,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         filtersList.addEventListener("click", ({ target }) => {
             const clickedFilterBtn = target.closest("button");
+
+
+            if (clickedFilterBtn === null) {
+                return;
+            }
             
             if (clickedFilterBtn.classList.contains("js-selected")) {
                 return;
             } else {
-                clearSelected();
                 clickedFilterBtn.classList.add("js-selected");
-                createSelectedSvg(clickedFilterBtn.dataset.filter);
+
+                window.localStorage.setItem("selected-filter", clickedFilterBtn.dataset.filter);
+                window.location.reload();
             }
         });
 
         function createSelectedSvg (filter) {
-            const parentSelector = `[data-filter=${filter}]`;
+            const buttonSelector = document.querySelector(`[data-filter=${filter}]`);
+            buttonSelector.classList.add("js-selected");
+
             const selectedSvg = document.createElement("span");
             selectedSvg.className = "js-has-svg";
             selectedSvg.innerHTML = `
@@ -45,20 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     ></path>
                 </svg>
             `;
-    
-            document.querySelector(parentSelector).appendChild(selectedSvg);
-        }
 
-        function clearSelected () {
-            Array.from(filtersList.querySelectorAll("button")).map((button) => {
-                button.classList.remove("js-selected");
-
-                const hasButtonSvg = button.querySelector(".js-has-svg");
-
-                if (hasButtonSvg) {
-                    button.removeChild(hasButtonSvg);
-                }
-            });
+            buttonSelector.appendChild(selectedSvg);
         }
     }
 });
