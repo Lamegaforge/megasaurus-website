@@ -187,5 +187,6 @@ return [
     ])->toArray(),
 
     'cdn_url' => env('CDN_URL'),
+    'cdn_env_folder' => env('CDN_ENV_FOLDER'),
 
 ];

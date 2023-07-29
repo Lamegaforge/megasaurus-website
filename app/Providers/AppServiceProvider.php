@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\CdnService;
+use App\Services\Space\ThumbnailService;
+use App\Services\Space\CardService;
 use App\Services\IframeService;
 use App\Storages\AutoplayStorage;
 
@@ -14,8 +15,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(CdnService::class, function ($app) {
-            return new CdnService(config('app.cdn_url'));
+        $this->app->singleton(ThumbnailService::class, function ($app) {
+            return new ThumbnailService(
+                config('app.cdn_url'),
+                config('app.cdn_env_folder'),
+            );
+        });
+
+        $this->app->singleton(CardService::class, function ($app) {
+            return new CardService(
+                config('app.cdn_url'),
+                config('app.cdn_env_folder'),
+            );
         });
 
         $this->app->singleton(IframeService::class, function ($app) {

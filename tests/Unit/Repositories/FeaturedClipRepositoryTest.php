@@ -3,13 +3,13 @@
 namespace Tests\Unit\Repositories;
 
 use Tests\TestCase;
-use Domain\Models\Clip;
-use App\Repositories\FeaturedClip;
+use App\Models\Clip;
+use App\Repositories\FeaturedClipRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Domain\Enums\ClipStateEnum;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class FeaturedClipTest extends TestCase
+class FeaturedClipRepositoryTest extends TestCase 
 {
     use RefreshDatabase;
 
@@ -20,9 +20,9 @@ class FeaturedClipTest extends TestCase
     {
         $clip = Clip::factory()->create();
 
-        $featuredClip = app(FeaturedClip::class)->handle();
+        $featuredClip = app(FeaturedClipRepository::class)->handle();
 
-        $this->assertSame($clip->uuid, $featuredClip->uuid);
+        $this->assertTrue($clip->is($featuredClip));
     }
 
     /**
@@ -37,7 +37,7 @@ class FeaturedClipTest extends TestCase
 
         $this->expectException(NotFoundHttpException::class);
 
-        app(FeaturedClip::class)->handle();
+        app(FeaturedClipRepository::class)->handle();
     }
 
     /**
@@ -55,7 +55,7 @@ class FeaturedClipTest extends TestCase
 
         $this->expectException(NotFoundHttpException::class);
 
-        app(FeaturedClip::class)->handle();
+        app(FeaturedClipRepository::class)->handle();
     }
 
     public static function unexpectedStatesProvider(): array

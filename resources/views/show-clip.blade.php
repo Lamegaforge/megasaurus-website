@@ -27,7 +27,7 @@
 
         <section class="container mx-auto mt-8 lg:px-10">
             <x-clip-slider 
-                title="Autre clips" 
+                title="Autres clips" 
                 sliderSelector="js-latest-clips-slider" 
                 :items="$randomGameClips">
             </x-clip-slider>

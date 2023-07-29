@@ -2,28 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Dtos\Hook;
-use App\Repositories\PaginateClips;
-use App\Repositories\FindDisplayableClip;
+use App\Repositories\PaginateClipsRepository;
+use App\Repositories\FindDisplayableClipRepository;
 use App\Repositories\Options\PaginationOption;
 use Illuminate\Support\Facades\View;
 
 class ShowClipController extends Controller
 {
     public function __construct(
-        private FindDisplayableClip $findDisplayableClip,
-        private PaginateClips $paginateClips,
+        private FindDisplayableClipRepository $findDisplayableClipRepository,
+        private PaginateClipsRepository $paginateClipsRepository,
     ) {}
 
-    public function __invoke(string $uuid)
+    public function __invoke(string $id)
     {
-        $clip = $this->findDisplayableClip->handle(
-            Hook::fromString($uuid),
-        );
+        $clip = $this->findDisplayableClipRepository->handle($id);
 
-        $randomGameClips = $this->paginateClips->handle(
+        $randomGameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([
-                'game_uuid' => $clip->game->uuid,
+                'game_id' => $clip->game->id,
                 'per_page' => 10,
                 'random' => true,
             ]),

@@ -5,7 +5,7 @@
             @foreach($items as $item)
             <li class="splide__slide">
                 <a href="{{ route('games.show', $item->uuid) }}">
-                    <img src="{{ $item->card() }}" alt="">
+                    <img loading="lazy" src="{{ $item->card() }}" alt="">
                 </a>
             </li>
             @endforeach

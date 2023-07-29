@@ -3,34 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Dtos\Hook;
-use App\Repositories\PaginateClips;
+use App\Repositories\PaginateClipsRepository;
 use Illuminate\Support\Facades\View;
-use App\Repositories\FindDisplayableGame;
+use App\Repositories\FindDisplayableGameRepository;
 use App\Repositories\Options\PaginationOption;
 
 class ShowGameController extends Controller
 {
     public function __construct(
-        private FindDisplayableGame $findDisplayableGame,
-        private PaginateClips $paginateClips,
+        private FindDisplayableGameRepository $findDisplayableGameRepository,
+        private PaginateClipsRepository $paginateClipsRepository,
     ) {}
 
     public function __invoke(string $uuid)
     {
-        $game = $this->findDisplayableGame->handle(
+        $game = $this->findDisplayableGameRepository->handle(
             Hook::fromString($uuid),
         );
 
-        $popularGameClips = $this->paginateClips->handle(
+        $popularGameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([
-                'game_uuid' => $game->uuid,
+                'gameId' => $game->uuid,
                 'sort' => 'clips.views',
             ]),
         );
 
-        $gameClips = $this->paginateClips->handle(
+        $gameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([
-                'game_uuid' => $game->uuid,
+                'gameId' => $game->uuid,
                 'sort' => 'clips.published_at',
             ]),
         );

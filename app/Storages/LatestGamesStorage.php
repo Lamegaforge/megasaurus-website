@@ -2,22 +2,30 @@
 
 namespace App\Storages;
 
-use App\Repositories\LatestGames;
 use App\Services\TtlFactory;
 use Illuminate\Cache\CacheManager;
-use Illuminate\Support\Collection;
+use App\Repositories\Options\PaginationOption;
+use App\Repositories\PaginateGamesRepository;
 
 class LatestGamesStorage
 {
     public function __construct(
-        private LatestGames $latestGames,
+        private PaginateGamesRepository $paginateGamesRepository,
         private CacheManager $cache,
     ) {}
 
-    public function get(): Collection
+    public function get(): array
     {
         return $this->cache->remember('latest_games', TtlFactory::minutes(1), function () {
-            return $this->latestGames->handle();
+
+            $games = $this->paginateGamesRepository->handle(
+                PaginationOption::from([
+                    'sort' => 'games.created_at',
+                    'per_page' => 12,
+                ]),
+            );
+
+            return $games->items();
         });
     }
 }

@@ -17,12 +17,24 @@ class PaginateClipRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'search' => 'nullable|string|max:255',
+            'query' => 'nullable|string|max:255',
             'game_uuid' => 'nullable|string|max:255',
             'sort' => [
                 'nullable',
                 Rule::in(['clips.views', 'clips.published_at']),
             ],
         ];
+    }
+
+    public function prepareForValidation(): void
+    {
+        $this->merge([
+            'sort' => $this->get('sort', 'clips.published_at'),
+        ]);
+    }
+
+    public function itsASearch(): bool
+    {
+        return $this->filled('query');
     }
 }
