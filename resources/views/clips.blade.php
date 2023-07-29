@@ -93,11 +93,13 @@
             <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($clips as $clip)
                 <div class="relative">
-                    <a href="{{ route('clips.show', $clip->uuid) }}">
-                        <img class="w-full rounded transition-transform duration-300 hover:scale-105" src="{{ $clip->thumbnail() }}" alt="">
-                        <div class="mt-3">
-                            <p class="text-slate-300">{{ $clip->title }}</p>
-                            <p class="text-white">{{ $clip->game->name }}</p>
+                    <a href="{{ route('clips.show', $clip->uuid) }}" class="block rounded group">
+                        <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105">
+                            <img class="rounded" src="{{ $clip->thumbnail() }}">
+                        </div>
+                        <div class="mt-3 text-white">
+                            <p class="transition duration-200 ease-in-out group-hover:text-indigo-400">{{ $clip->title }}</p>
+                            <p class="text-sm text-gray-300">{{ $clip->game->name }}</p>
                         </div>
                     </a>
                     <p class="absolute top-2 left-2 z-10 text-white">
