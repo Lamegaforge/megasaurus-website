@@ -1,12 +1,15 @@
 <footer class="p-4 bg-slate-800">
   <div class="container mx-auto flex flex-col items-center lg:flex-row">
-    <p class="mt-2 text-neutral-50 lg:mt-0">&copy; {{ date('Y') }} LaMegaforge. All rights reserved. Made with ☕.</p>
-    <ul class="flex space-x-6 order-first lg:order-1 lg:ml-auto">
-      <li>
-        <a class="mt-1 font-semibold text-white hover:text-indigo-400" target="_blank" rel="noopener noreferrer" href="{{ route('toggle-autoplay') }}">
-          @if($autoplay()) désactiver @else activer @endif autoplay
-        </a>
-      </li>
+    <a
+      class="my-3 font-semibold text-white hover:text-indigo-400 focus:text-indigo-400 lg:my-0 lg:ml-auto"
+      target="_blank"
+      rel="noopener noreferrer"
+      href="{{ route('toggle-autoplay') }}"
+    >
+        @if($autoplay()) désactiver @else activer @endif autoplay
+    </a>
+    <p class="text-neutral-50 order-last lg:order-first">&copy; {{ date('Y') }} LaMegaforge. All rights reserved. Made with ☕.</p>
+    <ul class="flex space-x-6 order-first lg:order-1 lg:ml-4">
       <li>
         <a class="footer-link text-white lg:relative lg:block" target="_blank" rel="noopener noreferrer" href="https://www.twitch.tv/lamegaforgelive/">
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 512 512">
