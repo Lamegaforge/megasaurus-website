@@ -5,7 +5,7 @@
             @foreach($items as $item)
             <a href="{{ route('clips.show', $item->uuid) }}" class="splide__slide block rounded group">
                 <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105">
-                    <img class="rounded" src="{{ $item->thumbnail() }}">
+                    <img loading="lazy" class="rounded" src="{{ $item->thumbnail() }}">
                 </div>
                 <div class="mt-3 text-white">
                     <p class="transition duration-200 ease-in-out group-hover:text-indigo-400">{{ $item->title }}</p>

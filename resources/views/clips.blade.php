@@ -98,7 +98,7 @@
                 <div class="relative">
                     <a href="{{ route('clips.show', $clip->uuid) }}" class="block rounded group">
                         <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105">
-                            <img class="rounded" src="{{ $clip->thumbnail() }}">
+                            <img loading="lazy" class="rounded" src="{{ $clip->thumbnail() }}">
                         </div>
                         <div class="mt-3 text-white">
                             <p class="transition duration-200 ease-in-out group-hover:text-indigo-400">{{ $clip->title }}</p>
