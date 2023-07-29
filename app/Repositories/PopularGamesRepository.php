@@ -14,7 +14,7 @@ class PopularGamesRepository
                 $query->where('state', ClipStateEnum::Ok);
             }])
             ->orderBy('active_clips_count', 'DESC')
-            ->take(20)
+            ->take(30)
             ->get();
     }
 }
