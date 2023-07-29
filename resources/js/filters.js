@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         resetSearch.addEventListener("click", () => {
-            console.log("reset search");
             searchInput.classList.remove("has-reset");
             searchInput.value = "";
             window.location.href="/clips";
