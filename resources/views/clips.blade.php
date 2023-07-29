@@ -22,7 +22,7 @@
             <div class="lg:flex lg:items-center lg:justify-between lg:mb-6">
                 <h2 class="mb-4 pl-4 text-2xl text-white lg:mb-0 lg:pl-0 lg:text-3xl">Tous les clips</h2>
                 <div class="flex flex-col items-center mb-6 lg:flex-row lg:justify-end lg:mb-0">
-                    <div class="relative inline-flex items-center mb-4 text-white lg:mb-0 lg:mr-4">
+                    <div class="relative inline-flex items-center h-10 mb-4 text-white lg:mb-0 lg:mr-4">
                         <svg
                             class="absolute top-1/2 left-3 w-5 h-5 -translate-y-1/2"
                             fill="currentColor"
@@ -35,8 +35,8 @@
                             </path>
                         </svg>
                         <form method="GET" action="/clips">
-                            <input 
-                                class="py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-orange-500"
+                            <input
+                                class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-orange-500"
                                 type="search"
                                 name="query"
                                 value="{{ request()->get('query') }}"
@@ -44,6 +44,9 @@
                                 maxlength="255"
                             />
                         </form>
+                        <button type="button" class="js-reset-search hidden absolute top-1/2 right-3 -translate-y-1/2">
+                            <span class="text-2xl leading-none">&times;</span>
+                        </button>
                     </div>
                     @unless(request()->filled('query'))
                     <div class="relative">

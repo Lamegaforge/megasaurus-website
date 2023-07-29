@@ -3,11 +3,34 @@
 document.addEventListener("DOMContentLoaded", () => {
     const filtersBtn = document.querySelector(".js-filters-btn");
     const filtersList = document.querySelector(".js-filters-list");
+    const searchInput = document.querySelector(".js-search-input");
+    const resetSearch = document.querySelector(".js-reset-search");
 
     /**
      * A more proper solution would be to call that file
      * only in /clips view.
      */
+    if (searchInput && resetSearch) {
+        searchInput.addEventListener("input", ({ target }) => {
+            if (target.value && target.value.length) {
+                resetSearch.classList.remove("hidden");
+                searchInput.classList.remove("pr-2");
+                searchInput.classList.add("has-reset");
+            } else {
+                resetSearch.classList.add("hidden");
+                searchInput.classList.add("pr-2");
+                searchInput.classList.remove("has-reset");
+            }
+        });
+
+        resetSearch.addEventListener("click", () => {
+            console.log("reset search");
+            searchInput.classList.remove("has-reset");
+            searchInput.value = "";
+            window.location.href="/clips";
+        });
+    }
+
     if (filtersBtn && filtersList) {
         if (window.localStorage.getItem("selected-filter") === null) {
             createSelectedSvg("views");
