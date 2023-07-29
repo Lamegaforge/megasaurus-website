@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Domain\Models\Clip;
+use App\Models\Clip;
 
 class ShowClipControllerTest extends TestCase
 {

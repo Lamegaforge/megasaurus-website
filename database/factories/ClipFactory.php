@@ -45,21 +45,30 @@ class ClipFactory extends Factory
     public function configure()
     {
         return $this->afterMaking(function (Clip $clip) {
-
-            if ($clip->author()->doesntExist()) {
-                $clip->author()->associate(Author::factory()->create());
-            }
-
-            if ($clip->game()->doesntExist()) {
-
-                $game = Game::inRandomOrder()->first();
-
-                if (! $game) {
-                    $game = Game::factory()->create();
-                }
-
-                $clip->game()->associate($game);
-            }
+            $this->associateDefaultAuthor($clip);
+            $this->associateDefaultGame($clip);
         });
+    }
+
+    private function associateDefaultAuthor(Clip $clip): void
+    {
+        if ($clip->author()->exists()) {
+            return;
+        }
+
+        $clip->author()->associate(Author::factory()->create());
+    }
+
+    private function associateDefaultGame(Clip $clip): void
+    {
+        if ($clip->game()->exists()) {
+            return;
+        }
+
+        $game = Game::inRandomOrder()->firstOr(function () {
+            return Game::factory()->create();
+        });
+
+        $clip->game()->associate($game);
     }
 }

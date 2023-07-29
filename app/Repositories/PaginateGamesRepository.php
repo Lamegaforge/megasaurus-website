@@ -17,7 +17,7 @@ class PaginateGamesRepository
                 'games.*',
                 DB::raw('COUNT(clips.id) as active_clips_count'),
             ])
-            ->leftJoin('clips', function ($join) use ($options) {
+            ->leftJoin('clips', function ($join) {
                 $join->on('games.id', '=', 'clips.game_id')
                     ->where('clips.state', ClipStateEnum::Ok);
             })

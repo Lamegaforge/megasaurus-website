@@ -4,8 +4,8 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use Domain\Models\Game;
-use Domain\Models\Clip;
+use App\Models\Game;
+use App\Models\Clip;
 
 class HomeControllerTest extends TestCase
 {

@@ -3,8 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Clip;
-use App\Enums\ClipStateEnum;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class SearchClipsRepository
 {
