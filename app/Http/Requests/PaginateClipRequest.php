@@ -26,6 +26,13 @@ class PaginateClipRequest extends FormRequest
         ];
     }
 
+    public function prepareForValidation(): void
+    {
+        $this->merge([
+            'sort' => $this->get('sort', 'clips.published_at'),
+        ]);
+    }
+
     public function itsASearch(): bool
     {
         return $this->filled('query');
