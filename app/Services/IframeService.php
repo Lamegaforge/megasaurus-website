@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\ValueObjects\Clip;
+use App\Models\Clip;
 use App\Storages\AutoplayStorage;
 
 class IframeService
@@ -16,7 +16,7 @@ class IframeService
     public function getSrc(Clip $clip): string
     {
         return $this->baseUrl
-            . 'embed?clip=' . $clip->externalId
+            . 'embed?clip=' . $clip->external_id
             . $this->transformParentsList()
             . $this->addAutoplayAttribute();
     }

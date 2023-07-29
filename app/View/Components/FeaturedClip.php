@@ -3,7 +3,7 @@
 namespace App\View\Components;
 
 use Closure;
-use App\ValueObjects\Clip;
+use App\Models\Clip;
 use App\Services\IframeService;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;

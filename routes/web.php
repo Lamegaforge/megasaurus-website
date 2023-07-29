@@ -1,6 +1,5 @@
 <?php
 
-use App\Storages\AutoplayStorage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShowClipController;
@@ -11,12 +10,6 @@ use App\Http\Controllers\ShowRandomClipController;
 use App\Http\Controllers\ToggleAutoplayController;
 
 Route::get('/', HomeController::class)->name('home');
-
-Route::get('check-autoplay', function () {
-    dd(
-        app(AutoplayStorage::class)->get(),
-    );
-});
 
 Route::get('toggle-autoplay', ToggleAutoplayController::class)->name('toggle-autoplay');
 
@@ -39,5 +32,5 @@ Route::prefix('games')
     ->as('games.')
     ->group(function () {
         Route::get('/', PaginateGameController::class)->name('index');
-        Route::get('{external_id}', ShowGameController::class)->name('show');
+        Route::get('{uuid}', ShowGameController::class)->name('show');
     });

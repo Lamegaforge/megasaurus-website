@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\PaginateGames;
+use App\Repositories\PaginateGamesRepository;
 use App\Http\Requests\PaginateGameRequest;
 use App\Repositories\Options\PaginationOption;
 use Illuminate\Support\Facades\View;
@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\View;
 class PaginateGameController extends Controller
 {
     public function __construct(
-        private PaginateGames $paginateGames,
+        private PaginateGamesRepository $paginateGamesRepository,
     ) {}
 
     public function __invoke(PaginateGameRequest $request)
     {
-        $games = $this->paginateGames->handle(
+        $games = $this->paginateGamesRepository->handle(
             PaginationOption::from(
                 attributes: $request->validated(),
             ),

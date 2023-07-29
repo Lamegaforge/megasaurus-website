@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Enums\AutoplayEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Routing\Redirector;
 
 class ToggleAutoplayController extends Controller
 {
+    public function __construct(
+        private Redirector $redirector,
+    ) {}
+
     public function __invoke(Request $request)
     {
         $identifier = AutoplayEnum::Cookie;
@@ -16,8 +21,6 @@ class ToggleAutoplayController extends Controller
 
         $cookie = Cookie::forever($identifier->value, (string) ! $autoplay);
 
-        return redirect()
-            ->back()
-            ->withCookie($cookie);
+        return $this->redirector->back()->withCookie($cookie);
     }
 }

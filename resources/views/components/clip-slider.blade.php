@@ -3,12 +3,15 @@
     <div class="splide__track">
         <ul class="splide__list">
             @foreach($items as $item)
-            <li class="splide__slide !mr-4">
-                <a href="{{ route('clips.show', $item->uuid) }}">
-                    {{-- <img src="{{ $item->thumbnail() }}" alt=""> --}}
-                    <img src="https://ad-vitam.fra1.cdn.digitaloceanspaces.com/megasaurus-dev/thumbnails/AliveDistinctGooseBCouch" alt="">
-                </a>
-            </li>
+            <a href="{{ route('clips.show', $item->uuid) }}" class="splide__slide block rounded group">
+                <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105">
+                    <img loading="lazy" class="rounded" src="{{ $item->thumbnail() }}">
+                </div>
+                <div class="mt-3 text-white">
+                    <p class="transition duration-200 ease-in-out group-hover:text-indigo-400">{{ $item->title }}</p>
+                    <p class="text-sm text-gray-300">{{ $item->game->name }}</p>
+                </div>
+            </a>
             @endforeach
         </ul>
     </div>

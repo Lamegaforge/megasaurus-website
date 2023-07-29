@@ -2,22 +2,30 @@
 
 namespace App\Storages;
 
-use App\Repositories\LatestAvailableClips;
+use App\Repositories\Options\PaginationOption;
+use App\Repositories\PaginateClipsRepository;
 use App\Services\TtlFactory;
 use Illuminate\Cache\CacheManager;
-use Illuminate\Support\Collection;
 
 class LatestAvailableClipsStorage
 {
     public function __construct(
-        private LatestAvailableClips $latestAvailableClips,
+        private PaginateClipsRepository $paginateClipsRepository,
         private CacheManager $cache,
     ) {}
 
-    public function get(): Collection
+    public function get(): array
     {
         return $this->cache->remember('latest_available_clips', TtlFactory::minutes(1), function () {
-            return $this->latestAvailableClips->handle();
+
+            $clips = $this->paginateClipsRepository->handle(
+                PaginationOption::from([
+                    'sort' => 'published_at',
+                    'per_page' => 20,
+                ]),
+            );
+
+            return $clips->items();
         });
     }
 }

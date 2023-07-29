@@ -21,6 +21,11 @@ return new class extends Migration
 
         Schema::table('clips', function (Blueprint $table) {
             $table->dropUnique('clips_external_id_unique');
+            $table->dropUnique('clips_uuid_unique');
+        });
+
+        Schema::table('games', function (Blueprint $table) {
+            $table->dropUnique('games_uuid_unique');
         });
     }
 
@@ -35,6 +40,10 @@ return new class extends Migration
 
         Schema::table('clips', function (Blueprint $table) {
             $table->unique('external_id');
+        });
+
+        Schema::table('games', function (Blueprint $table) {
+            $table->unique('uuid');
         });
     }
 };

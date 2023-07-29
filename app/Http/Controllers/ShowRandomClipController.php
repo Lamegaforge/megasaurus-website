@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Domain\Enums\ClipStateEnum;
-use Illuminate\Support\Facades\DB;
+use App\Repositories\GetRandomClipRepository;
+use Illuminate\Routing\Redirector;
 
 class ShowRandomClipController extends Controller
 {
+    public function __construct(
+        private GetRandomClipRepository $getRandomClipRepository,
+        private Redirector $redirector,
+    ) {}
+
     public function __invoke()
     {
-        $clip = DB::table('clips')
-            ->where('state', ClipStateEnum::Ok)
-            ->inRandomOrder()
-            ->first();
+        $clip = $this->getRandomClipRepository->handle();
 
-        return to_route('clips.show', $clip->uuid);
+        return $this->redirector->route('clips.show', $clip->uuid);
     }
 }
