@@ -21,7 +21,7 @@ class LatestAvailableClipsStorage
             $clips = $this->paginateClipsRepository->handle(
                 PaginationOption::from([
                     'sort' => 'published_at',
-                    'per_page' => 30,
+                    'per_page' => 20,
                 ]),
             );
 

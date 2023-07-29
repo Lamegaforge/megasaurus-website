@@ -21,7 +21,7 @@ class LatestGamesStorage
             $games = $this->paginateGamesRepository->handle(
                 PaginationOption::from([
                     'sort' => 'games.created_at',
-                    'per_page' => 30,
+                    'per_page' => 12,
                 ]),
             );
 
