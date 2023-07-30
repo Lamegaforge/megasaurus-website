@@ -10,14 +10,13 @@ class FeaturedClipRepository
 
     public function handle(): Clip
     {
-        $clip = Clip::with('game', 'author')
+        $clips = Clip::with('game', 'author')
             ->displayable()
             ->where('views', '>=', self::MinimumViewsToBeFeatured)
             ->latest('published_at')
             ->limit(50)
-            ->inRandomOrder()
-            ->firstOrFail();
+            ->get();
 
-        return $clip;
+        return $clips->random();
     }
 }
