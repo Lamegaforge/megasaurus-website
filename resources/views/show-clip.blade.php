@@ -19,9 +19,10 @@
     <x-nav />
     <main class="mt-[84px] lg:mt-[68px] mb-10">
         <section class="relative flex items-center mb-6 lg:h-[600px]">
-            <x-featured-clip 
-                :featuredClip="$clip" 
-                :infos="true">
+            <x-featured-clip
+                :featuredClip="$clip"
+                :infos="true"
+            >
             </x-featured-clip>
         </section>
 
