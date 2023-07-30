@@ -23,14 +23,14 @@ class ShowGameController extends Controller
 
         $popularGameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([
-                'gameId' => $game->uuid,
+                'game_uuid' => $game->uuid,
                 'sort' => 'clips.views',
             ]),
         );
 
         $gameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([
-                'gameId' => $game->uuid,
+                'game_uuid' => $game->uuid,
                 'sort' => 'clips.published_at',
             ]),
         );

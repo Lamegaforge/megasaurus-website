@@ -7,7 +7,7 @@ use App\Models\Clip;
 use App\Repositories\FeaturedClipRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Domain\Enums\ClipStateEnum;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class FeaturedClipRepositoryTest extends TestCase 
 {
@@ -32,10 +32,10 @@ class FeaturedClipRepositoryTest extends TestCase
     {
         Clip::factory()
             ->create([
-                'views' => 29,
+                'views' => 19,
             ]);
 
-        $this->expectException(NotFoundHttpException::class);
+        $this->expectException(ModelNotFoundException::class);
 
         app(FeaturedClipRepository::class)->handle();
     }
@@ -53,7 +53,7 @@ class FeaturedClipRepositoryTest extends TestCase
                 'state' => $state,
             ]);
 
-        $this->expectException(NotFoundHttpException::class);
+        $this->expectException(ModelNotFoundException::class);
 
         app(FeaturedClipRepository::class)->handle();
     }

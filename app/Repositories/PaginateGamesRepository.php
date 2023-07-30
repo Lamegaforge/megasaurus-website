@@ -25,8 +25,8 @@ class PaginateGamesRepository
             ->havingRaw('active_clips_count > 0');
 
 
-        $query->when($options->gameId, function ($query, $gameId) {
-            $query->where('game_id', $gameId);
+        $query->when($options->gameUuid, function ($query, $gameUuid) {
+            $query->where('game.uuid', $gameUuid);
         });
 
         $query->when($options->sort, function ($query, $sort) {
