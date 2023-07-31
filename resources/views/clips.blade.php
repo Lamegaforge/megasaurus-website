@@ -70,22 +70,22 @@
                             <div class="overflow-hidden">
                                 <ul class="mt-1 p-2 bg-zinc-700 rounded-lg lg:mt-2">
                                     <li class="mb-3">
-                                        <button
+                                        <a
+                                            href="/clips?sort=views"
                                             data-filter="views"
-                                            type="button"
                                             class="flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
                                         ">
                                             <span>Nombre de vues</span>
-                                        </button>
+                                        </a>
                                     </li>
                                     <li>
-                                        <button
+                                        <a
+                                            href="/clips?sort=published_at"
                                             data-filter="dates"
-                                            type="button"
                                             class="js-dates flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
                                         ">
                                             <span>Dates</span>
-                                        </button>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
