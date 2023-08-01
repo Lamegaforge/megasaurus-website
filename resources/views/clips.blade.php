@@ -50,7 +50,11 @@
                     </div>
                     @unless(request()->filled('query'))
                     <div class="relative">
-                        <button class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-orange-500" type="button">
+                        <button
+                            class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-orange-500"
+                            type="button"
+                            data-selected-filter="{{ request()->input('sort') }}"
+                        >
                             <svg
                                 class="w-5 h-5"
                                 fill="none"
@@ -81,7 +85,7 @@
                                     <li>
                                         <a
                                             href="/clips?sort=published_at"
-                                            data-filter="dates"
+                                            data-filter="published_at"
                                             class="js-dates flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
                                         ">
                                             <span>Dates</span>

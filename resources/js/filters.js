@@ -31,11 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (filtersBtn && filtersList) {
-        if (window.localStorage.getItem("selected-filter") === null) {
-            createSelectedSvg("views");
+        let currentFilter;
+        const selectedFilter = filtersBtn.dataset.selectedFilter;
+
+        if (selectedFilter === "") {
+            currentFilter = "published_at";
+        } else if (selectedFilter === "published_at") {
+            currentFilter = "published_at";
         } else {
-            createSelectedSvg(window.localStorage.getItem("selected-filter"));
+            currentFilter = "views";
         }
+
+        createSelectedSvg(currentFilter);
 
         document.addEventListener("click", ({ target }) => {
             if (!filtersList.contains(target) && !filtersBtn.contains(target) && filtersList.classList.contains("is-open")) {
@@ -47,26 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
             filtersList.classList.toggle("is-open");
         });
 
-        filtersList.addEventListener("click", ({ target }) => {
-            const clickedFilterBtn = target.closest("button");
-
-
-            if (clickedFilterBtn === null) {
-                return;
-            }
-            
-            if (clickedFilterBtn.classList.contains("js-selected")) {
-                return;
-            } else {
-                clickedFilterBtn.classList.add("js-selected");
-
-                window.localStorage.setItem("selected-filter", clickedFilterBtn.dataset.filter);
-                window.location.reload();
-            }
-        });
-
-        function createSelectedSvg (filter) {
-            const buttonSelector = document.querySelector(`[data-filter=${filter}]`);
+        function createSelectedSvg (selectedFilter) {
+            const buttonSelector = document.querySelector(`[data-filter=${selectedFilter}]`);
             buttonSelector.classList.add("js-selected");
 
             const selectedSvg = document.createElement("span");
