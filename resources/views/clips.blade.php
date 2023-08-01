@@ -119,7 +119,9 @@
                 </div>
                 @endforeach
             </div>
-            {{ $clips->links('pagination::tailwind') }}
+            {{ $clips->appends([
+                'sort' => request()->input('sort')
+            ])->links('pagination::tailwind') }}
             @endif
         </section>
     </main>
