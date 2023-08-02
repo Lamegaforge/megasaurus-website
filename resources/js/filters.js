@@ -34,12 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentFilter;
         const selectedFilter = filtersBtn.dataset.selectedFilter;
 
-        if (selectedFilter === "") {
-            currentFilter = "published_at";
-        } else if (selectedFilter === "published_at") {
-            currentFilter = "published_at";
-        } else {
+        if (selectedFilter === "views") {
             currentFilter = "views";
+        } else {
+            currentFilter = "published_at";
         }
 
         createSelectedSvg(currentFilter);
