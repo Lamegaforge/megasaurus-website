@@ -21,9 +21,7 @@ class PaginateGameController extends Controller
             ),
         );
 
-        // dd($games);
-
-        return View::make('show-game', [
+        return View::make('games', [
             'games' => $games,
         ]);
     }
