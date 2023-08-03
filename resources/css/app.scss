@@ -240,7 +240,6 @@ main {
 .filters-list {
     @apply grid;
     grid-template-rows: 1fr;
-    transition: grid-template-rows 0.3s ease-in;
 
     &:not(.is-open) {
         grid-template-rows: 0fr;
