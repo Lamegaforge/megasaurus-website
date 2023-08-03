@@ -89,17 +89,19 @@ main {
     .menu-link {
         &::after {
             content: "";
-            @apply block;
-            @apply h-0.5;
-            @apply mt-1;
-            @apply bg-orange-500 rounded-4;
-            @apply scale-x-0;
-            transition: transform 0.2s ease-in;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            opacity: 0;
+            background-color: theme("colors.indigo.400");
+            transition: opacity 0.2s ease-in;
         }
 
         &:hover::after,
         &:focus::after {
-            @apply scale-x-100;
+            opacity: 1;
         }
     }
 }

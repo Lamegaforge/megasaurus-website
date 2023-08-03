@@ -12,25 +12,25 @@
         </div>
         <div class="js-menu submenu pb-4 lg:pb-0">
             <ul class="overflow-hidden lg:flex lg:items-center">
-                <li class="mb-2 lg:mr-3 lg:mb-0">
+                <li class="mb-2 lg:h-full lg:mr-3 lg:mb-0">
                     <a
-                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-slate-500 lg:pl-0 lg:active:bg-transparent"
+                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent"
                         href="{{ route('clips.index') }}"
                     >
                         Clips
                     </a>
                 </li>
-                <li class="mb-2 lg:mr-3 lg:mb-0">
+                <li class="mb-2 lg:h-full lg:mr-3 lg:mb-0">
                     <a
-                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-slate-500 lg:pl-0 lg:active:bg-transparent"
+                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent"
                         href="{{ route('games.index') }}"
                     >
                         Jeux
                     </a>
                 </li>
-                <li>
+                <li class="lg:h-full">
                     <a
-                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-slate-500 lg:pl-0 lg:active:bg-transparent"
+                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent"
                         href="{{ route('clips.random') }}"
                     >
                         Aléatoire
