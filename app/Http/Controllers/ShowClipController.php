@@ -6,6 +6,7 @@ use App\Repositories\PaginateClipsRepository;
 use App\Repositories\FindDisplayableClipRepository;
 use App\Repositories\Options\PaginationOption;
 use Illuminate\Support\Facades\View;
+use App\Dtos\Uuid;
 
 class ShowClipController extends Controller
 {
@@ -14,9 +15,11 @@ class ShowClipController extends Controller
         private PaginateClipsRepository $paginateClipsRepository,
     ) {}
 
-    public function __invoke(string $id)
+    public function __invoke(string $uuid)
     {
-        $clip = $this->findDisplayableClipRepository->handle($id);
+        $clip = $this->findDisplayableClipRepository->handle(
+            Uuid::fromString($uuid),
+        );
 
         $randomGameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([

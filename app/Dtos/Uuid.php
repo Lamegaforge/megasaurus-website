@@ -5,7 +5,7 @@ namespace App\Dtos;
 use Stringable;
 use App\Services\Assert;
 
-readonly final class Hook implements Stringable
+readonly final class Uuid implements Stringable
 {
     public function __construct(
         public string $value,
