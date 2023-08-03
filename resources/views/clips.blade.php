@@ -50,7 +50,11 @@
                     </div>
                     @unless(request()->filled('query'))
                     <div class="relative">
-                        <button class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-orange-500" type="button">
+                        <button
+                            class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-orange-500"
+                            type="button"
+                            data-selected-filter="{{ request()->input('sort') }}"
+                        >
                             <svg
                                 class="w-5 h-5"
                                 fill="none"
@@ -70,22 +74,22 @@
                             <div class="overflow-hidden">
                                 <ul class="mt-1 p-2 bg-zinc-700 rounded-lg lg:mt-2">
                                     <li class="mb-3">
-                                        <button
+                                        <a
+                                            href="/clips?sort=views"
                                             data-filter="views"
-                                            type="button"
                                             class="flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
                                         ">
                                             <span>Nombre de vues</span>
-                                        </button>
+                                        </a>
                                     </li>
                                     <li>
-                                        <button
-                                            data-filter="dates"
-                                            type="button"
+                                        <a
+                                            href="/clips?sort=published_at"
+                                            data-filter="published_at"
                                             class="js-dates flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
                                         ">
                                             <span>Dates</span>
-                                        </button>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -119,7 +123,9 @@
                 </div>
                 @endforeach
             </div>
-            {{ $clips->links('pagination::tailwind') }}
+            {{ $clips->appends([
+                'sort' => request()->input('sort')
+            ])->links('pagination::tailwind') }}
             @endif
         </section>
     </main>

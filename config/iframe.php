@@ -6,7 +6,7 @@ return [
         'localhost',
         'website.megasaurus.test',
         'website.megasaurus.fr',
-        'clean.megasaurus.fr',
         'megasaurus.fr',
+        'preprod.megasaurus.fr',
     ],
 ];
