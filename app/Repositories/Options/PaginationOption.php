@@ -2,8 +2,6 @@
 
 namespace App\Repositories\Options;
 
-use App\Enums\ClipStateEnum;
-
 readonly final class PaginationOption
 {
     public function __construct(
@@ -23,7 +21,7 @@ readonly final class PaginationOption
      *    random?: boolean,
      * } $attributes
      */
-    public static function from(array $attributes): self
+    public static function from(array $attributes = []): self
     {
         return new self(
             gameUuid: data_get($attributes, 'game_uuid'),
