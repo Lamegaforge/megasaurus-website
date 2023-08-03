@@ -152,15 +152,6 @@ main {
 }
 
 @screen lg {
-    .logo-text {
-        transition: text-shadow 0.2s ease-out;
-
-        &:hover,
-        &:focus {
-            text-shadow: 1px 1px 2px theme("colors.slate[200]");
-        }
-    }
-
     .arrow {
         &--prev {
             @apply -left-5;
