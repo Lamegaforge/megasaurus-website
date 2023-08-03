@@ -36,7 +36,7 @@
                         </svg>
                         <form method="GET" action="/clips">
                             <input
-                                class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-orange-500"
+                                class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-indigo-400"
                                 type="search"
                                 name="query"
                                 value="{{ request()->get('query') }}"
@@ -51,7 +51,7 @@
                     @unless(request()->filled('query'))
                     <div class="relative">
                         <button
-                            class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-orange-500"
+                            class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-indigo-400"
                             type="button"
                             data-selected-filter="{{ request()->input('sort') }}"
                         >
@@ -77,7 +77,7 @@
                                         <a
                                             href="/clips?sort=views"
                                             data-filter="views"
-                                            class="flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
+                                            class="flex items-center text-white lg:hover:text-indigo-400 focus:text-indigo-400 transition-colors ease-in-out duration-200
                                         ">
                                             <span>Nombre de vues</span>
                                         </a>
@@ -86,7 +86,7 @@
                                         <a
                                             href="/clips?sort=published_at"
                                             data-filter="published_at"
-                                            class="js-dates flex items-center text-white lg:hover:text-orange-500 focus:text-orange-500 transition-colors ease-in-out duration-200
+                                            class="js-dates flex items-center text-white lg:hover:text-indigo-400 focus:text-indigo-400 transition-colors ease-in-out duration-200
                                         ">
                                             <span>Dates</span>
                                         </a>

@@ -117,7 +117,7 @@ main {
     }
 
     &:not([disabled]) {
-        @apply lg:bg-white/80;
+        background-color: theme("colors.white");
         transition-property: transform, border-color, background-color;
         transition-duration: 0.2s;
         transition-timing-function: ease-out;
@@ -125,12 +125,13 @@ main {
         &:hover,
         &:focus {
             transform: translateY(-50%) scale(1.4);
-            @apply border-amber-600 bg-white;
+            border-color: theme("colors.indigo.400");
+            background-color: theme("colors.slate.800");
         }
 
         &:hover svg,
         &:focus svg {
-            @apply fill-amber-600;
+            fill: theme("colors.indigo.400");
 
         }
 
@@ -170,35 +171,10 @@ main {
             transition: color 0.2s ease-in;
         }
 
-        &:hover .tooltip,
-        &:focus .tooltip {
-            @apply opacity-100;
-            transform: translateX(-50%) translateY(-60px);
-        }
-
         &:hover svg,
         &:focus svg {
-            @apply text-orange-500;
+            @apply text-indigo-400;
         }
-    }
-}
-
-.tooltip {
-    position: absolute !important;
-    @apply top-1/2 left-1/2;
-    @apply opacity-0;
-    @apply -translate-x-1/2 -translate-y-1/2;
-    transition: opacity transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in;
-
-    &::after {
-        content: '';
-        @apply absolute left-1/2;
-        bottom: -6px;
-        @apply w-0 h-0;
-        @apply border-t-6 border-t-orange-500 border-r-6 border-r-transparent border-l-6 border-l-transparent;
-        @apply -translate-x-1/2;
     }
 }
 
@@ -226,7 +202,7 @@ main {
 
     &:hover,
     &:focus {
-        @apply text-orange-500
+        @apply text-indigo-500
     }
 }
 
