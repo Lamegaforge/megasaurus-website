@@ -21,7 +21,7 @@ class PaginateClipRequest extends FormRequest
             'game_uuid' => 'nullable|string|max:255',
             'sort' => [
                 'nullable',
-                Rule::in(['clips.views', 'clips.published_at']),
+                Rule::in(['views', 'published_at']),
             ],
         ];
     }
@@ -29,7 +29,7 @@ class PaginateClipRequest extends FormRequest
     public function prepareForValidation(): void
     {
         $this->merge([
-            'sort' => $this->get('sort', 'clips.published_at'),
+            'sort' => $this->get('sort', 'published_at'),
         ]);
     }
 
