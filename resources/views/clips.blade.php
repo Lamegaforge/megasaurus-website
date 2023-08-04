@@ -100,7 +100,9 @@
             </div>
 
             @if($clips->isEmpty())
-            <div class="py-16 text-white text-center">Aucun résultat 🦕</div>
+            <div class="py-16 text-center">
+                <p class="text-white">Aucun résultat 🦕</p>
+            </div>
             @else
             <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($clips as $clip)
