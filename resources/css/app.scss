@@ -100,7 +100,8 @@ main {
         }
 
         &:hover::after,
-        &:focus::after {
+        &:focus::after,
+        &-active::after {
             opacity: 1;
         }
     }
