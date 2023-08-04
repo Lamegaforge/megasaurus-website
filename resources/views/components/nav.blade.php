@@ -1,3 +1,6 @@
+@php
+    $currentRouteName = Route::currentRouteName();
+@endphp
 <nav class="overflow-hidden fixed top-0 right-0 left-0 z-30 bg-slate-800">
     <div class="container mx-auto lg:flex">
         <div class="flex justify-between items-center p-4 lg:block lg:justify-start lg:mr-4">
