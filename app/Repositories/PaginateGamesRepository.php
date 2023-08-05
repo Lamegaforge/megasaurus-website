@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\Game;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use App\Repositories\Options\PaginationOption;
@@ -13,17 +12,9 @@ class PaginateGamesRepository
     public function handle(PaginationOption $options): LengthAwarePaginator
     {
         $query = Game::query()
-            ->select([
-                'games.*',
-                DB::raw('COUNT(clips.id) as active_clips_count'),
-            ])
-            ->leftJoin('clips', function ($join) {
-                $join->on('games.id', '=', 'clips.game_id')
-                    ->where('clips.state', ClipStateEnum::Ok);
-            })
-            ->groupBy('games.uuid')
-            ->havingRaw('active_clips_count > 0');
-
+            ->whereHas('clips', function ($query) {
+                $query->where('state', ClipStateEnum::Ok);
+            });
 
         $query->when($options->gameUuid, function ($query, $gameUuid) {
             $query->where('game.uuid', $gameUuid);
