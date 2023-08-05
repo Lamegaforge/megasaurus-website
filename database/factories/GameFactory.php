@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Game;
+use App\Models\Clip;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Game>
@@ -22,5 +22,12 @@ class GameFactory extends Factory
             'external_id' => fake()->randomNumber(8, true),
             'name' => fake()->name(),
         ];
+    }
+
+    public function withClips(int $nb): self
+    {
+        return $this->has(
+            Clip::factory()->count($nb),
+        );
     }
 }
