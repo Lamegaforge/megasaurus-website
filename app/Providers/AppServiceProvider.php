@@ -7,6 +7,7 @@ use App\Services\Space\ThumbnailService;
 use App\Services\Space\CardService;
 use App\Services\IframeService;
 use App\Storages\AutoplayStorage;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -43,6 +44,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Carbon::setLocale('fr');
     }
 }
