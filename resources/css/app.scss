@@ -89,17 +89,20 @@ main {
     .menu-link {
         &::after {
             content: "";
-            @apply block;
-            @apply h-0.5;
-            @apply mt-1;
-            @apply bg-orange-500 rounded-4;
-            @apply scale-x-0;
-            transition: transform 0.2s ease-in;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            opacity: 0;
+            background-color: theme("colors.indigo.400");
+            transition: opacity 0.2s ease-in;
         }
 
         &:hover::after,
-        &:focus::after {
-            @apply scale-x-100;
+        &:focus::after,
+        &-active::after {
+            opacity: 1;
         }
     }
 }
@@ -115,7 +118,7 @@ main {
     }
 
     &:not([disabled]) {
-        @apply lg:bg-white/80;
+        background-color: theme("colors.white");
         transition-property: transform, border-color, background-color;
         transition-duration: 0.2s;
         transition-timing-function: ease-out;
@@ -123,12 +126,13 @@ main {
         &:hover,
         &:focus {
             transform: translateY(-50%) scale(1.4);
-            @apply border-amber-600 bg-white;
+            border-color: theme("colors.indigo.400");
+            background-color: theme("colors.slate.800");
         }
 
         &:hover svg,
         &:focus svg {
-            @apply fill-amber-600;
+            fill: theme("colors.indigo.400");
 
         }
 
@@ -152,15 +156,6 @@ main {
 }
 
 @screen lg {
-    .logo-text {
-        transition: text-shadow 0.2s ease-out;
-
-        &:hover,
-        &:focus {
-            text-shadow: 1px 1px 2px theme("colors.slate[200]");
-        }
-    }
-
     .arrow {
         &--prev {
             @apply -left-5;
@@ -177,35 +172,10 @@ main {
             transition: color 0.2s ease-in;
         }
 
-        &:hover .tooltip,
-        &:focus .tooltip {
-            @apply opacity-100;
-            transform: translateX(-50%) translateY(-60px);
-        }
-
         &:hover svg,
         &:focus svg {
-            @apply text-orange-500;
+            @apply text-indigo-400;
         }
-    }
-}
-
-.tooltip {
-    position: absolute !important;
-    @apply top-1/2 left-1/2;
-    @apply opacity-0;
-    @apply -translate-x-1/2 -translate-y-1/2;
-    transition: opacity transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in;
-
-    &::after {
-        content: '';
-        @apply absolute left-1/2;
-        bottom: -6px;
-        @apply w-0 h-0;
-        @apply border-t-6 border-t-orange-500 border-r-6 border-r-transparent border-l-6 border-l-transparent;
-        @apply -translate-x-1/2;
     }
 }
 
@@ -233,14 +203,13 @@ main {
 
     &:hover,
     &:focus {
-        @apply text-orange-500
+        @apply text-indigo-500
     }
 }
 
 .filters-list {
     @apply grid;
     grid-template-rows: 1fr;
-    transition: grid-template-rows 0.3s ease-in;
 
     &:not(.is-open) {
         grid-template-rows: 0fr;
@@ -258,4 +227,9 @@ main {
     &.has-reset {
         padding-right: 2.625rem;
     }
+}
+
+.js-has-svg {
+    margin-left: 4px;
+    color: theme("colors.indigo.400");
 }
