@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\Enums\ClipStateEnum;
+use Domain\Enums\ClipStateEnum;
 
 class LatestGamesRepository
 {

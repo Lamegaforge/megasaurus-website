@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Dtos\Uuid;
 use Illuminate\Support\Facades\DB;
 use App\Models\Game;
-use App\Enums\ClipStateEnum;
+use Domain\Enums\ClipStateEnum;
 
 class FindDisplayableGameRepository
 {

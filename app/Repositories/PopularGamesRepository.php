@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Game;
-use App\Enums\ClipStateEnum;
+use Domain\Enums\ClipStateEnum;
 
 class PopularGamesRepository
 {

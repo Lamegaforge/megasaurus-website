@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Game;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use App\Repositories\Options\PaginationOption;
-use App\Enums\ClipStateEnum;
+use Domain\Enums\ClipStateEnum;
 
 class PaginateGamesRepository
 {
