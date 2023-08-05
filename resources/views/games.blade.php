@@ -24,7 +24,7 @@
             <div class="grid grid-cols-1 gap-y-4 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
                 @foreach ($games as $game)
                     <div>
-                        <a href="{{ route('clips.show', $game->uuid) }}" class="block group">
+                        <a href="{{ route('games.show', $game->uuid) }}" class="block group">
                             <img loading="lazy" class="rounded" src="{{ $game->card() }}" alt="">
                             <p class="mt-3 transition duration-200 ease-in-out group-hover:text-indigo-400 group-focus:text-indigo-400 text-white">{{ $game->name }}</p>
                         </a>
