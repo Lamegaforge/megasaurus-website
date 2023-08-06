@@ -31,10 +31,6 @@ class PaginateGamesRepository
             $query->inRandomOrder();
         });
 
-        $query->when($options->excludeGames, function ($query, $excludeGames) {
-            $query->whereNotIn('uuid', $excludeGames);
-        });
-
         return $query->paginate($options->perPage);
     }
 }

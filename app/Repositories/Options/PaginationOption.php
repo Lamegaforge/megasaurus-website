@@ -10,7 +10,6 @@ readonly final class PaginationOption
         public ?string $sort,
         public bool $random,
         public int $perPage,
-        public array $excludeGames = [],
     ) {}
 
     /**
@@ -30,9 +29,6 @@ readonly final class PaginationOption
             sort: data_get($attributes, 'sort'),
             random: (bool) data_get($attributes, 'random', false),
             perPage: data_get($attributes, 'per_page', 12),
-            excludeGames: [
-                config('app.game_nowhere_uuid'),
-            ],
         );
     }
 }
