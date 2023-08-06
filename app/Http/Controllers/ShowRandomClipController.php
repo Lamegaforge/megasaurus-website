@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\GetRandomClipRepository;
+use App\Repositories\PaginateClipsRepository;
 use Illuminate\Routing\Redirector;
+use App\Repositories\Options\PaginationOption;
 
 class ShowRandomClipController extends Controller
 {
     public function __construct(
-        private GetRandomClipRepository $getRandomClipRepository,
+        private PaginateClipsRepository $paginateClipsRepository,
         private Redirector $redirector,
     ) {}
 
     public function __invoke()
     {
-        $clip = $this->getRandomClipRepository->handle();
+        $paginator = $this->paginateClipsRepository->handle(
+            PaginationOption::from([
+                'random' => true,
+                'per_page' => 1,
+            ]),
+        );
 
-        return $this->redirector->route('clips.show', $clip->uuid);
+        $clips = $paginator->items();
+
+        return $this->redirector->route(
+            'clips.show',
+            $clips[0]->uuid,
+        );
     }
 }
