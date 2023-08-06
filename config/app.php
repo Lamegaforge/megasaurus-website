@@ -189,4 +189,14 @@ return [
     'cdn_url' => env('CDN_URL'),
     'cdn_env_folder' => env('CDN_ENV_FOLDER'),
 
+    /**
+     * "Nowhere" is the name of the game we've created to welcome orphan clips.
+     * 
+     * An orphan clip is a clip that is no longer attached to a game on the Twitch api.
+     * 
+     * This game collects a lot of clips and we want to be able to identify 
+     * it to exclude it from certain paginations.
+     */
+    'game_nowhere_uuid' => '5f31a71e-5a0b-4369-9cb9-080c9f84e761',
+
 ];
