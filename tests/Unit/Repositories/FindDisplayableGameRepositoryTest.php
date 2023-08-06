@@ -46,11 +46,12 @@ class FindDisplayableGameRepositoryTest extends TestCase
 
     /**
      * @test
+     * @dataProvider unavailableClipsStatesProvider
      */
-    public function game_must_have_available_clips_to_be_found(): void
+    public function game_must_have_available_clips_to_be_found(ClipStateEnum $state): void
     {
         $clip = Clip::factory()
-            ->withState(ClipStateEnum::Suspicious)
+            ->withState($state)
             ->create();
 
         $this->expectException(ModelNotFoundException::class);
@@ -58,5 +59,13 @@ class FindDisplayableGameRepositoryTest extends TestCase
         app(FindDisplayableGameRepository::class)->handle(
             uuid: Uuid::fromGame($clip->game),
         );
+    }
+
+    public static function unavailableClipsStatesProvider(): array
+    {
+        return [
+            [ClipStateEnum::Suspicious],
+            [ClipStateEnum::Disable],
+        ];
     }
 }

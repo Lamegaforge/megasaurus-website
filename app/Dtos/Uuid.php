@@ -4,6 +4,7 @@ namespace App\Dtos;
 
 use Stringable;
 use App\Models\Game;
+use App\Models\Clip;
 use App\Services\Assert;
 
 readonly final class Uuid implements Stringable
@@ -22,6 +23,11 @@ readonly final class Uuid implements Stringable
     public static function fromGame(Game $game): self
     {
         return new self($game->uuid);
+    }
+
+    public static function fromClip(Clip $clip): self
+    {
+        return new self($clip->uuid);
     }
 
     public function __toString(): string
