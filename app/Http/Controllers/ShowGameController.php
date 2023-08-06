@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Dtos\Hook;
+use App\Dtos\Uuid;
 use App\Repositories\PaginateClipsRepository;
 use Illuminate\Support\Facades\View;
 use App\Repositories\FindDisplayableGameRepository;
@@ -18,19 +18,19 @@ class ShowGameController extends Controller
     public function __invoke(string $uuid)
     {
         $game = $this->findDisplayableGameRepository->handle(
-            Hook::fromString($uuid),
+            Uuid::fromString($uuid),
         );
 
         $popularGameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([
-                'gameId' => $game->uuid,
+                'game_uuid' => $game->uuid,
                 'sort' => 'clips.views',
             ]),
         );
 
         $gameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([
-                'gameId' => $game->uuid,
+                'game_uuid' => $game->uuid,
                 'sort' => 'clips.published_at',
             ]),
         );

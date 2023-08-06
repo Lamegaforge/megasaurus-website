@@ -11,12 +11,12 @@ class PaginateClipsRepository
     public function handle(PaginationOption $options): LengthAwarePaginator
     {
         $query = Clip::query()
-            ->with('game', 'author')
-            ->displayable();
-
-        $query->when($options->gameId, function ($query, $gameId) {
-            $query->where('game_id', $gameId);
-        });
+            ->with('author')
+            ->withWhereHas('game', function ($query) use ($options) {
+                $query->when($options->gameUuid, function ($query, $gameUuid) {
+                    $query->where('games.uuid', $gameUuid);
+                });
+            })->displayable();
 
         $query->when($options->sort, function ($query, $sort) {
             $query->orderByDesc($sort);

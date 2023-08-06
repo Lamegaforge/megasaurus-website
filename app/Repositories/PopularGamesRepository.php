@@ -3,17 +3,17 @@
 namespace App\Repositories;
 
 use App\Models\Game;
-use App\Enums\ClipStateEnum;
+use Domain\Enums\ClipStateEnum;
 
 class PopularGamesRepository
 {
     public function handle()
     {
         return Game::query()
-            ->withCount(['clips as active_clips_count' => function ($query) {
+            ->withCount(['clips' => function ($query) {
                 $query->where('state', ClipStateEnum::Ok);
             }])
-            ->orderBy('active_clips_count', 'DESC')
+            ->orderBy('clips_count', 'DESC')
             ->take(12)
             ->get();
     }

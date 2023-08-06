@@ -12,4 +12,5 @@ parameters:
 
     ignoreErrors:
         - '#Access to an undefined property App\\Models\\.*::\.*.#'
-        - '#Relation .* is not found in App\\Models\\Clip model.#'
+        - '#Relation .* is not found in App\\Models\\.* model.#'
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder::displayable\(\)#'

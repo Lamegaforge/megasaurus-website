@@ -17,11 +17,23 @@ class PaginateGameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'search' => 'nullable|string|max:255',
+            'query' => 'nullable|string|max:255',
             'sort' => [
                 'nullable',
-                Rule::in(['active_clips_count', 'games.created_at']),
+                Rule::in(['clips_count', 'created_at']),
             ],
         ];
+    }
+
+    public function prepareForValidation(): void
+    {
+        $this->merge([
+            'sort' => $this->get('sort', 'created_at'),
+        ]);
+    }
+
+    public function itsASearch(): bool
+    {
+        return $this->filled('query');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\ClipStateEnum;
+use Domain\Enums\ClipStateEnum;
 use Laravel\Scout\Searchable;
 use App\Services\Space\ThumbnailService;
 use Carbon\Carbon;

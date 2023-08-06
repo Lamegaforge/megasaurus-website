@@ -3,11 +3,10 @@
 namespace App\Repositories;
 
 use App\Models\Clip;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class FeaturedClipRepository
 {
-    public const MinimumViewsToBeFeatured = 40;
+    public const MinimumViewsToBeFeatured = 20;
 
     public function handle(): Clip
     {
@@ -18,12 +17,6 @@ class FeaturedClipRepository
             ->limit(50)
             ->get();
 
-        if ($clips->isEmpty()) {
-            throw new NotFoundHttpException();
-        }
-
-        $clips->random();
-
-        return $clips->first();
+        return $clips->random();
     }
 }
