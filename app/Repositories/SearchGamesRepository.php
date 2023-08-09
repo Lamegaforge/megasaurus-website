@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Game;
 use Domain\Enums\ClipStateEnum;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchGamesRepository
 {
@@ -12,12 +12,28 @@ class SearchGamesRepository
     {
         $games = Game::search($search)
             ->query(function ($builder) {
+
+                $resolveCurrentPage = LengthAwarePaginator::resolveCurrentPage();
+
+                if ($resolveCurrentPage === 1) {
+                    $skip = 0;
+                }
+                else {
+                    $skip = $resolveCurrentPage * 12;
+                }
+
                 $builder->whereHas('clips', function ($query) {
                     $query->where('state', ClipStateEnum::Ok);
-                });
+                })
+                ->skip($skip)
+                ->limit(12);
             })
-            ->paginate(12);
+            ->get();
 
-        return $games;
+        return new LengthAwarePaginator(
+            items: $games,
+            total: count($games),
+            perPage: 12, 
+        );
     }
 }
