@@ -15,7 +15,7 @@ class SearchGamesRepository
                 $builder->whereHas('clips', function ($query) {
                     $query->where('state', ClipStateEnum::Ok);
                 })
-                ->limit(30);
+                ->limit(24);
             })
             ->get();
     }
