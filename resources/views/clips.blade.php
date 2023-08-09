@@ -20,13 +20,13 @@
                             clip-rule="evenodd">
                         </path>
                     </svg>
-                    <form method="GET" action="/clips">
+                    <form method="GET" action="{{ route('clips.index') }}">
                         <input
                             class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-indigo-400"
                             type="search"
                             name="query"
                             value="{{ request()->get('query') }}"
-                            placeholder="Rechercher un jeu"
+                            placeholder="Rechercher un clip"
                             maxlength="255"
                         />
                     </form>
