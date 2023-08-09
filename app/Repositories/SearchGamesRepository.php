@@ -8,32 +8,15 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchGamesRepository
 {
-    public function handle(string $search): LengthAwarePaginator
+    public function handle(string $search)
     {
-        $games = Game::search($search)
+        return Game::search($search)
             ->query(function ($builder) {
-
-                $resolveCurrentPage = LengthAwarePaginator::resolveCurrentPage();
-
-                if ($resolveCurrentPage === 1) {
-                    $skip = 0;
-                }
-                else {
-                    $skip = $resolveCurrentPage * 12;
-                }
-
                 $builder->whereHas('clips', function ($query) {
                     $query->where('state', ClipStateEnum::Ok);
                 })
-                ->skip($skip)
-                ->limit(12);
+                ->limit(30);
             })
             ->get();
-
-        return new LengthAwarePaginator(
-            items: $games,
-            total: count($games),
-            perPage: 12, 
-        );
     }
 }

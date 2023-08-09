@@ -113,9 +113,11 @@
                         </a>
                     @endforeach
                 </div>
+                @unless(request()->filled('query'))
                 {{ $games->appends([
                     'sort' => request()->input('sort')
                 ])->links('pagination::tailwind') }}
+                @endif
             @endif
         </section>
     </main>
