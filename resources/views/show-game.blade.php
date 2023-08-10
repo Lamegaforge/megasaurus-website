@@ -26,11 +26,21 @@
         </div>
     </section>
     <section class="container mx-auto mt-8 lg:px-10 lg:mt-36">
-        <h2 class="mb-4 pl-4 text-2xl text-white lg:mb-5 lg:pl-0 lg:text-3xl">Tous les clips</h2>
+        <x-clip-slider
+            title="Tous les clips"
+            sliderSelector="js-latest-clips-slider"
+            :items="$popularGameClips"
+        >
+        </x-clip-slider>
     </section>
 
     <section class="container mx-auto mt-8 lg:px-10">
-        <h2 class="mb-4 pl-4 text-2xl text-white lg:mb-5 lg:pl-0 lg:text-3xl">Les meilleurs clips</h2>
+        <x-clip-slider
+            title="Les meilleurs clips"
+            sliderSelector="js-popular-games-slider"
+            :items="$gameClips"
+        >
+        </x-game-slider>
     </section>
 </main>
 @endsection
