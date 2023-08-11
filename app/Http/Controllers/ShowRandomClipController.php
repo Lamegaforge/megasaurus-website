@@ -19,6 +19,7 @@ class ShowRandomClipController extends Controller
             PaginationOption::from([
                 'random' => true,
                 'per_page' => 1,
+                'simple_pagination' => true,
             ]),
         );
 
