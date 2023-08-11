@@ -10,6 +10,7 @@ readonly final class PaginationOption
         public ?string $sort,
         public bool $random,
         public int $perPage,
+        public bool $simplePagination,
     ) {}
 
     /**
@@ -29,6 +30,12 @@ readonly final class PaginationOption
             sort: data_get($attributes, 'sort'),
             random: (bool) data_get($attributes, 'random', false),
             perPage: data_get($attributes, 'per_page', 12),
+            simplePagination: data_get($attributes, 'simple_pagination', false),
         );
+    }
+
+    public function getPaginationMethod(): string
+    {
+        return $this->simplePagination ? 'simplePaginate' : 'paginate';
     }
 }
