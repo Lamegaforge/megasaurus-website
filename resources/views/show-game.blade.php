@@ -12,7 +12,7 @@
     <section class="relative flex items-center lg:h-[600px]">
         <div
             class="absolute inset-x-0 inset-y-0 bg-no-repeat bg-cover blur"
-            style="background-image: url('https://megasaurus.fra1.cdn.digitaloceanspaces.com//dev/thumbnails/7430b669-07d7-4c71-843b-60d78f1d9de2')
+            style="background-image: url('{{ $gameThumbnail }}')
         "></div>
         <div class="absolute top-0 bottom-0 w-full bg-[rgba(14,16,21,0.5)]"></div>
         <div class="container mx-auto lg:relative lg:h-full">
