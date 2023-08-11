@@ -30,6 +30,7 @@ class ShowGameControllerTest extends TestCase
         $displayedGame = $response->original->offsetGet('game');
 
         $this->assertTrue($game->is($displayedGame));
+        $this->assertEquals(30, $displayedGame->clips_count);
 
         $popularGameClips = $response->original->offsetGet('popularGameClips');
 
