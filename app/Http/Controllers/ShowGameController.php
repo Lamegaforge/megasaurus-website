@@ -7,7 +7,7 @@ use App\Repositories\PaginateClipsRepository;
 use Illuminate\Support\Facades\View;
 use App\Repositories\FindDisplayableGameRepository;
 use App\Repositories\Options\PaginationOption;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ShowGameController extends Controller
 {
