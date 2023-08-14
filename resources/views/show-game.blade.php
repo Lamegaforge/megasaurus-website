@@ -22,7 +22,7 @@
     </section>
     <section class="container mx-auto mt-8 lg:px-10 lg:mt-36">
         <x-clip-slider
-            title="Tous les clips"
+            title="Les meilleurs clips"
             sliderSelector="js-latest-clips-slider"
             :items="$popularGameClips"
         >
@@ -31,7 +31,7 @@
 
     <section class="container mx-auto mt-8 lg:px-10">
         <x-clip-slider
-            title="Les meilleurs clips"
+            title="Tous les clips"
             sliderSelector="js-popular-games-slider"
             :items="$gameClips"
         >
