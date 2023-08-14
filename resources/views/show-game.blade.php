@@ -4,11 +4,6 @@
 
 @section('main')
 <main class="mt-[84px] lg:mt-[68px] mb-10">
-    {{-- <x-featured-clip
-        :featuredClip="$game"
-        :infos="true"
-    >
-    </x-featured-clip> --}}
     <section class="relative flex items-center lg:h-[400px]">
         <div
             class="absolute inset-x-0 inset-y-0 bg-no-repeat bg-cover blur"
