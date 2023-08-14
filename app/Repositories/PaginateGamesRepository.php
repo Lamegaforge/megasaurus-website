@@ -4,12 +4,13 @@ namespace App\Repositories;
 
 use App\Models\Game;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use App\Repositories\Options\PaginationOption;
 use Domain\Enums\ClipStateEnum;
 
 class PaginateGamesRepository
 {
-    public function handle(PaginationOption $options): LengthAwarePaginator
+    public function handle(PaginationOption $options): LengthAwarePaginator | Paginator
     {
         $query = Game::query()
             ->whereHas('clips', function ($query) {
@@ -31,6 +32,8 @@ class PaginateGamesRepository
             $query->inRandomOrder();
         });
 
-        return $query->paginate($options->perPage);
+        $pagination = $options->getPaginationMethod();
+
+        return $query->{$pagination}($options->perPage);
     }
 }

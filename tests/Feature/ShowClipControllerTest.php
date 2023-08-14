@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Clip;
+use App\Models\Game;
 
 class ShowClipControllerTest extends TestCase
 {
@@ -15,19 +16,21 @@ class ShowClipControllerTest extends TestCase
      */
     public function it_can_display_clip_from_uuid(): void
     {
-        $clip = Clip::factory()->create();
+        $game = Game::factory()
+            ->withClips(20)
+            ->create();
 
-        Clip::factory()->for($clip->game)->count(5)->create();
+        $clip = $game->clips()->first();
 
         $response = $this->get('clips/' . $clip->uuid);
 
         $response
             ->assertOk()
             ->assertSee($clip->title)
-            ->assertSee($clip->game->name);
+            ->assertSee($game->name);
 
-        $randomGameClips = $response->original->offsetGet('randomGameClips');
+        $randomClips = $response->original->offsetGet('randomClips');
 
-        $this->assertCount(6, $randomGameClips);
+        $this->assertCount(12, $randomClips);
     }
 }

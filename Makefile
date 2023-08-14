@@ -2,8 +2,8 @@ PHP = /usr/local/opt/php@8.2/bin/php
 COMPOSER = /usr/local/opt/composer/bin/composer
 
 ready:
-	$(PHP) vendor/bin/phpunit --display-warnings
-	$(PHP) vendor/bin/phpstan analyse
+	make test
+	make phpstan
 
 fresh:
 	$(PHP) artisan migrate:fresh
@@ -19,7 +19,7 @@ install:
 	$(COMPOSER) install
 
 test:
-	$(PHP) vendor/bin/phpunit $(arg) --display-warnings
+	$(PHP) vendor/bin/paratest --processes=6
 
 octane-start:
 	$(PHP) artisan octane:start --watch

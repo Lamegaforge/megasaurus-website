@@ -18,7 +18,7 @@
             <ul class="overflow-hidden lg:flex lg:items-center">
                 <li class="mb-2 lg:h-full lg:mr-3 lg:mb-0">
                     <a
-                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent
+                        class="menu-link relative block px-4 py-2 text-sm text-gray-300 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent
                         @if($currentRouteName === 'clips.index') border-l-6 border-indigo-400 lg:border-l-0 menu-link-active @endif"
                         href="{{ route('clips.index') }}"
                     >
@@ -27,7 +27,7 @@
                 </li>
                 <li class="mb-2 lg:h-full lg:mr-3 lg:mb-0">
                     <a
-                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent
+                        class="menu-link relative block px-4 py-2 text-sm text-gray-300 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent
                         @if($currentRouteName === 'games.index') border-l-6 border-indigo-400 lg:border-l-0 menu-link-active @endif""
                         href="{{ route('games.index') }}"
                     >
@@ -36,7 +36,7 @@
                 </li>
                 <li class="lg:h-full">
                     <a
-                        class="menu-link relative block px-4 py-2 text-xl text-neutral-50 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent"
+                        class="menu-link relative block px-4 py-2 text-sm text-gray-300 active:bg-indigo-400 lg:flex lg:items-center lg:h-full lg:px-2 lg:py-0 lg:active:bg-transparent"
                         href="{{ route('clips.random') }}"
                     >
                         Aléatoire

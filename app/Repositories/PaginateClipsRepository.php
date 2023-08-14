@@ -5,10 +5,11 @@ namespace App\Repositories;
 use App\Models\Clip;
 use App\Repositories\Options\PaginationOption;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 class PaginateClipsRepository
 {
-    public function handle(PaginationOption $options): LengthAwarePaginator
+    public function handle(PaginationOption $options): LengthAwarePaginator | Paginator
     {
         $query = Clip::query()
             ->with('author')
@@ -26,8 +27,8 @@ class PaginateClipsRepository
             $query->inRandomOrder();
         });
 
-        $clips = $query->paginate($options->perPage);
+        $pagination = $options->getPaginationMethod();
 
-        return $clips;
+        return $query->{$pagination}($options->perPage);
     }
 }
