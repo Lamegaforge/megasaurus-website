@@ -7,6 +7,7 @@ use App\Repositories\PaginateClipsRepository;
 use Illuminate\Support\Facades\View;
 use App\Repositories\FindDisplayableGameRepository;
 use App\Repositories\Options\PaginationOption;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ShowGameController extends Controller
 {
@@ -28,6 +29,8 @@ class ShowGameController extends Controller
             ]),
         );
 
+        $gameThumbnail = $this->getRandomThumbnailFromClips($popularGameClips);
+
         $gameClips = $this->paginateClipsRepository->handle(
             PaginationOption::from([
                 'game_uuid' => $game->uuid,
@@ -39,6 +42,16 @@ class ShowGameController extends Controller
             'game' => $game,
             'popularGameClips' => $popularGameClips->items(),
             'gameClips' => $gameClips,
+            'gameThumbnail' => $gameThumbnail,
         ]);
+    }
+
+    private function getRandomThumbnailFromClips(LengthAwarePaginator $popularGameClips): string
+    {
+        $clips = $popularGameClips->items();
+
+        shuffle($clips);
+
+        return $clips[0]->thumbnail();
     }
 }
