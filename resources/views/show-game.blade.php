@@ -16,7 +16,7 @@
         "></div>
         <div class="absolute top-0 bottom-0 w-full bg-[rgba(14,16,21,0.5)]"></div>
         <div class="container mx-auto lg:relative lg:h-full">
-            <div class="relative p-4 sm:flex sm:items-center sm:p-0 lg:absolute lg:top-1/4 lg:left-10">
+            <div class="relative p-4 sm:flex sm:items-center lg:absolute lg:top-1/4 lg:left-10 lg:p-0">
                 <img loading="lazy" class="rounded max-w-[256px] " src="{{ $game->card() }}" alt="">
                 <div class="mt-4 sm:ml-8 sm:mt-0 lg:ml-16">
                     <h1 class="mb-1 text-4xl font-extrabold leading-10 text-white">{{ $game->name }}</h1>
