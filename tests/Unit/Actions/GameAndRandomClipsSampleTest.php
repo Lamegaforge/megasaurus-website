@@ -15,7 +15,7 @@ class GameAndRandomClipsSampleTest extends TestCase
     /**
      * @test
      */
-    public function qsdqsdqsd(): void
+    public function it_able_to_get_a_clips_sample(): void
     {
         $game = Game::factory()
             ->withClips(8)
