@@ -16,8 +16,8 @@ class PopularGamesStorage
 
     public function get(): Collection
     {
-        //return $this->cache->remember('popular_games', TtlFactory::minutes(60), function () {
+        return $this->cache->remember('popular_games', TtlFactory::hours(6), function () {
             return $this->popularGamesRepository->handle();
-        //});
+        });
     }
 }
