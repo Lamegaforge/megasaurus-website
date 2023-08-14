@@ -16,7 +16,7 @@ class LatestAvailableClipsStorage
 
     public function get(): array
     {
-        return $this->cache->remember('latest_available_clips', TtlFactory::minutes(1), function () {
+        return $this->cache->remember('latest_available_clips', TtlFactory::minutes(60), function () {
 
             $clips = $this->paginateClipsRepository->handle(
                 PaginationOption::from([
