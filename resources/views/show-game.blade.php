@@ -30,12 +30,33 @@
     </section>
 
     <section class="container mx-auto mt-8 lg:px-10">
-        <x-clip-slider
-            title="Tous les clips"
-            sliderSelector="js-popular-games-slider"
-            :items="$gameClips"
-        >
-        </x-game-slider>
+        <h2 class="mb-4 pl-4 text-2xl text-white lg:mb-5 lg:pl-0 lg:text-3xl">Tous les clips</h2>
+
+        <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
+            @foreach ($gameClips as $gameClip)
+                <div class="relative">
+                    <a href="{{ route('clips.show', $gameClip->uuid) }}" class="block rounded group">
+                        <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105">
+                            <img loading="lazy" class="rounded" src="{{ $gameClip->thumbnail() }}" alt="">
+                        </div>
+                        <div class="mt-3 text-white">
+                            <p class="transition duration-200 ease-in-out group-hover:text-indigo-400 group-focus:text-indigo-400">{{ $gameClip->title }}</p>
+                            <p class="text-sm text-gray-300">{{ $gameClip->game->name }}</p>
+                        </div>
+                    </a>
+                    <p class="absolute top-2 left-2 z-10 text-white">
+                        <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $gameClip->duration }} s</span>
+                    </p>
+                    <p class="absolute top-2 right-2 z-10 text-white">
+                        <span class="block bg-slate-700/80 px-2 py-1 rounded-sm">{{ $gameClip->views }} vues</span>
+                    </p>
+                </div>
+            @endforeach
+        </div>
+
+        {{ $gameClips->appends([
+            'sort' => request()->input('sort')
+        ])->links('pagination::tailwind') }}
     </section>
 </main>
 @endsection
