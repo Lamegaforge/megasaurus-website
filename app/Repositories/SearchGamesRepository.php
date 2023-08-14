@@ -3,15 +3,20 @@
 namespace App\Repositories;
 
 use App\Models\Game;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Domain\Enums\ClipStateEnum;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchGamesRepository
 {
-    public function handle(string $search): LengthAwarePaginator
+    public function handle(string $search)
     {
-        $games = Game::search($search)
-            ->paginate(16);
-
-        return $games;
+        return Game::search($search)
+            ->query(function ($builder) {
+                $builder->whereHas('clips', function ($query) {
+                    $query->where('state', ClipStateEnum::Ok);
+                })
+                ->limit(24);
+            })
+            ->get();
     }
 }
