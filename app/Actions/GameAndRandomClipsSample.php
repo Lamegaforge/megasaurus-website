@@ -33,6 +33,7 @@ class GameAndRandomClipsSample
                 'game_uuid' => $game->uuid,
                 'per_page' => 8,
                 'random' => true,
+                'simple_pagination' => true,
             ]),
         );
 
@@ -45,6 +46,7 @@ class GameAndRandomClipsSample
             PaginationOption::from([
                 'per_page' => 4,
                 'random' => true,
+                'simple_pagination' => true,
             ]),
         );
 
