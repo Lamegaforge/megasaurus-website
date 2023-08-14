@@ -16,7 +16,7 @@
         <x-clip-slider 
             title="Autres clips" 
             sliderSelector="js-latest-clips-slider" 
-            :items="$randomGameClips">
+            :items="$randomClips">
         </x-clip-slider>
     </section>
 </main>

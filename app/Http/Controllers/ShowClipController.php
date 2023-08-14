@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\PaginateClipsRepository;
 use App\Repositories\FindDisplayableClipRepository;
-use App\Repositories\Options\PaginationOption;
+use App\Actions\GameAndRandomClipsSample;
 use Illuminate\Support\Facades\View;
 use App\Dtos\Uuid;
 
@@ -12,7 +11,7 @@ class ShowClipController extends Controller
 {
     public function __construct(
         private FindDisplayableClipRepository $findDisplayableClipRepository,
-        private PaginateClipsRepository $paginateClipsRepository,
+        private GameAndRandomClipsSample $getGameAndRandomClipsSample,
     ) {}
 
     public function __invoke(string $uuid)
@@ -21,17 +20,13 @@ class ShowClipController extends Controller
             Uuid::fromString($uuid),
         );
 
-        $randomGameClips = $this->paginateClipsRepository->handle(
-            PaginationOption::from([
-                'game_id' => $clip->game->id,
-                'per_page' => 10,
-                'random' => true,
-            ]),
+        $randomClips = $this->getGameAndRandomClipsSample->handle(
+            game: $clip->game,
         );
 
         return View::make('show-clip', [
             'clip' => $clip,
-            'randomGameClips' => $randomGameClips->items(),
+            'randomClips' => $randomClips,
         ]);
     }
 }
