@@ -15,10 +15,7 @@ class PaginateGamesRepository
         $query = Game::query()
             ->whereHas('clips', function ($query) {
                 $query->where('state', ClipStateEnum::Ok);
-            })
-            ->withCount(['clips' => function ($query) {
-                $query->where('state', ClipStateEnum::Ok);
-            }]);
+            });
 
         $query->when($options->gameUuid, function ($query, $gameUuid) {
             $query->where('game.uuid', $gameUuid);
