@@ -14,6 +14,8 @@ class GameSeeder extends Seeder
      */
     public function run(): void
     {
+        Game::disableSearchSyncing();
+
         $cards = config('seeders.cards');
 
         Game::factory()
