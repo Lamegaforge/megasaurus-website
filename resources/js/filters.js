@@ -36,6 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (selectedFilter === "views") {
             currentFilter = "views";
+        } else if (selectedFilter === "created_at") {
+            currentFilter = "created_at";
+        } else if (selectedFilter === "clips_count") {
+            currentFilter = "clips_count";
         } else {
             currentFilter = "published_at";
         }
