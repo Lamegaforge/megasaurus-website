@@ -70,8 +70,8 @@
                             </li>
                             <li>
                                 <a
-                                    href="/games?sort=clips_count"
-                                    data-filter="clips_count"
+                                    href="/games?sort=active_clip_count"
+                                    data-filter="active_clip_count"
                                     class="js-dates flex items-center text-white lg:hover:text-indigo-400 focus:text-indigo-400 transition-colors ease-in-out duration-200
                                 ">
                                     <span>Nombre de clips</span>
