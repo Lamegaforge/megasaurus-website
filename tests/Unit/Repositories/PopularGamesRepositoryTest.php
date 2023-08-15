@@ -19,48 +19,27 @@ class PopularGamesRepositoryTest extends TestCase
     public function it_able_to_fetch_popular_games(): void
     {
         Game::factory()
-            ->withClips(9)
-            ->create();
+            ->create([
+                'active_clip_count' => 9,
+            ]);
 
         Game::factory()
-            ->withClips(6)
-            ->create();
+            ->create([
+                'active_clip_count' => 6,
+            ]);
 
         Game::factory()
-            ->withClips(3)
-            ->create();
+            ->create([
+                'active_clip_count' => 3,
+            ]);
 
 
         $games = app(PopularGamesRepository::class)->handle();
 
         $this->assertCount(3, $games);
 
-        $orderedClipsCount = $games->pluck('clips_count');
+        $orderedClipsCount = $games->pluck('active_clip_count');
 
         $this->assertEquals([9, 6, 3], $orderedClipsCount->toArray());
-    }
-
-    /**
-     * @test
-     */
-    public function only_available_clips_are_counted(): void
-    {
-        $clips = Clip::factory()
-            ->state(new Sequence(
-                ['state' => 1],
-                ['state' => 2],
-                ['state' => 3],
-            ))
-            ->count(10);
-
-        Game::factory()
-            ->has($clips)
-            ->create();
-
-        $games = app(PopularGamesRepository::class)->handle();
-
-        $game = $games->first();
-
-        $this->assertEquals(4, $game->clips_count);
     }
 }

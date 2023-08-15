@@ -16,7 +16,7 @@ class LatestGamesStorage
 
     public function get(): array
     {
-        return $this->cache->remember('latest_games', TtlFactory::minutes(1), function () {
+        return $this->cache->remember('latest_games', TtlFactory::minutes(10), function () {
 
             $games = $this->paginateGamesRepository->handle(
                 PaginationOption::from([
