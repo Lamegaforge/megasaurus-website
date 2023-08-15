@@ -32,7 +32,7 @@
     <section class="container mx-auto mt-8 lg:px-10">
         <h2 class="mb-4 pl-4 text-2xl text-white lg:mb-5 lg:pl-0 lg:text-3xl">Tous les clips</h2>
 
-        <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
+        <div class="grid grid-cols-2 px-4 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-8 lg:grid-cols-6">
             @foreach ($gameClips as $gameClip)
                 <div class="relative">
                     <a href="{{ route('clips.show', $gameClip->uuid) }}" class="block rounded group">
