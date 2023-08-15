@@ -10,11 +10,8 @@ class PopularGamesRepository
     public function handle()
     {
         return Game::query()
-            ->withCount(['clips' => function ($query) {
-                $query->where('state', ClipStateEnum::Ok);
-            }])
+            ->orderByDesc('active_clip_count')
             ->where('uuid', '!=', config('app.game_nowhere_uuid'))
-            ->orderBy('clips_count', 'DESC')
             ->take(12)
             ->get();
     }
