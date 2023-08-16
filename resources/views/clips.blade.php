@@ -2,6 +2,11 @@
 
 @section('title', 'Clips | Megasaurus')
 
+@section('javascript')
+    @vite('resources/js/test.js')
+    @vite('resources/js/filters.js')
+@endsection
+
 @section('main')
 <main class="mt-[84px] lg:mt-[68px] mb-10">
     <section class="container mx-auto mt-8 lg:px-10">
