@@ -61,8 +61,8 @@
                         <ul class="mt-1 p-2 bg-zinc-700 rounded-lg lg:mt-2">
                             <li class="mb-3">
                                 <a
-                                    href="/games?sort=published_at"
-                                    data-filter="published_at"
+                                    href="/games?sort=created_at"
+                                    data-filter="created_at"
                                     class="flex items-center text-white lg:hover:text-indigo-400 focus:text-indigo-400 transition-colors ease-in-out duration-200
                                 ">
                                     <span>Dates</span>
