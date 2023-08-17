@@ -23,6 +23,8 @@
     <x-nav />
     @yield('main')
     <x-footer />
+
+    @yield('javascript')
 </body>
 
 </html>
