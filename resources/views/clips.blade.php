@@ -3,7 +3,7 @@
 @section('title', 'Clips | Megasaurus')
 
 @section('javascript')
-    @vite('resources/js/test.js')
+    @vite('resources/js/slider.js')
     @vite('resources/js/filters.js')
 @endsection
 
