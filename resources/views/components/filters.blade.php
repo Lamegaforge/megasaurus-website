@@ -23,7 +23,7 @@
         <div class="overflow-hidden">
             <ul class="mt-1 p-2 bg-zinc-700 rounded-lg lg:mt-2">
                 @foreach ($filters as $filter)
-                    <li class="mb-3">
+                    <li class="mb-3 last:mb-0">
                         <a
                             href="/{{ $page }}?sort={{ $filter["type"] }}"
                             data-filter="{{ $filter["type"] }}"

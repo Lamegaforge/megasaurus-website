@@ -43,11 +43,11 @@
                 @php
                     $page = "clips";
                     $filters = array(
-                        "dates" => array(
+                        "views" => array(
                             "type" => "views",
                             "text" => "Nombre de vues",
                         ),
-                        "clip_count" => array(
+                        "published_at" => array(
                             "type" => "published_at",
                             "text" => "Dates",
                         ),
