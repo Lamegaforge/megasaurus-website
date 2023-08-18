@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.querySelector(".js-search-input");
     const resetSearch = document.querySelector(".js-reset-search");
 
+    const currentRoute = new URLSearchParams(window.location);
+    const currentRouteName = currentRoute.get("pathname");
+
     /**
      * A more proper solution would be to call that file
      * only in /clips view.
@@ -34,10 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentFilter;
         const selectedFilter = filtersBtn.dataset.selectedFilter;
 
-        if (selectedFilter === "views") {
-            currentFilter = "views";
-        } else {
-            currentFilter = "published_at";
+        if (currentRouteName === "/clips") {
+            if (selectedFilter === "views") {
+                currentFilter = "views";
+            } else {
+                currentFilter = "published_at";
+            }
+        }
+
+        if (currentRouteName === "/games") {
+            if (selectedFilter === "active_clip_count") {
+                currentFilter = "active_clip_count";
+            } else {
+                currentFilter = "created_at";
+            }
         }
 
         createSelectedSvg(currentFilter);

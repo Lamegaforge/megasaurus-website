@@ -2,6 +2,10 @@
 
 @section('title', $clip->title . ' | Megasaurus')
 
+@section('javascript')
+    @vite('resources/js/slider.js')
+@endsection
+
 @section('main')
 <main class="mt-[84px] lg:mt-[68px] mb-10">
     <section class="relative flex items-center mb-6 lg:h-[600px]">

@@ -2,6 +2,10 @@
 
 @section('title', 'MEGASAURUS')
 
+@section('javascript')
+    @vite('resources/js/slider.js')
+@endsection
+
 @section('main')
 <main class="mt-[84px] lg:mt-[68px] mb-10">
     <section class="relative flex items-center h-[600px] mb-6">

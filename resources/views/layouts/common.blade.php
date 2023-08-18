@@ -22,7 +22,9 @@
 <body class="h-full antialiased">
     <x-nav />
     @yield('main')
-    <x-footer></x-footer>
+    <x-footer />
+
+    @yield('javascript')
 </body>
 
 </html>

@@ -2,6 +2,11 @@
 
 @section('title', 'Clips | Megasaurus')
 
+@section('javascript')
+    @vite('resources/js/slider.js')
+    @vite('resources/js/filters.js')
+@endsection
+
 @section('main')
 <main class="mt-[84px] lg:mt-[68px] mb-10">
     <section class="container mx-auto mt-8 lg:px-10">
@@ -20,13 +25,13 @@
                             clip-rule="evenodd">
                         </path>
                     </svg>
-                    <form method="GET" action="/clips">
+                    <form method="GET" action="{{ route('clips.index') }}">
                         <input
                             class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-indigo-400"
                             type="search"
                             name="query"
                             value="{{ request()->get('query') }}"
-                            placeholder="Rechercher un jeu"
+                            placeholder="Rechercher un clip"
                             maxlength="255"
                         />
                     </form>
@@ -35,52 +40,20 @@
                     </button>
                 </div>
                 @unless(request()->filled('query'))
-                <div class="relative">
-                    <button
-                        class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-indigo-400"
-                        type="button"
-                        data-selected-filter="{{ request()->input('sort') }}"
-                    >
-                        <svg
-                            class="w-5 h-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4">
-                            </path>
-                        </svg>
-                        <span class="text-white">Trier par</span>
-                    </button>
-                    <div class="js-filters-list filters-list absolute left-1/2 w-max -translate-x-1/2 z-20">
-                        <div class="overflow-hidden">
-                            <ul class="mt-1 p-2 bg-zinc-700 rounded-lg lg:mt-2">
-                                <li class="mb-3">
-                                    <a
-                                        href="/clips?sort=views"
-                                        data-filter="views"
-                                        class="flex items-center text-white lg:hover:text-indigo-400 focus:text-indigo-400 transition-colors ease-in-out duration-200
-                                    ">
-                                        <span>Nombre de vues</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="/clips?sort=published_at"
-                                        data-filter="published_at"
-                                        class="js-dates flex items-center text-white lg:hover:text-indigo-400 focus:text-indigo-400 transition-colors ease-in-out duration-200
-                                    ">
-                                        <span>Dates</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @php
+                    $page = "clips";
+                    $filters = array(
+                        "views" => array(
+                            "type" => "views",
+                            "text" => "Nombre de vues",
+                        ),
+                        "published_at" => array(
+                            "type" => "published_at",
+                            "text" => "Dates",
+                        ),
+                    );
+                @endphp
+                <x-filters :filters="$filters" :page="$page" />
                 @endif
             </div>
         </div>

@@ -20,7 +20,7 @@ class PaginateGameRequest extends FormRequest
             'query' => 'nullable|string|max:255',
             'sort' => [
                 'nullable',
-                Rule::in(['clips_count', 'created_at']),
+                Rule::in(['active_clip_count', 'created_at']),
             ],
         ];
     }
