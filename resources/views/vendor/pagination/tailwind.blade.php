@@ -40,7 +40,6 @@
 
         <div class="hidden md:block">
             <p class="text-center text-white mb-3">
-                {!! __('Showing') !!}
                 @if ($paginator->firstItem())
                     <span class="font-medium">{{ $paginator->firstItem() }}</span>
                     {!! __('to') !!}
