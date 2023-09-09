@@ -197,6 +197,6 @@ return [
      * This game collects a lot of clips and we want to be able to identify 
      * it to exclude it from certain paginations.
      */
-    'game_nowhere_uuid' => '5f31a71e-5a0b-4369-9cb9-080c9f84e761',
+    'game_nowhere_uuid' => 'f0bc1f2d-3990-47b8-9011-97768561ad4a',
 
 ];
