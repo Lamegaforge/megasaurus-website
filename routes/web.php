@@ -18,19 +18,12 @@ Route::prefix('clips')
     ->group(function() {
         Route::get('/', PaginateClipController::class)->name('index');
         Route::get('random', ShowRandomClipController::class)->name('random');
-        Route::get('{uuid}', ShowClipController::class)->name('show');
+        Route::get('{uuid}', ShowClipController::class)->name('show')->whereUuid('uuid');
     });
 
 Route::prefix('games')
     ->as('games.')
     ->group(function () {
         Route::get('/', PaginateGameController::class)->name('index');
-        Route::get('{uuid}', ShowGameController::class)->name('show');
-    });
-
-Route::prefix('games')
-    ->as('games.')
-    ->group(function () {
-        Route::get('/', PaginateGameController::class)->name('index');
-        Route::get('{uuid}', ShowGameController::class)->name('show');
+        Route::get('{uuid}', ShowGameController::class)->name('show')->whereUuid('uuid');
     });
