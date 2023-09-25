@@ -4,8 +4,16 @@
         <ul class="splide__list">
             @foreach($items as $item)
             <li class="splide__slide">
-                <a href="{{ route('games.show', $item->uuid) }}">
-                    <img loading="lazy" src="{{ $item->card() }}" alt="">
+                <a
+                    href="{{ route('games.show', $item->uuid) }}"
+                    class="group"
+                >
+                    <img
+                        class="transition duration-200 ease-in-out transform group-hover:scale-105 group-focus:scale-105"
+                        loading="lazy"
+                        src="{{ $item->card() }}"
+                        alt=""
+                    >
                 </a>
             </li>
             @endforeach
