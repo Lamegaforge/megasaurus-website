@@ -6,10 +6,10 @@
             <li class="splide__slide">
                 <a
                     href="{{ route('games.show', $item->uuid) }}"
-                    class="group"
+                    class="block group focus-visible:border-2 focus-visible:border-indigo-400 focus:outline-none"
                 >
                     <img
-                        class="transition duration-200 ease-in-out transform group-hover:scale-105 group-focus:scale-105"
+                        class="transition duration-200 ease-in-out transform group-hover:scale-105"
                         loading="lazy"
                         src="{{ $item->card() }}"
                         alt=""

@@ -1,6 +1,6 @@
 <div class="relative">
     <button
-        class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-1 focus:outline-indigo-400"
+        class="js-filters-btn flex items-center p-2 text-white bg-zinc-700 rounded-lg focus:outline focus:outline-2 focus:outline-indigo-400"
         type="button"
         data-selected-filter="{{ request()->input('sort') }}"
     >
@@ -27,7 +27,7 @@
                         <a
                             href="/{{ $page }}?sort={{ $filter["type"] }}"
                             data-filter="{{ $filter["type"] }}"
-                            class="flex items-center text-white lg:hover:text-indigo-400 focus:text-indigo-400 transition-colors ease-in-out duration-200
+                            class="flex items-center text-white lg:hover:text-indigo-400 focus:text-indigo-400 focus:outline-none transition-colors ease-in-out duration-200
                         ">
                             <span>{{ $filter["text"] }}</span>
                         </a>
