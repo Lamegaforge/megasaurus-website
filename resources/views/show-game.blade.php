@@ -39,8 +39,8 @@
         <div class="grid grid-cols-2 px-4 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-8 lg:grid-cols-6 lg:px-0">
             @foreach ($gameClips as $gameClip)
                 <div class="relative">
-                    <a href="{{ route('clips.show', $gameClip->uuid) }}" class="block rounded group">
-                        <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105">
+                    <a href="{{ route('clips.show', $gameClip->uuid) }}" class="block rounded group focus-visible:border-2 focus-visible:border-indigo-400 focus:outline-none">
+                        <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105 group-focus:scale-105">
                             <img loading="lazy" class="rounded" src="{{ $gameClip->thumbnail() }}" alt="">
                         </div>
                         <div class="mt-3 text-white">

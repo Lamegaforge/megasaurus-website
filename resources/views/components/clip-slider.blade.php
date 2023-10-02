@@ -3,7 +3,7 @@
     <div class="splide__track">
         <ul class="splide__list">
             @foreach($items as $item)
-            <a href="{{ route('clips.show', $item->uuid) }}" class="splide__slide block rounded group">
+            <a href="{{ route('clips.show', $item->uuid) }}" class="splide__slide block rounded group focus-visible:border-2 focus-visible:border-indigo-400 focus:outline-none">
                 <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105">
                     <img loading="lazy" class="rounded" src="{{ $item->thumbnail() }}">
                 </div>

@@ -27,7 +27,7 @@
                     </svg>
                     <form method="GET" action="{{ route('clips.index') }}">
                         <input
-                            class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-indigo-400"
+                            class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-indigo-400"
                             type="search"
                             name="query"
                             value="{{ request()->get('query') }}"
@@ -66,7 +66,7 @@
         <div class="grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 sm:px-0 lg:grid-cols-3 xl:grid-cols-4">
             @foreach ($clips as $clip)
             <div class="relative">
-                <a href="{{ route('clips.show', $clip->uuid) }}" class="block rounded group">
+                <a href="{{ route('clips.show', $clip->uuid) }}" class="block rounded group outline-offset-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-indigo-400">
                     <div class="relative transition duration-200 ease-in-out transform shadow-md pt-16/9 group-hover:scale-105">
                         <img loading="lazy" class="rounded" src="{{ $clip->thumbnail() }}">
                     </div>

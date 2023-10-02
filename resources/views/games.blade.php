@@ -26,7 +26,7 @@
                     </svg>
                     <form method="GET" action="{{ route('games.index') }}">
                         <input
-                            class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-indigo-400"
+                            class="js-search-input search-input py-2 pr-2 pl-[42px] bg-zinc-700 rounded-lg placeholder:text-white outline-offset-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-indigo-400"
                             type="search"
                             name="query"
                             value="{{ request()->get('query') }}"
@@ -63,8 +63,8 @@
         @else
             <div class="grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 sm:gap-y-8 lg:grid-cols-4 lg:px-0 xl:grid-cols-6 xl:gap-x-8">
                 @foreach ($games as $game)
-                    <a href="{{ route('games.show', $game->uuid) }}" class="block group">
-                        <img loading="lazy" class="rounded transition duration-200 ease-in-out transform group-hover:scale-105 group-focus:scale-105" src="{{ $game->card() }}" alt="">
+                    <a href="{{ route('games.show', $game->uuid) }}" class="block group focus-visible:border-2 focus-visible:border-indigo-400 focus:outline-none">
+                        <img loading="lazy" class="rounded transition duration-200 ease-in-out transform group-hover:scale-105" src="{{ $game->card() }}" alt="">
                         <p class="mt-3 transition duration-200 ease-in-out text-white group-hover:text-indigo-400 group-focus:text-indigo-400">
                             {{ $game->name }}
                         </p>
