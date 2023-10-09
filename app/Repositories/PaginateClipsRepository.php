@@ -29,6 +29,6 @@ class PaginateClipsRepository
 
         $pagination = $options->getPaginationMethod();
 
-        return $query->{$pagination}($options->perPage);
+        return $query->{$pagination}($options->perPage, ['*'], $options->pageName);
     }
 }

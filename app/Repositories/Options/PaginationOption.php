@@ -11,6 +11,7 @@ readonly final class PaginationOption
         public bool $random,
         public int $perPage,
         public bool $simplePagination,
+        public string $pageName,
     ) {}
 
     /**
@@ -31,6 +32,7 @@ readonly final class PaginationOption
             random: (bool) data_get($attributes, 'random', false),
             perPage: data_get($attributes, 'per_page', 12),
             simplePagination: data_get($attributes, 'simple_pagination', false),
+            pageName: data_get($attributes, 'page_name', 'pageName'),
         );
     }
 

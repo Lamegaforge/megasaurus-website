@@ -26,6 +26,7 @@ class ShowGameController extends Controller
             PaginationOption::from([
                 'game_uuid' => $game->uuid,
                 'sort' => 'clips.views',
+                'page_name' => 'disabled',
             ]),
         );
 
